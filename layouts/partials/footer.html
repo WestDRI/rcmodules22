@@ -14,7 +14,7 @@
     <div style="font-size: 1.3rem;">
     {{ if not .Site.Params.hideCopyright }}
       {{ with .Site.Params.since }}
-      © {{ if lt . now.Year }}{{ . }}–{{ end }}{{ now.Year }} <a href="https://www.sfu.ca/">SFU</a> & <a href="https://alliancecan.ca/">DRAC</a>
+      © {{ if lt . now.Year }}{{ . }}–{{ end }}{{ now.Year }} <a href="https://www.sfu.ca/" style='color: #660000'>SFU</a> & <a href="https://alliancecan.ca/" style='color: #660000'>DRAC</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       {{ else }}
       © {{ now.Year }} <a href="https://www.sfu.ca/">Simon Fraser University</a> & <a href="https://alliancecan.ca/">Digital Research Alliance of Canada</a>
@@ -23,10 +23,10 @@
     {{ end }}
     {{ if not .Site.Params.hideCredits }}
       <!-- {{ if not .Site.Params.hideCopyright }} · {{ end }} -->
-      Powered by <a href="https://gohugo.io/">Hugo</a>, inspired by <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>
+      Powered by <a href="https://gohugo.io/" style='color: #660000'>Hugo</a>, inspired by <a href="https://github.com/luizdepra/hugo-coder/" style='color: #660000'>Coder</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     {{ end }}
-      View on &nbsp;<a href="{{ .Site.Params.repourl }}"><i class="fab fa-github fa-lg"></i></a>
+      View on &nbsp;<a href="{{ .Site.Params.repourl }}"><i class="fab fa-github fa-lg" style='color: #660000'></i></a>
     {{ if .Site.Params.commit }}
       {{ if or (not .Site.Params.hideCredits) (not .Site.Params.hideCopyright) }} · {{ end }}
       [<a href="{{ .Site.Params.commit }}{{ getenv "GIT_COMMIT_SHA" }}">{{ getenv "GIT_COMMIT_SHA_SHORT" }}</a>]
