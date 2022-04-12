@@ -1,0 +1,15 @@
+#+title: Module 4 — Compute Canada cloud
+#+slug: cloud
+
+{{<cor>}}Tuesday, July 5{{</cor>}} \\
+9am–12pm PST\\
+{{<c link="/cloud_cloud" topic="Introduction to Compute Canada cloud" >}}
+
+{{<cor>}}Tuesday, July 7{{</cor>}} \\
+9am–12pm PST\\
+{{<c link="/cloud_container" topic="Introduction to containers" >}}
+
+#+BEGIN_export html
+<br>
+<a href="xxx" target="_blank">Click here</a> to register for this module.
+#+END_export
