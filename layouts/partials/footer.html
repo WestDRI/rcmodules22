@@ -1,0 +1,36 @@
+<footer class="footer">
+  <section class="container">
+    {{ with .Site.Params.footercontent | safeHTML }}
+    <p class="footcontent"><a href="/info">{{ . }}</a></p>
+    {{ end }}
+    <br>
+    <a href="https://www.sfu.ca/"><img src="/img/sfu_favicon.png" width="22"></a>&ensp;&ensp;
+    <a href="https://alliancecan.ca/"><img src="/img/drac_favicon.png" width="19"></a>&ensp;&ensp;
+    <a href="https://twitter.com/Alliance_Can"><i class="fab fa-twitter fa-lg" style='color: #58585a'></i></a>&ensp;&ensp;
+    <a href="email"><i class="far fa-envelope-open fa-lg" style='color: #58585a'></i></a>&ensp;&ensp;
+    <a href="/"><i class="fa fa-home fa-lg" style='color: #58585a'></i></a>
+    <br>
+    <br>
+    <div style="font-size: 1.3rem;">
+    {{ if not .Site.Params.hideCopyright }}
+      {{ with .Site.Params.since }}
+      © {{ if lt . now.Year }}{{ . }}–{{ end }}{{ now.Year }} <a href="https://www.sfu.ca/">SFU</a> & <a href="https://alliancecan.ca/">DRAC</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ else }}
+      © {{ now.Year }} <a href="https://www.sfu.ca/">Simon Fraser University</a> & <a href="https://alliancecan.ca/">Digital Research Alliance of Canada</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ end }}
+    {{ end }}
+    {{ if not .Site.Params.hideCredits }}
+      <!-- {{ if not .Site.Params.hideCopyright }} · {{ end }} -->
+      Powered by <a href="https://gohugo.io/">Hugo</a>, inspired by <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{ end }}
+      View on &nbsp;<a href="{{ .Site.Params.repourl }}"><i class="fab fa-github fa-lg"></i></a>
+    {{ if .Site.Params.commit }}
+      {{ if or (not .Site.Params.hideCredits) (not .Site.Params.hideCopyright) }} · {{ end }}
+      [<a href="{{ .Site.Params.commit }}{{ getenv "GIT_COMMIT_SHA" }}">{{ getenv "GIT_COMMIT_SHA_SHORT" }}</a>]
+    {{ end }}
+    </div>
+  </section>
+</footer>

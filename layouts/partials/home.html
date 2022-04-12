@@ -1,0 +1,54 @@
+<section class="container centered">
+  <div class="about">
+    <!-- {{ if and (isset .Site.Params "avatarurl") (not (isset .Site.Params "gravatar")) }} -->
+    <!-- {{ with .Site.Params.avatarurl }} -->
+    <!-- <div class="avatar"><img src="{{ . | relURL }}" alt="avatar"></div> -->
+    <!-- {{ end }} -->
+    <!-- {{ end }} -->
+    <!-- {{ with .Site.Params.gravatar }} -->
+    <!-- <div class="avatar"><img src="https://www.gravatar.com/avatar/{{md5 .}}?s=240&d=mp" alt="gravatar"></div> -->
+    <!-- {{ end }} -->
+    <br>
+    <br>
+    {{ if and (.Site.Params.sfuavatar) (.Site.Params.dracavatar) }} 
+    <div>
+      <a href="https://www.sfu.ca/">
+	<img src="{{ $.Site.Params.sfuavatar | relURL }}" alt="sfuavatar">
+      </a>
+      &emsp;&emsp;
+     <a href="https://alliancecan.ca/">
+	<img src="{{ $.Site.Params.dracavatar | relURL }}" alt="dracavatar">
+     </a>
+    </div>
+    {{ end }}
+    <br>
+    <br>
+    <h1>{{ .Site.Params.info }}</h1>
+    <br>
+    <br>
+    <div id="frontdates">
+      <div class="left"><a href="/basics">Remote computing basics</a></div>
+      <div class="right">May &nbsp;10, &nbsp;12,&nbsp; 17,&nbsp; 19</div>
+    </div>
+    <div id="frontdates">
+      <div class="left"><a href="/programming">Programming tools</a></div>
+      <div class="right">May &nbsp;24, &nbsp;26, &nbsp;31, &nbsp;June &nbsp;2</div>
+    </div>
+    <div id="frontdates">
+      <div class="left"><a href="/parallel">Parallel coding</a></div>
+      <div class="right">June &nbsp;14, &nbsp;16, &nbsp;28, &nbsp;30</div>
+    </div>
+    <div id="frontdates">
+      <div class="left"><a href="/cloud">Compute Canada cloud</a></div>
+      <div class="right">July &nbsp;5, &nbsp;7</div>
+    </div>
+    <div id="frontdates">
+      <div class="left"><a href="/ml">Machine learning</a></div>
+      <div class="right">July &nbsp;12, &nbsp;14</div>
+    </div>
+    <div id="frontdates">
+      <div class="left"><a href="/scivis">Scientific visualization</a></div>
+      <div class="right">July &nbsp;19, &nbsp;21</div>
+    </div>
+  </div>
+</section>
