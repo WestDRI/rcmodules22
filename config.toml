@@ -1,0 +1,73 @@
+baseurl = "/"
+title = "Western Canada Research Computing"
+
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+buildFuture = true
+footnotereturnlinkcontents = "↩"
+relativeURLs = true
+
+enableEmoji = true
+
+paginate = 20
+canonifyurls = true
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    style = "manni"
+
+[params]
+ repourl = "https://github.com/WestGrid/rcmodules22"
+ info = "Training Modules 2022"
+ sfuavatar = "/img/sfu.png"
+ dracavatar = "/img/drac.png"
+ error = "/img/404.png"
+ favicon_32 = "/img/sfu_favicon.png"
+ footercontent = "Information"
+ dateformat = "January 2, 2006"
+ hideCredits = false
+ hideCopyright = false
+ since = 2022
+
+[languages]
+    [languages.en]
+        languagename = "English"
+
+        [languages.en.menu]
+
+            [[languages.en.menu.main]]
+            name = "Basics"
+            weight = 1
+            url = "basics"
+
+            [[languages.en.menu.main]]
+            name = "Programming"
+            weight = 2
+            url = "programming"
+
+            [[languages.en.menu.main]]
+            name = "Parallel"
+            weight = 3
+            url = "parallel"
+
+            [[languages.en.menu.main]]
+            name = "Cloud"
+            weight = 4
+            url = "cloud"
+
+            [[languages.en.menu.main]]
+            name = "ML"
+            weight = 5
+            url = "ml"
+
+	    [[languages.en.menu.main]]
+	    name = "SciVis"
+	    weight = 6
+	    url  = "scivis"
