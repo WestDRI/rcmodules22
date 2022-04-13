@@ -2,11 +2,11 @@
 #+slug: programming
 
 {{<cor>}}Tuesday, May 24 &nbsp;&&nbsp; Thursday, May 26{{</cor>}} \\
-9am–12pm PST\\
+9:30am–12:30pm PST\\
 {{<c link="/programming_python" topic="Basics of Python" >}}
 
 {{<cor>}}Tuesday, May 31 &nbsp;&&nbsp; Thursday, June 2{{</cor>}} \\
-9am–12pm PST\\
+9:30am–12:30pm PST\\
 {{<c link="/programming_julia" topic="Introductory Julia" >}}
 
 #+BEGIN_export html

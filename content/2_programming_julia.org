@@ -2,7 +2,7 @@
 #+slug: programming_julia
 
 {{<cor>}}Tuesday, May 31 &nbsp;&&nbsp; Thursday, June 2{{</cor>}} \\
-{{<cgr>}}9am–12pm Pacific Time{{</cgr>}}
+{{<cgr>}}9:30am–12:30pm Pacific Time{{</cgr>}}
 
 This course will introduce you to the basics of [[https://julialang.org/][Julia]]—a modern, fast, and dynamic language particularly well suited for heavy computations and scientific programming.
 

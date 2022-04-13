@@ -4,9 +4,9 @@ slug = "programming_python"
 +++
 
 {{<cor>}}Tuesday, May 24 &nbsp;&&nbsp; Thursday, May 26{{</cor>}}\
-{{<cgr>}}9am–12pm Pacific Time{{</cgr>}}
+{{<cgr>}}9:30am–12:30pm Pacific Time{{</cgr>}}
 
-This course will start at 9am Pacific Time and will run until 5pm Pacific Time.
+This course will start at 9:30am Pacific Time and will run until 12:30pm Pacific Time.
 
 <!-- Course materials will be added here shortly before the start of the course. -->
 
@@ -25,7 +25,7 @@ matplotlib (basic plotting).
 
 <!-- ~/training/softwareCarpentry/python04.md -->
 
-<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}9am-12:00pm Pacific{{</cgr>}} -->
+<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}9:30am-12:00pm Pacific{{</cgr>}} -->
 <!-- <\!-- {{<nolinktitle>}}Setup and running Jupyter notebooks{{</nolinktitle>}} \ -\-> -->
 <!-- <\!-- {{<nolinktitle>}}Variables and assignment, data types and type conversion{{</nolinktitle>}} \ -\-> -->
 <!-- <\!-- {{<nolinktitle>}}Built-in functions and help{{</nolinktitle>}} \ -\-> -->

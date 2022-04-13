@@ -2,7 +2,7 @@
 #+slug: scivis
 
 {{<cor>}}Tuesday, July 19 &nbsp;&&nbsp; Thursday, July 21{{</cor>}}\\
-9am–12pm PST\\
+9:30am–12:30pm PST\\
 {{<c link="/scivis_scivis" topic="3D scientific visualization with ParaView" >}}
 
 #+BEGIN_export html

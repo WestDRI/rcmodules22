@@ -25,11 +25,11 @@ Chapel was designed specifically for HPC, with support for shared- and distribut
 language.
 
 {{<cor>}}Tuesday, June 14 &nbsp;&&nbsp; Thursday, June 16{{</cor>}} \
-9am–12pm PST\
+9:30am–12:30pm PST\
 {{<c link="/parallel_chapel" topic="Parallel programming in Chapel" >}}
 
 {{<cor>}}Tuesday, June 28 &nbsp;&&nbsp; Thursday, June 30{{</cor>}} \
-9am–12pm PST\
+9:30am–12:30pm PST\
 {{<c link="/parallel_julia" topic="Parallel computing in Julia" >}}
 
 <!-- #+BEGIN_export html -->

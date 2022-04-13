@@ -2,7 +2,7 @@
 #+slug: ml
 
 {{<cor>}}Tuesday, July 12 &nbsp;&&nbsp; Thursday, July 14{{</cor>}}\\
-9am–12pm PST\\
+9:30am–12:30pm PST\\
 {{<c link="/ml_pytorch" topic="Deep learning with PyTorch" >}}
 
 #+BEGIN_export html

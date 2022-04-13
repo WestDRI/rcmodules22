@@ -4,7 +4,7 @@ slug = "cloud_container"
 +++
 
 {{<cor>}}Tuesday, July 7{{</cor>}}\
-{{<cgr>}}9am–12pm Pacific Time{{</cgr>}}
+{{<cgr>}}9:30am–12:30pm Pacific Time{{</cgr>}}
 
 **Instructor**: Alex Razoumov (SFU)
 

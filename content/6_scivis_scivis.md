@@ -4,9 +4,9 @@ slug = "scivis_scivis"
 +++
 
 {{<cor>}}Tuesday, July 19 &nbsp;&&nbsp; Thursday, July 21{{</cor>}}\
-{{<cgr>}}9am–12pm Pacific Time{{</cgr>}}
+{{<cgr>}}9:30am–12:30pm Pacific Time{{</cgr>}}
 
-This course will start at 9am Pacific Time and will run until 5pm Pacific Time. Its format will be a combination of
+This course will start at 9:30am Pacific Time and will run until 12:30pm Pacific Time. Its format will be a combination of
 several interactive Zoom sessions and pre-recorded reading and video materials in-between the Zoom sessions. Course
 materials will be added here shortly before the start of the course.
 

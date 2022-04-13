@@ -2,11 +2,11 @@
 #+slug: basics
 
 {{<cor>}}Tuesday, May 10 &nbsp;&&nbsp; Thursday, May 12{{</cor>}} \\
-9am–12pm PST\\
+9:30am–12:30pm PST\\
 {{<c link="/basics_bash" topic="Bash command line" >}}
 
 {{<cor>}}Tuesday, May 17 &nbsp;&&nbsp; Thursday, May 19{{</cor>}} \\
-9am–12pm PST\\
+9:30am–12:30pm PST\\
 {{<c link="/basics_hpc" topic="Introduction to HPC" >}}
 
 #+BEGIN_export html

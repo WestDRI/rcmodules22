@@ -4,9 +4,9 @@ slug = "basics_bash"
 +++
 
 {{<cor>}}Tuesday, May 10 &nbsp;&&nbsp; Thursday, May 12{{</cor>}}\
-{{<cgr>}}9am–12pm Pacific Time{{</cgr>}}
+{{<cgr>}}9:30am–12:30pm Pacific Time{{</cgr>}}
 
-This course will start at 9am Pacific Time and will run until 5pm Pacific Time. Its format will be a combination of
+This course will start at 9:30am Pacific Time and will run until 12:30pm Pacific Time. Its format will be a combination of
 several interactive Zoom sessions and pre-recorded reading and video materials in-between the Zoom sessions. Course
 materials will be added here shortly before the start of the course.
 
@@ -25,7 +25,7 @@ order to participate in the course exercises. On Windows we recommend
 [the free Home Edition of MobaXterm](https://mobaxterm.mobatek.net/download.html). On Mac and Linux
 computers SSH is usually pre-installed (try typing `ssh` in a terminal to make sure it is there).
 
-<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}9am-9:30am Pacific{{</cgr>}} \ -->
+<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}9:30am-9:30am Pacific{{</cgr>}} \ -->
 <!-- {{<linktitle url="../bash1" text="Morning opening session">}} -->
 
 <!-- {{<cbr>}}On your own{{</cbr>}} \ -->

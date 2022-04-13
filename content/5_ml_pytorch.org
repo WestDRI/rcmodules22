@@ -2,7 +2,7 @@
 #+slug: ml_pytorch
 
 {{<cor>}}Tuesday, July 12 &nbsp;&&nbsp; Thursday, July 14{{</cor>}} \\
-{{<cgr>}}9am–12pm Pacific Time{{</cgr>}}
+{{<cgr>}}9:30am–12:30pm Pacific Time{{</cgr>}}
 
 This course, suitable for people with no knowledge of machine learning, will walk you through the core concepts of deep neural networks. We will use [[https://pytorch.org/][PyTorch]], a framework extremely popular in academic research.
 
