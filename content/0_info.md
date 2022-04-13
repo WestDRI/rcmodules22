@@ -28,3 +28,6 @@ Since April 1, 2022 the advanced research computing / HPC training in Western Ca
 [Digital Research Alliance of Canada](https://alliancecan.ca) and [Simon Fraser University](https://www.sfu.ca/) in collaboration with other
 universities from British Columbia, Alberta, Saskatchewan, and Manitoba. Consequently, "WestGrid summer school" has been renamed
 "Western Canada Research Computing summer school".
+<br>
+<br>
+&emsp;*Alex Razoumov and Marie-Helene Burle, Research Computing, Simon Fraser University*
