@@ -26,11 +26,11 @@ language.
 
 {{<cor>}}Tuesday, June 14 &nbsp;&&nbsp; Thursday, June 16{{</cor>}} \
 9:30am–12:30pm PST\
-{{<c link="/parallel_chapel" topic="Parallel programming in Chapel" >}}
+{{<c link="/parallel_julia" topic="Parallel computing in Julia" >}}
 
 {{<cor>}}Tuesday, June 28 &nbsp;&&nbsp; Thursday, June 30{{</cor>}} \
 9:30am–12:30pm PST\
-{{<c link="/parallel_julia" topic="Parallel computing in Julia" >}}
+{{<c link="/parallel_chapel" topic="Parallel programming in Chapel" >}}
 
 <!-- #+BEGIN_export html -->
 <!-- <a href="https://www.eventbrite.ca/e/149982540817" target="_blank">Click here</a> to register for this module. -->

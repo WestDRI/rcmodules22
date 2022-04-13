@@ -3,7 +3,7 @@ title = "Parallel programming in Chapel"
 slug = "parallel_chapel"
 +++
 
-{{<cor>}}Tuesday, June 14 &nbsp;&&nbsp; Thursday, June 16{{</cor>}}\
+{{<cor>}}Tuesday, June 28 &nbsp;&&nbsp; Thursday, June 30{{</cor>}}\
 {{<cgr>}}9:30am–12:30pm Pacific Time{{</cgr>}}
 
 This course will start at 9:30am Pacific Time and will run until 12:30pm Pacific Time. Its format will be a combination of
