@@ -24,7 +24,7 @@ non-academic email address, we will cancel your registration.
 
 ## About us
 
-Since April 1, 2022 the advanced research computing / HPC training in Western Canada is coordinated by the
-[Digital Research Alliance of Canada](https://alliancecan.ca) and Simon Fraser University, in collaboration with other
-universities from BC, Alberta, Saskatchewan and Manitoba. Consequently, "WestGrid summer school" has been renamed
+Since April 1, 2022 the advanced research computing / HPC training in Western Canada has been coordinated by the
+[Digital Research Alliance of Canada](https://alliancecan.ca) and [Simon Fraser University](https://www.sfu.ca/) in collaboration with other
+universities from British Columbia, Alberta, Saskatchewan, and Manitoba. Consequently, "WestGrid summer school" has been renamed
 "Western Canada Research Computing summer school".
