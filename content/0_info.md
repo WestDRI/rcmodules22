@@ -14,11 +14,13 @@ attend any course(s) in it. We will email a Zoom link to all registered particip
 
 We recommend that you register only for the modules that you would like to attend.
 
-##### Important: your email address
+#### Important: your email address
 
+{{<note>}}
 These training modules are open to anyone associated with a Canadian post-secondary academic institution. When
 registering, please provide your Canadian institutional email address. If you specify a gmail / yahoo / hotmail / other
 non-academic email address, we will cancel your registration.
+{{</note>}}
 
 ## About us
 
