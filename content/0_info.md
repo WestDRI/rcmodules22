@@ -5,7 +5,7 @@ slug = "info"
 
 <!-- **Registration will open in coming days.** -->
 
-#### Registration
+## Registration
 
 We provide registration links from each module's page (accessible from the top menu or from [the front page](../)).
 
@@ -19,3 +19,10 @@ We recommend that you register only for the modules that you would like to atten
 These training modules are open to anyone associated with a Canadian post-secondary academic institution. When
 registering, please provide your Canadian institutional email address. If you specify a gmail / yahoo / hotmail / other
 non-academic email address, we will cancel your registration.
+
+## About us
+
+Since April 1, 2022 the advanced research computing / HPC training in Western Canada is coordinated by the
+[Digital Research Alliance of Canada](https://alliancecan.ca) and Simon Fraser University, in collaboration with other
+universities from BC, Alberta, Saskatchewan and Manitoba. Consequently, "WestGrid summer school" has been renamed
+"Western Canada Research Computing summer school".
