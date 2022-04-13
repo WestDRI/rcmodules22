@@ -426,6 +426,7 @@ ul {
     text-align: left;
     font-weight: bold;
     @media only screen and (max-width : 480px) {
+      font-size: 1rem;
       width: 21.0rem;
     }
   }
@@ -435,6 +436,7 @@ ul {
     display: table-cell;
     // padding-left: 1.0rem;
     @media only screen and (max-width : 480px) {
+      font-size: 1.3rem;
       line-height: 2.5rem;
     }
   }
