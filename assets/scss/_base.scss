@@ -278,3 +278,24 @@ figure {
 .fas {
   font-weight: 900;
 }
+
+/* Two image containers (use 25% for four, 33.33% for three, etc) */
+.column {
+  float: left;
+  width: 41%;
+  padding: 10px 43px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+// Two image containers larger (for large images)
+.column_large {
+  float: left;
+  width: 38%;
+  padding: 10px 43px;
+}
