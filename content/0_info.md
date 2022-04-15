@@ -28,6 +28,31 @@ Since April 1, 2022 the advanced research computing / HPC training in Western Ca
 [Digital Research Alliance of Canada](https://alliancecan.ca) and [Simon Fraser University](https://www.sfu.ca/) in collaboration with other
 universities from British Columbia, Alberta, Saskatchewan, and Manitoba. Consequently, "WestGrid summer school" has been renamed
 "Western Canada Research Computing summer school".
-<br>
-<br>
-&emsp;*Alex Razoumov and Marie-Helene Burle, Research Computing, Simon Fraser University*
+
+<figure style="display: table">
+  <div class="row" style="padding: 20px 0px">
+	<div style="float: left; width: 20%">
+      <div align="left">
+	    <img src="/img/alex.jpg" width="80%" style="box-shadow: 0.5px 0.2px 3px #b3b3b3">
+	  </div>
+    </div>
+    <div style="float: left; width: 80%">
+      <div align="left">
+          Alex Razoumov
+	  </div>
+    </div>
+  </div>
+  <div class="row" style="padding: 20px 0px">
+    <div style="float: left; width: 20%; border-radius: 0px">
+      <div align="left">
+	    <img src="/img/mh.jpg" width="80%" style="box-shadow: 0.5px 0.2px 3px #b3b3b3">
+	  </div>
+    </div>
+    <div style="float: left; width: 80%">
+      <div align="left">
+        {{<a "https://www.sfu.ca/~msb2/" "Marie-Helene Burle">}} develops and delivers training for researchers on computing tools (R, Python, Julia, Git, Bash scripting, machine learning, parallel scientific programming, HPC ...) for {{<a "https://www.sfu.ca/" "Simon Fraser University">}} and the {{<a "https://alliancecan.ca/" "Digital Research Alliance of Canada.">}}
+	  </div>
+	</div>
+  </div>
+</figure>
+  
