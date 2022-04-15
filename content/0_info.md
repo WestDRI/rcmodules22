@@ -38,8 +38,11 @@ universities from British Columbia, Alberta, Saskatchewan, and Manitoba. Consequ
     </div>
     <div style="float: left; width: 80%">
       <div align="left">
-          Alex Razoumov
-	  </div>
+	Alex Razoumov earned his PhD in computational astrophysics from the University of British Columbia and held
+	postdoctoral positions in Urbana-Champaign, San Diego, Oak Ridge, and Halifax. He spent five years as HPC
+	Analyst in SHARCNET and in 2014 moved back to Vancouver to focus on scientific visualization and training
+	researchers to use advanced computing tools. Alex is currently at Simon Fraser University.
+      </div>
     </div>
   </div>
   <div class="row" style="padding: 20px 0px">
@@ -55,4 +58,3 @@ universities from British Columbia, Alberta, Saskatchewan, and Manitoba. Consequ
 	</div>
   </div>
 </figure>
-  
