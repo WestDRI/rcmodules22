@@ -3,7 +3,7 @@ title = "Introduction to containers"
 slug = "cloud_container"
 +++
 
-{{<cor>}}Tuesday, July 7{{</cor>}}\
+{{<cor>}}Thursday, July 7{{</cor>}}\
 {{<cgr>}}9:30am–12:30pm Pacific Time{{</cgr>}}
 
 **Instructor**: Alex Razoumov (SFU)
@@ -12,10 +12,13 @@ slug = "cloud_container"
 
 **Level**: beginner
 
-**Prerequisites**: [Introduction to Compute Canada cloud](../cloud_cloud) course
+**Prerequisites**: none
+<!-- [Introduction to Compute Canada cloud](../cloud_cloud) course -->
 
-We will be running Docker inside virtual machines (VMs) in Compute Canada cloud, so you must be familiar
-with setting up a blank Ubuntu server in a cloud VM before attending this course.
+This course is a hands-on introduction to working with Singularity/Apptainer containers in an HPC environment.
+
+<!-- We will be running Docker inside virtual machines (VMs) in Compute Canada cloud, so you must be familiar -->
+<!-- with setting up a blank Ubuntu server in a cloud VM before attending this course. -->
 
 **Software**: All attendees will need a remote secure shell (SSH) client installed on their computer in
 order to participate in the course exercises. On Windows we recommend
