@@ -58,9 +58,9 @@ canonifyurls = true
             url = "parallel"
 
             [[languages.en.menu.main]]
-            name = "Cloud"
+            name = "Virtualization"
             weight = 4
-            url = "cloud"
+            url = "virtualization"
 
             [[languages.en.menu.main]]
             name = "ML"

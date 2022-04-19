@@ -1,6 +1,6 @@
 +++
 title = "Introduction to Compute Canada cloud"
-slug = "cloud_cloud"
+slug = "virtualization_cloud"
 +++
 
 {{<cor>}}Tuesday, July 5{{</cor>}}\

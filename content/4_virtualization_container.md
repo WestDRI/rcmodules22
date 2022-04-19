@@ -1,6 +1,6 @@
 +++
 title = "Introduction to containers"
-slug = "cloud_container"
+slug = "virtualization_container"
 +++
 
 {{<cor>}}Thursday, July 7{{</cor>}}\
