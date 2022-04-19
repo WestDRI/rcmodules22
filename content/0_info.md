@@ -33,8 +33,8 @@ universities from British Columbia, Alberta, Saskatchewan, and Manitoba. Consequ
   <div class="row" style="padding: 20px 0px">
 	<div style="float: left; width: 20%">
       <div align="left">
-	    <img src="/img/alex.jpg" width="80%" style="box-shadow: 0.5px 0.2px 3px #b3b3b3">
-	  </div>
+	<img src="/img/alex.jpg" width="80%" style="box-shadow: 0.5px 0.2px 3px #b3b3b3">
+      </div>
     </div>
     <div style="float: left; width: 80%">
       <div align="left">
@@ -48,12 +48,30 @@ universities from British Columbia, Alberta, Saskatchewan, and Manitoba. Consequ
   <div class="row" style="padding: 20px 0px">
     <div style="float: left; width: 20%; border-radius: 0px">
       <div align="left">
-	    <img src="/img/mh.jpg" width="80%" style="box-shadow: 0.5px 0.2px 3px #b3b3b3">
-	  </div>
+	<img src="/img/mh.jpg" width="80%" style="box-shadow: 0.5px 0.2px 3px #b3b3b3">
+      </div>
     </div>
     <div style="float: left; width: 80%">
       <div align="left">
         Evolutionary and behavioural ecologist by training, {{<a "https://carpentries.org/" "Software/Data Carpentry instructor,">}} and open source proponent, {{<a "https://www.sfu.ca/~msb2/" "Marie-Hélène Burle">}} develops and delivers training for researchers on computing tools (R, Python, Julia, Git, Bash scripting, machine learning, parallel scientific programming, HPC) for {{<a "https://www.sfu.ca/" "Simon Fraser University">}} and the {{<a "https://alliancecan.ca/" "Digital Research Alliance of Canada.">}}
+	  </div>
+	</div>
+  </div>
+
+  <div class="row" style="padding: 20px 0px">
+    <div style="float: left; width: 20%; border-radius: 0px">
+      <div align="left">
+	<img src="/img/vm.jpg" width="80%" style="box-shadow: 0.5px 0.2px 3px #b3b3b3">
+      </div>
+    </div>
+    <div style="float: left; width: 80%">
+      <div align="left">
+        Venkat Mahadevan is the Cloud Architect at UBC ARC. Prior to joining ARC, Venkat was heavily involved with
+        e-mail security, anti-malware, and identity & access management initiatives at UBC Information Technology. Prior
+        to joining UBC, he worked as a Systems Administrator/Developer for various organizations supporting research in
+        transport information systems, scientific visualization, and data management. He is a world traveller and has
+        lived in various cities including Lusaka, Zug, New York, New Orleans and Lethbridge before finally staying put
+        in Vancouver. He is eager to help the UBC research community achieve its objectives.
 	  </div>
 	</div>
   </div>
