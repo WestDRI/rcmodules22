@@ -1,5 +1,5 @@
 +++
-title = "Introduction to HPC containers"
+title = "Introduction to containers"
 slug = "cloud_container"
 +++
 

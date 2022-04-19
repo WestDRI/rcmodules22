@@ -1,13 +1,13 @@
-#+title: Module 4 — HPC cloud & containers
+#+title: Module 4 — Cloud & containers
 #+slug: cloud
 
 {{<cor>}}Tuesday, July 5{{</cor>}} \\
 9:30am–12:30pm PST\\
-{{<c link="/cloud_cloud" topic="Introduction to HPC cloud" >}}
+{{<c link="/cloud_cloud" topic="Introduction to Compute Canada cloud" >}}
 
 {{<cor>}}Thursday, July 7{{</cor>}} \\
 9:30am–12:30pm PST\\
-{{<c link="/cloud_container" topic="Introduction to HPC containers" >}}
+{{<c link="/cloud_container" topic="Introduction to containers" >}}
 
 #+BEGIN_export html
 <br>
