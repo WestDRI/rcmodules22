@@ -19,7 +19,8 @@ We recommend that you register only for the modules that you would like to atten
 {{<note>}}
 These training modules are open to anyone associated with a Canadian post-secondary academic institution. When
 registering, please provide your Canadian institutional email address. If you specify a gmail / yahoo / hotmail / other
-non-academic email address, we will cancel your registration.
+non-academic email address, we will cancel your registration, as we need to keep the spots available to Canadian
+academic participants.
 {{</note>}}
 
 ## About us

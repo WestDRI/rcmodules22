@@ -7,5 +7,8 @@
 
 #+BEGIN_export html
 <br>
-<a href="xxx" target="_blank">Click here</a> to register for this module.
+<a href="https://www.eventbrite.ca/e/323604057447" target="_blank"><font size="+1">Click here</a> to register for this module.</font>
 #+END_export
+
+- During registration, please specify your institutional email address.
+- For more info, see [[/info][this page]].
