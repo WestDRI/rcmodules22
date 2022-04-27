@@ -1,6 +1,6 @@
 +++
-title = "Bash Day 1 mid-day session"
-slug = "bash2"
+title = "Bash closing session"
+slug = "bash4"
 +++
 
 1. Are there any questions on the materials you just watched?

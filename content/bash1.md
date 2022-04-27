@@ -1,16 +1,12 @@
 +++
-title = "Bash morning session"
+title = "Bash opening session"
 slug = "bash1"
 +++
 
-<!-- In this session, I will introduce myself, will review the program for today and -->
-<!-- distribute usernames and passwords, demo logging in to the training cluster, and will share the afternoon -->
-<!-- exercises. -->
-
 1. Instructor / helpers / course introduction.
-1. Distribute the usernames and the password.
+1. Distribute the usernames and passwords.
 1. Let's try to log in to the training cluster.
-1. Review the program for this morning: you have **1h15m** of materials to read/watch.
+1. Review the program for this morning: you have **1h15m** of materials to read/watch until 11:30am Pacific.
 
 By mid-day you should be comfortable with:
 
