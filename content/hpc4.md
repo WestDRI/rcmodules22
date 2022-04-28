@@ -1,6 +1,6 @@
 +++
-title = "HPC Day 1 mid-day session"
-slug = "hpc2"
+title = "HPC closing session"
+slug = "hpc4"
 +++
 
 1. Are there any questions on the materials you just watched?
