@@ -48,7 +48,7 @@ computers SSH is usually pre-installed (try typing `ssh` in a terminal to make s
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 1 - 11:30am-12:30pm Pacific{{</cgr>}} \
 {{<linktitle url="../bash2" text="Mid-day session">}}
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:30pm Pacific{{</cgr>}} \
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:00pm Pacific{{</cgr>}} \
 {{<linktitle url="../bash3" text="Morning session">}}
 
 {{<cbr>}}On your own{{</cbr>}} \
