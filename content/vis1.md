@@ -35,3 +35,16 @@ visualizations!) in the mid-day session.
 <!-- - creating and deleting files and directories, copying and moving them -->
 <!-- - writing text into a file and printing its contents to the terminal -->
 <!-- - working with `tar` archives -->
+
+
+
+
+Click on a triangle to expand a question:
+
+{{< question num=1 >}}
+some text here
+{{< /question >}}
+
+{{< question num=2 >}}
+another question
+{{< /question >}}
