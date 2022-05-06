@@ -66,7 +66,7 @@ universities from British Columbia, Alberta, Saskatchewan, and Manitoba. Consequ
     </div>
     <div style="float: left; width: 80%">
       <div align="left">
-        Venkat Mahadevan is the Cloud Architect at UBC ARC. Prior to joining ARC, Venkat was heavily involved with
+        Venkat Mahadevan is the Cloud Architect at {{<a "https://arc.ubc.ca/" "the University of British Columbia Advanced Research Computing.">}} Prior to joining ARC, Venkat was heavily involved with
         e-mail security, anti-malware, and identity & access management initiatives at UBC Information Technology. Prior
         to joining UBC, he worked as a Systems Administrator/Developer for various organizations supporting research in
         transport information systems, scientific visualization, and data management. He is a world traveller and has
