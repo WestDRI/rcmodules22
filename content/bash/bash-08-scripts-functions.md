@@ -165,9 +165,10 @@ Here is a an example of processing files with scripts:
 
 ## Functions (13 min)
 
-Functions are similar to scripts, except that we reference a function by its name. Therefore, once
-defined, a function can be run in any directory, whereas running a script in another directory requires
-its path.
+Functions are similar to scripts, but there are some differences. A **bash script** is an executable file sitting at a
+given path. A **bash function** is defined in your environment. Therefore, when running a script, you need to prepend
+its path to its name, whereas a function -- once defined in your environment -- can be called by its name without a need
+for a path. Both scripts and functions can take command-line arguments.
 
 A convenient place to put all your function definitions is `~/.bashrc` file which is run every time you
 start a new shell (local or remote).
@@ -225,3 +226,33 @@ start a new shell (local or remote).
 
 <!-- 08-functions.mkv -->
 {{< yt gSCRWUG9fy4 63 >}}
+
+
+
+
+## Scripts in other languages
+
+As a side note, it possible to incorporate scripts in other languages into your bash code, e.g. consider this:
+
+```sh
+function test() {
+    randomFile=${RANDOM}${RANDOM}.py
+    cat << EOF > $randomFile
+#!/usr/bin/python3
+print("do something in Python")
+EOF
+    chmod u+x $randomFile
+    ./$randomFile
+    /bin/rm $randomFile
+}
+```
+
+Here `EOF` is a random delimiter string, and `<<` tells bash to wait for the delimiter to end input. For example, try
+the following:
+
+```sh
+cat << the_end
+This text will be
+printed in the terminal.
+the_end
+```

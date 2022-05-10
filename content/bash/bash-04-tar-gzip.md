@@ -11,11 +11,13 @@ $ wget http://bit.ly/bashfile -O bfiles.zip
 $ unzip bfiles.zip
 ```
 
-Unlike an SSD or a hard drive on your laptop, the filesystem on HPC cluster was designed to store large
-files, ideally with parallel I/O. As a result, it handles any large number of small I/O requests (reads
-or writes) very poorly, sometimes bringing the I/O system to a halt. For this reason, we strongly
-recommend that users do not store many thousands of small files -- instead you should pack them into a
-small number of large archives. This is where the archiving tool `tar` comes in handy.
+(alternative download link https://rcmodules22.netlify.app/files/bfiles.zip)
+
+Unlike an SSD or a hard drive on your laptop, the filesystem on HPC cluster was designed to store large files, ideally
+with parallel I/O. As a result, it handles any large number of small I/O requests (reads or writes) very poorly,
+sometimes bringing the I/O system to a halt. For this reason, we strongly recommend that users do not store many
+thousands of small files -- instead you should pack them into a small number of large archives. This is where the
+archiving tool `tar` comes in handy.
 
 ## Working with `tar` and `gzip/gunzip` (8 min)
 
@@ -74,6 +76,7 @@ contents. A number of 3rd-party tools can add indexing to `tar`. However, there 
 - DAR supports strong encryption,
 - DAR can detect corruption in both headers and saved data and recover with minimal data loss,
 
-and so on. Learning DAR is not part of this course. In the future, if you want to know more about working
-with DAR, please watch our [DAR webinar](https://westgrid.github.io/trainingMaterials/tools/rdm) (scroll
-down to see it), or check our [DAR documentation page](https://docs.computecanada.ca/wiki/Dar).
+and so on. Learning DAR is not part of this course. In the future, if you want to know more about working with DAR,
+please watch our <a href="https://westgrid.github.io/trainingMaterials/tools/rdm" target="_blank">DAR webinar</a>
+(scroll down to see it), or check our <a href="https://docs.computecanada.ca/wiki/Dar" target="_blank">DAR documentation
+page</a>.

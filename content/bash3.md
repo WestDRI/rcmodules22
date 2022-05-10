@@ -3,7 +3,11 @@ title = "Bash Day 2 morning session"
 slug = "bash3"
 +++
 
-1. Review the program for this morning: you have **1h4m** of videos to read/watch until 11:30am Pacific.
+1. Let's continue with the questions we did not finish on Tuesday.
+
+<!-- here paste the answered questions from Tuesday -->
+
+2. Review the program for this morning: you have **1h4m** of videos to read/watch until 11:30am Pacific.
 
 By mid-day you should be able to:
 

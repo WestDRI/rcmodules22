@@ -82,6 +82,20 @@ domain). First, let's apply our knowledge of grep to this text:
 <!-- 10-textManipulation.mkv -->
 {{< yt 4IkHY84uUss 63 >}}
 
+**Quick reference:**
+```sh
+sed 's/pattern1/pattern2/' filename    # replace pattern1 with pattern2, one per line
+sed 's/pattern1/pattern2/g' filename   # same but multiple per line
+sed 's|pattern1|pattern2|g' filename   # same
+
+cat wellsInvisibleMan.txt | tr -d "[:punct:]" > invisibleNoPunct.txt       # remove punctuation; tr only takes standard input
+cat invisibleNoPunct.txt | tr '[:upper:]' '[:lower:]' > invisibleClean.txt # convert all upper case to lower case:
+cat invisibleClean.txt | sed 's/ /\'$'\n/g' > invisibleList.txt            # replace spaces with new lines;
+                                                                           # \'$'\n is a shortcut for a new line
+sed '/^$/d' invisibleList.txt  > invisibleCompact.txt   # remove empty lines
+cat invisibleCompact.txt | sort | uniq -c > invisibleWords.txt   # sort the list alphabetically, count each word's occurrence
+cat invisibleWords.txt | sort -gr > invisibleFrequencyList.txt   # sort the list into most frequent words
+```
 
 
 
@@ -148,3 +162,10 @@ domain). First, let's apply our knowledge of grep to this text:
 
 <!-- 10-awk.mkv -->
 {{< yt BMrL7zoyJH8 63 >}}
+
+**Quick reference:**
+```sh
+ls -l | awk 'NR>3 {print $5 "  " $9}'   # print 5th and 9th columns starting with line 4
+awk 'NR>1 && NR < 5' haiku.txt          # print lines 2-4
+awk '/Yesterday|Today/' haiku.txt       # print lines that contain Yesterday or Today
+```

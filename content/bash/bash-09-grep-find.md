@@ -89,3 +89,30 @@ weight = 9
 
 <!-- 09-findgrep.mkv -->
 {{< yt aFrMKkjMIHY 63 >}}
+
+In its simplest usage, `xargs` command lets you construct a list of arguments:
+
+```sh
+
+find . -name "*.txt"                   # returns multiple lines
+find . -name "*.txt" | xargs           # use those lines to construct a list
+find . -name "*.txt" | xargs command   # pass this list as arguments to `command`
+command $(find . -name "*.txt")        # command substitution, achieving the same result (this is riskier!)
+command `(find . -name "*.txt")`       # alternative syntax for command substitution
+```
+
+In these examples, `xargs` achieves the same result as command substitution, but it is safer in terms of memory usage and the
+length of lists you can pass.
+
+Where would you use this? Well, consider `grep` command that takes a search stream (and not a list of files) as its standard input:
+
+```sh
+cat filename | grep pattern
+```
+
+To pass a list of files to grep, you can use `xargs` that takes that list from its standard input and converts it into a
+list of arguments that is then passed to `grep`:
+
+```sh
+find . -name "*.txt" | xargs grep pattern   # search for `pattern` inside all those files (`grep` does not take a list of files as standard input)
+```
