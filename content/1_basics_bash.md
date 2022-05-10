@@ -49,7 +49,7 @@ computers SSH is usually pre-installed (try typing `ssh` in a terminal to make s
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 1 - 11:30am-12:30pm Pacific{{</cgr>}} \
 {{<linktitle url="../bash2" text="Mid-day session">}}
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:00am Pacific{{</cgr>}} \
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:15am Pacific{{</cgr>}} \
 {{<nolinktitle>}}Morning session{{</nolinktitle>}}
 {{<cbr>}}On your own{{</cbr>}} \
 {{<nolinktitle>}}Bash scripts and functions, and variables{{</nolinktitle>}} \
@@ -58,7 +58,7 @@ computers SSH is usually pre-installed (try typing `ssh` in a terminal to make s
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 11:30am-12:30pm Pacific{{</cgr>}} \
 {{<nolinktitle>}}Closing mid-day session{{</nolinktitle>}}
 
-<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:00am Pacific{{</cgr>}} \ -->
+<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:15am Pacific{{</cgr>}} \ -->
 <!-- {{<linktitle url="../bash3" text="Morning session">}} -->
 <!-- {{<cbr>}}On your own{{</cbr>}} \ -->
 <!-- {{<linktitle url="../bash/bash-08-scripts-functions" text="Bash scripts and functions, and variables (32 min)">}} \ -->
