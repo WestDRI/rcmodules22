@@ -10,7 +10,7 @@ slug = "info"
 We provide registration links from each module's page (accessible from the top menu or from [the front page](../)).
 
 Please register for any module in which you would like to attend a course. Once you register for a module, you can
-attend any course(s) in it. We will email a Zoom link to all registered participants before the start of each module.
+attend any course(s) in it. We will email a Zoom link to all registered participants before the start of each module. Please have a look in your spam folder if you haven't received the link by the day before the start of the module.
 
 We recommend that you register only for the modules that you would like to attend.
 
