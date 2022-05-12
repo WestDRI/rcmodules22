@@ -49,20 +49,20 @@ computers SSH is usually pre-installed (try typing `ssh` in a terminal to make s
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 1 - 11:30am-12:30pm Pacific{{</cgr>}} \
 {{<linktitle url="../bash2" text="Mid-day session">}}
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:15am Pacific{{</cgr>}} \
-{{<nolinktitle>}}Morning session{{</nolinktitle>}}
-{{<cbr>}}On your own{{</cbr>}} \
-{{<nolinktitle>}}Bash scripts and functions, and variables{{</nolinktitle>}} \
-{{<nolinktitle>}}Finding things with `grep` and `find`{{</nolinktitle>}} \
-{{<nolinktitle>}}Text manipulation{{</nolinktitle>}}
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 11:30am-12:30pm Pacific{{</cgr>}} \
-{{<nolinktitle>}}Closing mid-day session{{</nolinktitle>}}
-
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:15am Pacific{{</cgr>}} \ -->
-<!-- {{<linktitle url="../bash3" text="Morning session">}} -->
+<!-- {{<nolinktitle>}}Morning session{{</nolinktitle>}} -->
 <!-- {{<cbr>}}On your own{{</cbr>}} \ -->
-<!-- {{<linktitle url="../bash/bash-08-scripts-functions" text="Bash scripts and functions, and variables (32 min)">}} \ -->
-<!-- {{<linktitle url="../bash/bash-09-grep-find" text="Finding things with `grep` and `find` (13 min)">}} \ -->
-<!-- {{<linktitle url="../bash/bash-10-text-manipulation" text="Text manipulation (19 min)">}} -->
+<!-- {{<nolinktitle>}}Bash scripts and functions, and variables{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Finding things with `grep` and `find`{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Text manipulation{{</nolinktitle>}} -->
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 11:30am-12:30pm Pacific{{</cgr>}} \ -->
-<!-- {{<linktitle url="../bash4" text="Closing mid-day session">}} -->
+<!-- {{<nolinktitle>}}Closing mid-day session{{</nolinktitle>}} -->
+
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:15am Pacific{{</cgr>}} \
+{{<linktitle url="../bash3" text="Morning session">}}
+{{<cbr>}}On your own{{</cbr>}} \
+{{<linktitle url="../bash/bash-08-scripts-functions" text="Bash scripts and functions, and variables (32 min)">}} \
+{{<linktitle url="../bash/bash-09-grep-find" text="Finding things with `grep` and `find` (13 min)">}} \
+{{<linktitle url="../bash/bash-10-text-manipulation" text="Text manipulation (19 min)">}}
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 11:30am-12:30pm Pacific{{</cgr>}} \
+{{<linktitle url="../bash4" text="Closing mid-day session">}}
