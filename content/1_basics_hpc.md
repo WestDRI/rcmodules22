@@ -10,7 +10,7 @@ Both days, this course will start at 9:30am Pacific Time and will run until 12:3
 several interactive Zoom sessions and pre-recorded reading and video materials in-between the Zoom sessions. Course
 materials will be added here shortly before the start of the course.
 
-You can now download [today's materials](http://bit.ly/introhpc) (ZIP file with slides and codes inside).
+You can now download [today's materials](http://bit.ly/introhpc2) (ZIP file with slides and codes inside).
 
 <!-- Course materials will be added here shortly before the start of the course. -->
 
