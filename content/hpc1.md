@@ -6,9 +6,9 @@ slug = "hpc1"
 1. Instructor / helpers / course introduction.
 1. Distribute the usernames and passwords.
 1. Let's try to log in to the training cluster.
-1. Download today's materials.
-   <!-- Download [today's materials](http://bit.ly/introhpc) (ZIP file with slides and codes inside). -->
-1. Review the program for this morning: you have **1h49m** of videos to watch, before 11:30am Pacific.
+1. Download [today's materials](http://bit.ly/introhpc2) (ZIP file with slides and codes inside).
+1. Review the program for this morning: you have **1h49m** of videos to watch, before 11:30am Pacific. We have many
+   parallel programming frameworks videos: select the tools you are most interested in.
 
 By mid-day you should be familiar with:
 
@@ -16,14 +16,15 @@ By mid-day you should be familiar with:
   - cluster intended purpose and specs
   - filesystems
   - allocation policies
-- how to ssh into a cluster
-- how to edit remote files
-- how to transfer files between your computer and an HPC cluster
-- using software modules
-- compiling serial, shared-memory and distributed-memory codes
-- basic parallel programming ideas in OpenMP, MPI, Chapel, Python Dask
-- writing and using makefiles
-- installing Python or R packages/libraries in your own directories on the cluster
+- how to ...
+  - ssh into a cluster
+  - edit remote files
+  - transfer files between your computer and an HPC cluster
+  - use software modules
+  - compile serial, shared-memory and distributed-memory codes
+  - write and use makefiles
+  - install Python or R packages/libraries in your own directories on the cluster
+- basic parallel programming ideas in OpenMP, MPI, Chapel, Julia (slides only), Python Dask
 
 Some of the hands-on exercises we will do in the mid-day Zoom session:
 

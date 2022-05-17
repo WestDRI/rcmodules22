@@ -92,7 +92,7 @@ current directory.
 ```sh
 touch hello "first phrase" "second phrase" "good morning, everyone"
 ls -l
-ls *\*
+ls *\ *
 ```
 {{< /question >}}
 
