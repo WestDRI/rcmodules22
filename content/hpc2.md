@@ -31,7 +31,7 @@ Can you spot the third compiler family when you do `module avail`?
 {{< /question >}}
 
 {{< question num=6 >}}
-What other module does `scipy-stack/2019b` load?
+What other modules does `scipy-stack/2022a` load?
 {{< /question >}}
 
 {{< question num=7 >}}
@@ -62,19 +62,26 @@ In `introHPC/codes`, compile `{pi,sharedPi,distributedPi}.c` files. Try running 
 (not longer than a few seconds: modify the number of terms in the summation).
 {{< /question >}}
 
-{{< question num=13 >}}
+{{< question num=13a >}}
 Write a makefile to replace these compilations commands with `make {serial,openmp,mpi}`.
 {{< /question >}}
 
-{{< question num=14 >}}
+{{< question num=13b >}}
 Add target `all`.
 
-Add target `clean`. Try implementing `clean` for *all* executable files in the current directory, no
-matter what they are called.
+Add target `clean`. Try implementing `clean` for *all* executable files in the current directory, no matter what they
+are called.
+{{< /question >}}
+
+{{< question num=14 >}}
+Suggest a computational problem to parallelize. Which of the parallel tools mentioned in the videos would you use, and
+why?
+
+If you are not sure about the right tool, suggest a problem, and we can brainstorm the approach together.
 {{< /question >}}
 
 {{< question num=15 >}}
-If you use Python or R in your work, try running a Python or R script.
+If you use Python or R in your work, try running a Python or R script in the terminal.
 
 If this script depends on packages, try installing them in your own directory with `virtualenv`. Probably, only a few of
 you should do this on the training cluster at the same time.
