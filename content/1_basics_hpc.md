@@ -50,18 +50,18 @@ usually pre-installed (try typing `ssh` in a terminal to make sure it is there).
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 11:30am-12:30pm Pacific{{</cgr>}} \
 {{<linktitle url="../hpc2" text="Mid-day session">}}
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:00am Pacific{{</cgr>}} \
-{{<nolinktitle>}}Morning session{{</nolinktitle>}}
-{{<cbr>}}On your own{{</cbr>}} \
-{{<nolinktitle>}}Scheduling{{</nolinktitle>}} \
-{{<nolinktitle>}}Best practices, file sharing, and summary{{</nolinktitle>}}
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 11:30am-12:30pm Pacific{{</cgr>}} \
-{{<nolinktitle>}}Closing mid-day session{{</nolinktitle>}}
-
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:00am Pacific{{</cgr>}} \ -->
-<!-- {{<linktitle url="../hpc3" text="Morning session">}} -->
+<!-- {{<nolinktitle>}}Morning session{{</nolinktitle>}} -->
 <!-- {{<cbr>}}On your own{{</cbr>}} \ -->
-<!-- {{<linktitle url="../hpc/hpc-04-scheduling" text="Scheduling (66 min)">}} \ -->
-<!-- {{<linktitle url="../hpc/hpc-05-best-summary" text="Best practices, file sharing, and summary (9 min)">}} -->
+<!-- {{<nolinktitle>}}Scheduling{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Best practices, file sharing, and summary{{</nolinktitle>}} -->
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 11:30am-12:30pm Pacific{{</cgr>}} \ -->
-<!-- {{<linktitle url="../hpc4" text="Closing mid-day session">}} -->
+<!-- {{<nolinktitle>}}Closing mid-day session{{</nolinktitle>}} -->
+
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}} Day 2 - 9:30am-10:00am Pacific{{</cgr>}} \
+{{<linktitle url="../hpc3" text="Morning session">}}
+{{<cbr>}}On your own{{</cbr>}} \
+{{<linktitle url="../hpc/hpc-04-scheduling" text="Scheduling (66 min)">}} \
+{{<linktitle url="../hpc/hpc-05-best-summary" text="Best practices, file sharing, and summary (9 min)">}}
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 11:30am-12:30pm Pacific{{</cgr>}} \
+{{<linktitle url="../hpc4" text="Closing mid-day session">}}

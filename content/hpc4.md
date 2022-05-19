@@ -46,7 +46,11 @@ Try scaling 1 → 2 → 4 → 8 cores. Did you get any speedup? Type your answer
 {{< /question >}}
 
 {{< question num=24 >}}
-Test the serial code inside an interactive job. Please quit the job when done, as we have very few compute cores on the training cluster.
+Test the serial code inside an interactive job. Please quit the job when done, as we have very few compute cores on the
+training cluster.
+
+Note: we have seen the training cluster become unstable when using too many interactive resources. Strictly speaking,
+this should not happen, however there is a small chance it might. We do have a backup.
 {{< /question >}}
 
 {{< question num=25 >}}
