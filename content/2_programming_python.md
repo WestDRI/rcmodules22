@@ -25,16 +25,18 @@ matplotlib (basic plotting).
 
 <!-- ~/training/softwareCarpentry/python04.md -->
 
-<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}9:30am-12:00pm Pacific{{</cgr>}} -->
-<!-- <\!-- {{<nolinktitle>}}Setup and running Jupyter notebooks{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Variables and assignment, data types and type conversion{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Built-in functions and help{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Conditionals{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Lists{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Loops{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Dictionaries{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Writing functions{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Variable scope and floating precision{{</nolinktitle>}} -\-> -->
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \
+{{<nolinktitle>}}Setup and running Jupyter notebooks{{</nolinktitle>}} \
+{{<nolinktitle>}}Variables and assignment, data types and type conversion{{</nolinktitle>}} \
+{{<nolinktitle>}}Built-in functions and help{{</nolinktitle>}} \
+{{<nolinktitle>}}Conditionals{{</nolinktitle>}} \
+{{<nolinktitle>}}Lists{{</nolinktitle>}} \
+{{<nolinktitle>}}Loops{{</nolinktitle>}} \
+{{<nolinktitle>}}Dictionaries{{</nolinktitle>}} \
+{{<nolinktitle>}}Writing functions{{</nolinktitle>}} \
+{{<nolinktitle>}}Variable scope and floating precision{{</nolinktitle>}}
+
+<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
 <!-- {{<linktitle url="../python/python-01-setup" text="Setup and running Jupyter notebooks">}} \ -->
 <!-- {{<linktitle url="../python/python-02-variables" text="Variables and data types">}} \ -->
 <!-- {{<linktitle url="../python/python-03-builtin" text="Built-in functions and help">}} \ -->
@@ -45,14 +47,14 @@ matplotlib (basic plotting).
 <!-- {{<linktitle url="../python/python-08-functions" text="Writing functions">}} \ -->
 <!-- {{<linktitle url="../python/python-09-scope" text="Variable scope and floating precision">}} -->
 
-<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}1:00pm-4pm Pacific{{</cgr>}} -->
-<!-- <\!-- {{<nolinktitle>}}Libraries, virtual environments and packaging{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Numpy{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Plotting with matplotlib{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Pandas dataframes{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Multidimensional labeled arrays and datasets with xarray{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Running Python scripts from the command line{{</nolinktitle>}} \ -\-> -->
-<!-- <\!-- {{<nolinktitle>}}Basics of object-oriented programming in Python{{</nolinktitle>}} -\-> -->
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \
+{{<nolinktitle>}}Libraries, virtual environments and packaging{{</nolinktitle>}} \
+{{<nolinktitle>}}Numpy{{</nolinktitle>}} \
+{{<nolinktitle>}}Plotting with matplotlib{{</nolinktitle>}} \
+{{<nolinktitle>}}Pandas dataframes{{</nolinktitle>}} \
+{{<nolinktitle>}}Multidimensional labeled arrays and datasets with xarray{{</nolinktitle>}} \
+{{<nolinktitle>}}Running Python scripts from the command line{{</nolinktitle>}} \
+{{<nolinktitle>}}Basics of object-oriented programming in Python{{</nolinktitle>}}
 <!-- {{<linktitle url="../python/python-10-libraries" text="Libraries, virtual environments and packaging">}} \ -->
 <!-- {{<linktitle url="../python/python-11-numpy" text="Numpy">}} \ -->
 <!-- {{<linktitle url="../python/python-12-matplotlib" text="Plotting with matplotlib">}} \ -->
