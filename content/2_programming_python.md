@@ -21,7 +21,8 @@ matplotlib (basic plotting).
 
 **Prerequisites:** none.
 
-**Software**: We will be using online Jupyter notebooks, so no need to install Python on your computer.
+**Software**: We will be using online Jupyter notebooks, so no need to install Python on your computer. However, in the
+  long run you would probably benefit from Python on your computer, so you might want to look into this.
 
 <!-- ~/training/softwareCarpentry/python04.md -->
 
