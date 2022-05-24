@@ -10,7 +10,7 @@ This course will start at 9:30am Pacific Time and will run until 12:30pm Pacific
 
 <!-- Course materials will be added here shortly before the start of the course. -->
 
-- Commands typed in the text editor on [Day 1](/files/pythonDay1.py)
+- Commands typed in the text editor on [Day 1](/files/pythonDay1.txt)
 
 ---
 
