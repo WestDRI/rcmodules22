@@ -17,15 +17,14 @@ list(favs.values()).index('blue')     # will return the index of the first value
 
 ```py
 for key in favs:
-	print(key)          # will print the names
+	print(key)            # will print the names (keys)
+	print(favs[key])      # will print the colours (values)
 for k in favs.keys():
-	print(k)            # the same
-for key in favs:
-	print(favs[key])      # will print the colours
+	print(k, favs[k])     # the same as above
 for v in favs.values():
-	print(v)                   # the same
+	print(v)              # cycle through the values
 for i, j in favs.items():
-	print(i,j)           # both the names and the colours
+	print(i,j)            # both the names and the colours
 ```
 
 Now let's see how to add items to a dictionary:
@@ -73,12 +72,16 @@ Sorting dictionary items:
 favs = {'mary': 'orange', 'john': 'green', 'eric': 'blue', 'jane': 'orange'}
 sorted(favs)             # returns the sorted list of keys
 sorted(favs.keys())      # the same
-sorted(favs.values())         # returns the sorted list of values
 for k in sorted(favs):
-	print(k, favs[k])          # full dictionary sorted by the key
+	print(k, favs[k])         # full dictionary sorted by key
+sorted(favs.values())         # returns the sorted list of values
 ```
 
-**[Exercise](./solag.md):** Write a script to print the full dictionary sorted by the value.
+{{< question num=4c >}}
+Write a script to print the full dictionary sorted by the value.
+
+**Hint**: create a list comprehension looping through all (key,value) pairs and then try sorting the result.
+{{< /question >}}
 
 Similar to list comprehensions, we can form a dictionary comprehension:
 

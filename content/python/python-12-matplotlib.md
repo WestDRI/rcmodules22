@@ -18,9 +18,34 @@ y = sin(1/x)
 plt.plot(x, y, 'bo-')
 plt.xlabel('x', fontsize=18)
 plt.ylabel('f(x)', fontsize=18)
-# plt.show()       # not needed inside the Jupyter notebook
-# plt.savefig('tmp.png')
+ # plt.show()       # not needed inside the Jupyter notebook
+ # plt.savefig('tmp.png')
 ```
+
+> #### Offscreen plotting
+> You can create the same plot with offscreen rendering into a file:
+> ```py
+> import matplotlib as mpl
+> import matplotlib.pyplot as plt
+> mpl.use('Agg')   # enable PNG backend
+> plt.figure(figsize=(10,8))
+> from numpy import linspace, sin
+> x = linspace(0.01,1,300)
+> y = sin(x)
+> plt.plot(x, y, 'bo-')
+> plt.xlabel('x', fontsize=18)
+> plt.ylabel('f(x)', fontsize=18)
+> plt.savefig('tmp.png')
+> ```
+
+
+
+
+
+
+
+
+
 
 <img src="https://raw.githubusercontent.com/razoumov/publish/master/styles.png" height="300" />
 
@@ -80,8 +105,10 @@ fig = plt.figure(figsize=(8,8)); ax = plt.axes()
 Shortly we will see that we can pass additional flags to `fig.add_subplot()` and `plt.axes()` for more coordinate system
 control.
 
-**[Exercise](sol02.md):** break the plot into two subplots, the fist taking 1/3 of the space on the left, the second one
-2/3 of the space on the right.
+{{< question num=11b >}}
+Break the plot into two subplots, the fist taking 1/3 of the space on the left, the second one 2/3 of the space on the
+right.
+{{< /question >}}
 
 Let's plot a simple line in the x-y plane:
 
@@ -166,10 +193,14 @@ for i in range(len(months)):
                        ha="center", va="center", color="w", fontsize=14, weight='bold')
 ```
 
-**Exercise:** Change the text colour to black in the brightest (green) rows and columns. You can do this either by
-specifying rows/columns explicitly, or (better) by setting a threshold background colour.
+{{< question num=11c >}}
+Change the text colour to black in the brightest (green) rows and columns. You can do this either by specifying
+rows/columns explicitly, or (better) by setting a threshold background colour.
+{{< /question >}}
 
-**Exercise:** Modify the code to display only 4 seasons instead of the individual months.
+{{< question num=11d >}}
+Modify the code to display only 4 seasons instead of the individual months.
+{{< /question >}}
 
 ## 3D topographic elevation
 
@@ -211,8 +242,10 @@ ax.view_init(20, 30)      # (theta, phi) viewpoint
 surf = ax.plot_surface(x, y, z, facecolors=rgb, linewidth=0, antialiased=False, shade=False)
 ```
 
-> **Exercise:** replace `fig, ax = plt.subplots()` with `fig = plt.figure()` followed by `ax = fig.add_subplot()`. Don't
-> forget about the `3d` projection.
+{{< question num=11e >}}
+Replace `fig, ax = plt.subplots()` with `fig = plt.figure()` followed by `ax = fig.add_subplot()`. Don't forget about
+the `3d` projection.
+{{< /question >}}
 
 Let's replace the last line with the following (running this takes ~10s on my laptop):
 

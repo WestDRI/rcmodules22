@@ -139,11 +139,11 @@ np.log10(a+1)     # apply this operation to each element
 np.arange(10) / np.arange(1,11)  # this is np.array([ 0/1, 1/2, 2/3, 3/4, ..., 9/10 ])
 ```
 
-> **[Exercise](./solai.md)**: Let's verify the equation
-> {{< figure src="/img/eq001.png" >}}
-> using summation of elements of an `ndarray`.
->
-> **Hint**: Start with the first 10 terms `k = np.arange(1,11)`. Then try the first 30 terms.
+{{< question num=11aa >}}
+Let's verify the equation {{< figure src="/img/eq001.png" >}} using summation of elements of an `ndarray`.
+
+**Hint**: Start with the first 10 terms `k = np.arange(1,11)`. Then try the first 30 terms.
+{{< /question >}}
 
 An extremely useful feature of ufuncs is the ability to operate between arrays of different sizes and shapes, a set of
 operations known as *broadcasting*.
@@ -212,7 +212,11 @@ plt.imshow(z)
 plt.colorbar(shrink=0.8)
 ```
 
-**[Exercise](sol03.md):** Use numpy broadcasting to build a 3D array from three 1D ones.
+{{< question num=11ab >}}
+Use numpy broadcasting to build a 3D array from three 1D ones.
+{{< /question >}}
+
+
 
 
 

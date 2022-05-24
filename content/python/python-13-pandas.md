@@ -52,15 +52,40 @@ print(data.T)   # this will transpose the dataframe; curously this is a variable
 data.describe()   # will print some statistics of numerical columns (very useful for 1000s of rows!)
 ```
 
-Quick question: how to list all country names? (try data.T.columns)
+{{< question num=12a >}}
+Quick question: how would you list all country names?
 
-**[Quiz 12](./solaj.md):** explore Americas
+**Hint**: try data.T.columns
+{{< /question >}}
 
-**[Quiz 13](./solak.md):** first 3 rows and last 3 columns
+{{< question num=12b >}}
+Read the data in `gapminder_gdp_americas.csv` (which should be in the same directory as `gapminder_gdp_oceania.csv`)
+into a variable called `americas` and display its summary statistics.
+{{< /question >}}
 
-**[Quiz 14](./solal.md):** navigating the filesystem from inside Jupyter Notebook
+{{< question num=13 >}}
+Write a command to display the first three rows of the `americas` data frame. What about the last three columns of this
+data frame?
+{{< /question >}}
 
-**[Quiz 15](./solam.md):** write a dataframe to disk
+{{< question num=14 >}}
+The data for your current project is stored in a file called `microbes.csv`, which is located in a folder called
+`field_data`. You are doing analysis in a notebook called `analysis.ipynb` in a sibling folder called `thesis`:
+```txt
+your_home_directory/
++-- fieldData/
+  +-- microbes.csv
++-- thesis/
+  +-- analysis.ipynb
+```
+What value(s) should you pass to `read_csv()` to read `microbes.csv` in `analysis.ipynb`?
+{{< /question >}}
+
+{{< question num=15 >}}
+As well as the `read_csv()` function for reading data from a file, Pandas provides a `to_csv()` function to write data
+frames to files. Applying what you've learned about reading from files, write one of your data frames to a file called
+`processed.csv`. You can use help to get information on how to use `to_csv()`.
+{{< /question >}}
 
 ## Subsetting
 
@@ -145,11 +170,33 @@ subset[mask].describe()
 subset[mask].max()
 ```
 
-**[Quiz 16](./solan.md):** GDP of Serbia
+{{< question num=16 >}}
+Assume Pandas has been imported into your notebook and the Gapminder GDP data for Europe has been loaded:
+```py
+import pandas
+df = pandas.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+```
+Write an expression to find the per capita GDP of Serbia in 2007.
+{{< /question >}}
 
-**[Quiz 17](./solao.md):** study the script
+{{< question num=17 >}}
+Explain what each line in the following short program does, e.g. what is in the variables `first`, `second`, ...:
+```py
+first = pandas.read_csv('data/gapminder_all.csv', index_col='country')
+second = first[first['continent'] == 'Americas']
+third = second.drop('Puerto Rico')
+fourth = third.drop('continent', axis = 1)
+fourth.to_csv('result.csv')
+{{< /question >}}
 
-**[Quiz 18](./solap.md):** study the script
+{{< question num=18 >}}
+Explain in simple terms what `idxmin()` and `idxmax()` do in the short program below. When would you use these methods?
+```py
+data = pandas.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+print(data.idxmin())
+print(data.idxmax())
+```
+{{< /question >}}
 
 How do you create a dataframe from scratch? Many ways; the easiest by defining columns:
 
@@ -190,11 +237,25 @@ for filename in glob('data-python/*.csv'):
     print(filename, data.gdpPercap_1952.min())
 ```
 
-**Quiz 19:** glob's wildmask
+{{< question num=19 >}}
+Which of these files is not matched by the expression `glob('data/*as*.csv')`?
+```txt
+A. data/gapminder_gdp_africa.csv
+B. data/gapminder_gdp_americas.csv
+C. data/gapminder_gdp_asia.csv
+D. 1 and 2 are not matched
+```
+{{< /question >}}
 
-<!-- The right answer is A. -->
-
-**[Quiz 20](./solaq.md):** find the file with fewest records
+{{< question num=20 >}}
+Modify this program so that it prints the number of records in the file that has the fewest records.
+```py
+fewest = ____
+for filename in glob('data/*.csv'):
+    fewest = ____
+print('smallest file has', fewest, 'records')
+```
+{{< /question >}}
 
 <!-- **[Exercise](./solar.md):** add a curve for New Zealand. -->
 <!-- **[Exercise](./solas.md):** do a scatter plot of Australia vs. New Zealand. -->

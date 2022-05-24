@@ -84,4 +84,6 @@ b.pop(2)             # you can use its index
 b.remove('Earth')       # or you can use its value
 ```
 
-**[Exercise](./solutions/solaa.md):** write a script to find the second largest number in the list [77,9,23,67,73,21].
+{{< question num=2b >}}
+Write a script to find the second largest number in the list [77,9,23,67,73,21].
+{{< /question >}}

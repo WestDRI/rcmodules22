@@ -37,13 +37,23 @@ import math as m
 print m.pi
 ```
 
-**Quiz 8:** exploring the math library
+{{< question num=8 >}}
+What function from the math library can you use to calculate a square root without using `sqrt`?
+{{< /question >}}
 
-**Quiz 9:** random numbers
+{{< question num=9 >}}
+You want to select a random character from the string `bases='ACTTGCTTGAC'`. What standard library would you most expect
+to help? Which function would you select from that library? Are there alternatives?
+{{< /question >}}
 
-**Quiz 10:** forgot to load the library
+{{< question num=10 >}}
+A colleague of yours types `help(math)` and gets an error: `NameError: name 'math' is not defined`. What has your
+colleague forgotten to do?
+{{< /question >}}
 
-**Quiz 11:** degree conversion with math
+{{< question num=11 >}}
+Convert the angle 0.3 rad to degrees using the math library.
+{{< /question >}}
 
 ## Virtual environments and packaging
 

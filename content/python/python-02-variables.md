@@ -6,10 +6,11 @@ weight = 2
 
 ## Variables and Assignment
 
-* possible names for variables
-* don't use built-in function names for variables, e.g. declaring *sum* won't let you use sum(), same for
-  *print*
-* Python is case-sensitive
+- Python is a dynamically typed language: all variables have types, but types can change on the fly
+- possible names for variables
+  - don't use built-in function names for variables, e.g. declaring `sum` will prevent you from using sum(), same for
+    `print`
+- Python is case-sensitive
 
 ```py
 age = 100
@@ -30,7 +31,15 @@ age = age + 3   # another syntax: age += 3
 print('age in three years:', age)
 ```
 
-**Quiz 1:** predicting values
+{{< question num=1 >}}
+What is the final value of `position` in the program below? (Try to predict the value without running the program, then
+check your prediction.)
+```py
+initial = "left"
+position = initial
+initial = "right"
+```
+{{< /question >}}
 
 With simple variables in Python, assigning `var2 = var1` will create a new object in memory `var2`. Here we have two
 distinct objects in memory: `initial` and `position`.
@@ -50,13 +59,15 @@ distinct objects in memory: `initial` and `position`.
 Use square brackets to get a substring:
 ```py
 element = 'helium'
-print(element[0])   # single character
+print(element[0])     # single character
 print(element[0:3])   # a substring
 ```
 
-**Quiz 2:** getting the second digit of a number (not a string!)
+{{< question num=2 >}}
+If you assign `a=123`, what happens if you try to get the second digit of `a`?
+{{< /question >}}
 
-* python is case-sensitive
+* Python is case-sensitive
 * use meaningful variable names
 
 ## Data Types and Type Conversion
@@ -74,7 +85,7 @@ print(len(name))       # strings have lengths
 ```
 
 ```py
-print(1+'a')           # cannot add strings and numbers
+print(1+'a')        # cannot add strings and numbers
 print(str(1)+'a')   # this works
 print(1+int('2'))   # this works
 ```

@@ -39,14 +39,16 @@ venus.radius, venus.mass, venus.hostObject
 
 Instances are guaranteed to have the attributes that we expect.
 
-> **[Question](sol01.md):** How can we define an instance without passing the values? E.g., I would like to say
-> `earth=Planet()` and then pass the attribute values separately like this:
-> ```py
-> earth = Planet()
-> earth.radius = 6371         # these are dynamic variables that we can redefine
-> earth.mass = 5.972e24
-> Planet().radius      # prints 'nan'
-> ```
+{{< question num=23 >}}
+How can we define an instance without passing the values? E.g., I would like to say `earth = Planet()` and then pass the
+attribute values separately like this:
+```py
+earth = Planet()
+earth.radius = 6371         # these are dynamic variables that we can redefine
+earth.mass = 5.972e24
+Planet().radius      # prints 'nan'
+```
+{{< /question >}}
 
 Let's add *inside our class* an instance method (with proper indentation):
 

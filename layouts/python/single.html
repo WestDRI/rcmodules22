@@ -34,6 +34,10 @@
       </div>
     </header>
 
+    <aside>
+        {{ .TableOfContents }}
+    </aside>
+
     <div>
       {{ if .Params.featured_image }}
       <img src='{{ .Params.featured_image }}' alt="Featured image"/>

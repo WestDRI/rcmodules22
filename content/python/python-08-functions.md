@@ -45,11 +45,19 @@ a = average([1, 3, 4])
 print('average of actual values:', a)
 ```
 
-**Quiz 5:** convert from Fahrenheit to Celsius
+{{< question num=5 >}}
+Write a function to convert from Fahrenheit to Celsius, e.g. typing `celsius(77)` would produce 25.
+{{< /question >}}
 
-**Quiz 6:** convert from Celsius to Fahrenheit
+{{< question num=6 >}}
+Write a function to convert from Celsius to Fahrenheit. Test it with celcius(), e.g. by converting Fahrenheit → Celsius
+→ Fahrenheit, or Celsius → Fahrenheit → Celsius.
+{{< /question >}}
 
-**[Quiz 7](./solah.md):** convert temperature lists
+{{< question num=7 >}}
+Now modify celsius() to take a list of Fahrenheit temperatures, e.g., `celcius([70,80,90,100])`, to return a list of
+Celsius temperatures.
+{{< /question >}}
 	
 Function arguments in Python can take default values becoming optional:
 

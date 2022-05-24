@@ -12,7 +12,7 @@ materials will be added here shortly before the start of the course.
 
 You can now download [today's materials](http://bit.ly/introhpc2) (ZIP file with slides and codes inside).
 
-- [Day 1 terminal history](/files/today.txt)
+- Terminal history from [Day 1](/files/hpcHistory1.txt) and [Day 2](/files/hpcHistory2.txt)
 
 <!-- Course materials will be added here shortly before the start of the course. -->
 
