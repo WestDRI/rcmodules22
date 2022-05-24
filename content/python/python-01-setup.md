@@ -102,7 +102,8 @@ python
 deactivate
 ```
 
-We'll talk more about virtual Python environments in [Section 10](../python-10-libraries).
+We'll talk more about virtual Python environments in
+[Section 10](../python-10-libraries#virtual-environments-and-packaging).
 
 ## Navigating Jupyter interface
 
