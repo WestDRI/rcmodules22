@@ -31,7 +31,7 @@ matplotlib (basic plotting).
 <!-- ~/training/softwareCarpentry/python04.md -->
 
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
-<!-- {{<nolinktitle>}}Setup and running Jupyter notebooks{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Setup and various ways to run Python{{</nolinktitle>}} \ -->
 <!-- {{<nolinktitle>}}Variables and assignment, data types and type conversion{{</nolinktitle>}} \ -->
 <!-- {{<nolinktitle>}}Built-in functions and help{{</nolinktitle>}} \ -->
 <!-- {{<nolinktitle>}}Conditionals{{</nolinktitle>}} \ -->
@@ -42,7 +42,7 @@ matplotlib (basic plotting).
 <!-- {{<nolinktitle>}}Variable scope and floating precision{{</nolinktitle>}} -->
 
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \
-{{<linktitle url="../python/python-01-setup" text="Setup and running Jupyter notebooks">}} \
+{{<linktitle url="../python/python-01-setup" text="Setup and various ways to run Python">}} \
 {{<linktitle url="../python/python-02-variables" text="Variables and data types">}} \
 {{<linktitle url="../python/python-03-builtin" text="Built-in functions and help">}} \
 {{<linktitle url="../python/python-04-conditionals" text="Conditionals">}} \
