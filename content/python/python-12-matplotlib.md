@@ -68,13 +68,13 @@ x = linspace(0.01,1,300)
 y = sin(1/x)
 
 ax = fig.add_subplot(121)   # on 1x2 layout create plot #1 (`axes` object with some data space)
-a1 = plt.plot(x, y, 'bo-', label='one')
+plt.plot(x, y, 'bo-', label='one')
 ax.set_ylim(-1.5, 1.5)
 plt.xlabel('x')
 plt.ylabel('f1')
 
-ax = fig.add_subplot(122)   # on 1x2 layout create plot #2
-a2 = plt.plot(x+0.2, 2*sin(10*x), 'r-', label='two')
+fig.add_subplot(122)   # on 1x2 layout create plot #2
+plt.plot(x+0.2, 2*sin(10*x), 'r-', label='two')
 plt.xlabel('x')
 plt.ylabel('f2')
 ```
@@ -82,8 +82,8 @@ plt.ylabel('f2')
 Instead of indices, we could specify the absolute coordinates of each plot with `fig.add_axes()`:
 
 1. adjust the size `fig = plt.figure(figsize=(12,4))`
-1. replace the first `fig.add_subplot` with `ax = fig.add_axes([0.1, 0.7, 0.8, 0.3])   # left, bottom, width, height`
-1. replace the second `fig.add_subplot` with `ax = fig.add_axes([0.1, 0.2, 0.8, 0.4])   # left, bottom, width, height`
+1. replace the first `ax = fig.add_subplot(121)` with `ax = fig.add_axes([0.1, 0.7, 0.8, 0.3])   # left, bottom, width, height`
+1. replace the second `fig.add_subplot(122)` with `fig.add_axes([0.1, 0.2, 0.8, 0.4])   # left, bottom, width, height`
 
 The 3rd option for more fine-grained control is `plt.axes()` -- it creates an `axes` object (a region of the figure with
 some data space). These two lines are equivalent - both create a new figure with one subplot:
