@@ -4,6 +4,13 @@ slug = "python-10-libraries"
 weight = 10
 +++
 
+<u>For Day 2</u>, we will switch to running inside Jupyter Notebook -- please see option 2 in
+[the Setup section](../python-01-setup#starting-python).
+
+
+
+
+
 Most of the power of a programming language is in its libraries. This is especially true for Python which is an
 interpreted language and is therefore very slow (compared to compiled languages). However, the libraries are often
 compiled (can be written in compiled languages such as C/C++) and therefore offer much faster performance than native

@@ -21,6 +21,7 @@ data = xr.DataArray(
     coords={"x": [10,11,12], "y": [10,20,30,40]}  # coordinate labels/values
 )
 data
+type(data)   # <class 'xarray.core.dataarray.DataArray'>
 ```
 
 We can access various attributes of this array:
@@ -29,21 +30,22 @@ We can access various attributes of this array:
 data.values                 # the 2D numpy array
 data.values[0,0] = 0.53     # can modify in-place
 data.dims                   # ('y', 'x')
-data.coords               # all coordinates, cannot modify!
-data.coords['x'][1]       # a number
-data.x[1]                 # the same
+data.coords                 # all coordinates
+data.coords['x']            # one coordinate
+data.coords['x'][1]         # a number
+data.x[1]                   # the same
 ```
 
 Let's add some arbitrary metadata:
 
 ```py
-data.attrs = {"author": "AR", "date": "2020-08-26"}
+data.attrs = {"author": "Alex", "date": "2020-08-26"}
 data.attrs["name"] = "density"
 data.attrs["units"] = "g/cm^3"
 data.x.attrs["units"] = "cm"
 data.y.attrs["units"] = "cm"
-data.attrs    # all attributes
-data          # all attributes show here as well
+data.attrs    # global attributes
+data          # global attributes show here as well
 data.x        # only `x` attributes
 ```
 
@@ -71,7 +73,7 @@ data.isel(y=0, x=[-2,-1])    # first row, last two columns
 ```py
 data.x.dtype     # it is integer
 data.sel(x=10)   # certain value of `x`
-data.y   # array([10, 20, 30, 40])
+data.y           # array([10, 20, 30, 40])
 data.sel(y=slice(15,30))   # only values with 15<=y<=30 (two rows)
 ```
 
@@ -83,7 +85,8 @@ spatialMean = data.mean()
 spatialMean = data.mean(dim=['x','y'])   # same
 ```
 
-Finally, we can interpolate:
+Finally, we can interpolate. However, this requires `scipy` library and currently throws some warnings, so use at your
+own risk:
 
 ```py
 data.interp(x=10.5, y=10)    # first row, between 1st and 2nd columns
@@ -105,7 +108,7 @@ data.isel(x=0).plot(marker="o", size=8)   # 1D line plot
 You can perform element-wise operations on xarray.DataArray like with numpy.ndarray:
 
 ```py
-data + 100      # element-wise like numpy arrays
+data + 100                           # element-wise like numpy arrays
 (data - data.mean()) / data.std()    # normalize the data
 data - data[0,:]      # use numpy broadcasting => subtract first row from all rows
 ```
@@ -113,7 +116,7 @@ data - data[0,:]      # use numpy broadcasting => subtract first row from all ro
 ## Split your data into multiple independent groups
 
 ```py
-data.groupby("x")   # 3 groups with labels 10, 11, 12
+data.groupby("x")   # 3 groups with labels 10, 11, 12; each column becomes a group
 data.groupby("x").map(lambda v: v-v.min())   # apply separately to each group
             # from each column (fixed x) subtract the smallest value in that column
 ```
@@ -168,7 +171,7 @@ ds.to_netcdf("test.nc")
 new = xr.open_dataset("test.nc")   # try reading it
 ```
 
-We can even try opening this 2D dataset in ParaView - select (x,y) and deselect Spherical.
+We can even try opening this 2D dataset in ParaView - select (y,x) and deselect Spherical.
 
 {{< question num=21 >}}
 Recall the 2D function we plotted when we were talking about numpy's array broadcasting. Let's scale it to a unit square
@@ -187,11 +190,6 @@ function looks like at intermediate z. Write out a NetCDF file with the 3D funct
 
 
 
-
-
-
-
-
 ## Time series data
 
 In xarray you can work with time-dependent data. Xarray accepts pandas time formatting,
@@ -201,6 +199,7 @@ e.g. `pd.to_datetime("2020-09-10")` would produce a timestamp. To produce a time
 import pandas as pd
 time = pd.date_range("2000-01-01", freq="D", periods=365*3+1)    # 2000-Jan to 2002-Dec (3 full years)
 time
+time.shape    # 1096 days
 time.month    # same length (1096), but each element is replaced by the month number
 time.day      # same length (1096), but each element is replaced by the day-of-the-month
 ?pd.date_range
@@ -393,7 +392,7 @@ meanOverSpace.plot(marker="o", size=8)     # calls matplotlib.pyplot.plot
 Interpolate to a specific location:
 
 ```
-victoria = data.tas.interp(lat=48.43, lon=360-123.37)
+victoria = data.tas.interp(lat=48.43, lon=360-123.37) - 273.15
 victoria.shape   # (168,) only time
 victoria.plot(marker="o", size=8)      # simple 1D plot
 victoria.sel(time=slice('2001','2020')).plot(marker="o", size=8)   # zoom in on the 21st-century points, see seasonal variations
@@ -408,7 +407,7 @@ air.plot(size=8)     # 2D plot, very poor resolution (lat: 64, lon: 128)
 air.plot(size=8, y="lon", x="lat")     # can specify which axis is which
 ```
 
-What if we have time-dependency in the plot?
+What if we have time-dependency in the plot? We put each frame into a separate panel:
 
 ```
 a = data.tas[-6:] - 273.15      # last 6 timesteps => 3D dataset => which coords to use for what?

@@ -54,21 +54,23 @@ matplotlib (basic plotting).
 {{<linktitle url="../python/python-08-functions" text="Writing functions">}} \
 {{<linktitle url="../python/python-09-scope" text="Variable scope and floating precision">}}
 
+<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
+<!-- {{<nolinktitle>}}Libraries, virtual environments and packaging{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Numpy{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Plotting with matplotlib{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Pandas dataframes{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Multidimensional labeled arrays and datasets with xarray{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Running Python scripts from the command line{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Basics of object-oriented programming in Python{{</nolinktitle>}} -->
+
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \
-{{<nolinktitle>}}Libraries, virtual environments and packaging{{</nolinktitle>}} \
-{{<nolinktitle>}}Numpy{{</nolinktitle>}} \
-{{<nolinktitle>}}Plotting with matplotlib{{</nolinktitle>}} \
-{{<nolinktitle>}}Pandas dataframes{{</nolinktitle>}} \
-{{<nolinktitle>}}Multidimensional labeled arrays and datasets with xarray{{</nolinktitle>}} \
-{{<nolinktitle>}}Running Python scripts from the command line{{</nolinktitle>}} \
-{{<nolinktitle>}}Basics of object-oriented programming in Python{{</nolinktitle>}}
-<!-- {{<linktitle url="../python/python-10-libraries" text="Libraries, virtual environments and packaging">}} \ -->
-<!-- {{<linktitle url="../python/python-11-numpy" text="Numpy">}} \ -->
-<!-- {{<linktitle url="../python/python-12-matplotlib" text="Plotting with matplotlib">}} \ -->
-<!-- {{<linktitle url="../python/python-13-pandas" text="Pandas dataframes">}} \ -->
-<!-- {{<linktitle url="../python/python-14-xarray" text="Multidimensional labeled arrays and datasets with xarray">}} \ -->
-<!-- {{<linktitle url="../python/python-16-scripts" text="Running Python scripts from the command line">}} (additional material) \ -->
-<!-- {{<linktitle url="../python/python-17-objects" text="Basics of object-oriented programming in Python">}} (additional material) -->
+{{<linktitle url="../python/python-10-libraries" text="Libraries, virtual environments and packaging">}} \
+{{<linktitle url="../python/python-11-numpy" text="Numpy">}} \
+{{<linktitle url="../python/python-12-matplotlib" text="Plotting with matplotlib">}} \
+{{<linktitle url="../python/python-13-pandas" text="Pandas dataframes">}} \
+{{<linktitle url="../python/python-14-xarray" text="Multidimensional labeled arrays and datasets with xarray">}} \
+{{<linktitle url="../python/python-16-scripts" text="Running Python scripts from the command line">}} (additional material) \
+{{<linktitle url="../python/python-17-objects" text="Basics of object-oriented programming in Python">}} (additional material)
 
 <!-- {{<nolinktitle>}}Plotting with cartopy (additional material){{</nolinktitle>}} \ -->
 <!-- {{<linktitle url="../python/python-15-cartopy" text="Plotting with cartopy">}} (additional material) \ -->

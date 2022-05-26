@@ -138,7 +138,7 @@ for f in filenames:
 
 ## Adding standard input support to Python scripts
 
-Python scripts can process standard input. Consider the following script:
+Python scripts can process standard input. Consider the following script `input.py`:
 
 ```py
 #!/usr/bin/env python
@@ -147,16 +147,18 @@ for line in sys.stdin:
     print(line, end='')
 ```
 
-In the terminal make it executable (`chmod u+x scriptName.py`), and then run it:
+In the terminal make it executable (`chmod u+x input.py`), and then use it to receive any standard input:
 
 ```sh
-./scriptName.py                          # repeat each line you type until Ctrl-C
-echo one two three | ./scriptName.py     # print back the line
-cat file.extension | ./scriptName.py     # process this file (filename=sys.stdin) from standard input
-tail -1 scriptName.py | ./scriptName.py      # print its own last line
+./input.py                          # repeat each line you type until Ctrl-C
+echo one two three | ./input.py     # print back the line
+ls -l | ./input.py                  # list all files
+cat input.py | ./input.py           # print itself from standard input
+tail -1 input.py | ./input.py       # print its own last line
 ```
 
-Let's add support for Unix standard input. Delete 'print('\n', f[26:-4].capitalize())' and change the last two lines to:
+Let's add support for Unix standard input to `read.py`. Delete 'print('\n', f[26:-4].capitalize())' and change the last
+two lines to:
 
 ```py
 if len(filenames) == 0:
@@ -171,7 +173,8 @@ $ python read.py --mean data-python/gapminder_gdp_europe.csv
 $ python read.py --mean < data-python/gapminder_gdp_europe.csv    # anyone knows why this could be useful?
 ```
 
-Here is why: you can do preprocessing in bash before passing the data to your Python script, e.g.
+Why would you want to support standard input? Answer: you can do preprocessing in bash before passing the data to your
+Python script, e.g.
 
 ```sh
 $ head -5 data-python/gapminder_gdp_europe.csv | python read.py --mean    # process only first five countries

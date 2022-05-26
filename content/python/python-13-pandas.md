@@ -6,7 +6,8 @@ weight = 13
 
 ## Reading tabular data into dataframes
 
-First, let's download the data. Open a terminal inside your Jupyter dashboard. Inside the terminal, type:
+First, let's download the data, if you have not done this already in the previous chapter. Open a terminal inside your
+Jupyter dashboard. Inside the terminal, type:
 
 ```sh
 wget http://bit.ly/pythfiles -O pfiles.zip
@@ -16,7 +17,7 @@ unzip pfiles.zip && rm pfiles.zip        # this should unpack into the directory
 You can now close the terminal panel. Let's switch back to our Python notebook and check our location:
 
 ```py
-%pwd       # simply run a bash command with a prefix
+%pwd       # run `pwd` bash command
 %ls        # make sure you see data-python/
 ```
 
@@ -31,8 +32,8 @@ data   # this prints out the table nicely in Jupyter Notebook!
 ```
 
 ```py
-data.shape   # shape is a *member variable inside data*
-data.info()    # info is a *member method inside data*
+data.shape    # shape is a *member variable inside data*
+data.info()   # info is a *member method inside data*
 ```
 
 Use dir(data) to list all member variables and methods. Then call that name without (), and if it's a method it'll tell
@@ -94,27 +95,32 @@ data = pd.read_csv('data-python/gapminder_gdp_europe.csv', index_col='country')
 data.head()
 ```
 
-Let's rename the columns:
+Let's rename the first column:
 
 ```py
-data.rename(columns={'gdpPercap_1952': '1952'})   # this renames only one but does not change `data`
+data.rename(columns={'gdpPercap_1952': 'y1952'})   # this renames only one but does not change `data`
 ```
+
+**Note**: we could also name the column '1952', but some Pandas operations don't work with purely numerical column
+  names.
 
 Let's go through all columns and assign the new names:
 
 ```py
 for col in data.columns:
     print(col, col[-4:])
-    data = data.rename(columns={col: col[-4:]})
+    data = data.rename(columns={col: 'y'+col[-4:]})
 
 data
 ```
 
-Printing one element:
+Pandas lets you subset elements using either their numerical indices or their row/column names. Long time ago Pandas
+used to have a single function to do both. Now there are two separate functions, `iloc()` and `loc()`. Let's print one
+element:
 
 ```py
-data.iloc[0,0]   # the very first element by position
-data.loc['Albania','1952']    # exactly the same; the very first element by label
+data.iloc[0,0]               # the very first element by position
+data.loc['Albania','y1952']   # exactly the same; the very first element by label
 ```
 
 Printing a row:
@@ -128,29 +134,29 @@ data.loc['Albania',]    # exactly the same
 Printing a column:
 
 ```py
-data.loc[:,'1952']   # show all rows in that column
-data['1952']   # exactly the same; single index refers to columns
-data.1952      # exactly the same; most compact notation to access columns; does not work with numerical column names ...
+data.loc[:,'y1952']   # show all rows in that column
+data['y1952']         # exactly the same; single index refers to columns
+data.y1952            # most compact notation; does not work with numerical-only names
 ```
 
 Printing a range:
 
 ```py
-data.loc['Italy':'Poland','1952':'1967']   # select multiple rows/columns
+data.loc['Italy':'Poland','y1952':'y1967']   # select multiple rows/columns
 data.iloc[0:2,0:3]
 ```
 
 Result of slicing can be used in further operations:
 
 ```py
-data.loc['Italy':'Poland','1952':'1967'].max()   # max for each column
-data.loc['Italy':'Poland','1952':'1967'].min()   # min for each column
+data.loc['Italy':'Poland','y1952':'y1967'].max()   # max for each column
+data.loc['Italy':'Poland','y1952':'y1967'].min()   # min for each column
 ```
 
 Use comparisons to select data based on value:
 
 ```py
-subset = data.loc['Italy':'Poland', '1962':'1972']
+subset = data.loc['Italy':'Poland', 'y1962':'y1972']
 print(subset)
 print(subset > 1e4)
 ```
@@ -158,7 +164,7 @@ print(subset > 1e4)
 Use a Boolean mask to print values (meeting the condition) or NaN (not meeting the condition):
 
 ```py
-mask = subset > 1e4
+mask = (subset > 1e4)
 print(mask)
 print(subset[mask])   # will print numerical values only if the corresponding elements in mask are True
 ```
@@ -173,8 +179,7 @@ subset[mask].max()
 {{< question num=16 >}}
 Assume Pandas has been imported into your notebook and the Gapminder GDP data for Europe has been loaded:
 ```py
-import pandas
-df = pandas.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+df = pd.read_csv('data-python/gapminder_gdp_europe.csv', index_col='country')
 ```
 Write an expression to find the per capita GDP of Serbia in 2007.
 {{< /question >}}
@@ -182,7 +187,7 @@ Write an expression to find the per capita GDP of Serbia in 2007.
 {{< question num=17 >}}
 Explain what each line in the following short program does, e.g. what is in the variables `first`, `second`, ...:
 ```py
-first = pandas.read_csv('data/gapminder_all.csv', index_col='country')
+first = pd.read_csv('data-python/gapminder_all.csv', index_col='country')
 second = first[first['continent'] == 'Americas']
 third = second.drop('Puerto Rico')
 fourth = third.drop('continent', axis = 1)
@@ -192,7 +197,7 @@ fourth.to_csv('result.csv')
 {{< question num=18 >}}
 Explain in simple terms what `idxmin()` and `idxmax()` do in the short program below. When would you use these methods?
 ```py
-data = pandas.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+data = pd.read_csv('data-python/gapminder_gdp_europe.csv', index_col='country')
 print(data.idxmin())
 print(data.idxmax())
 ```
@@ -225,14 +230,14 @@ If we have many (10s or 100s) files, we want to specify them with a pattern:
 
 ```py
 from glob import glob
-print('all csv files in data directory:', glob('data-python/*.csv'))   # returns a list
-print('all text files in data directory:', glob('data-python/*.txt'))   # empty list
+print('all csv files in data-python:', glob('data-python/*.csv'))    # returns a list
+print('all text files in data-python:', glob('data-python/*.txt'))   # empty list
 list = glob('data-python/*.csv')
 len(list)
 ```
 
 ```py
-for filename in glob('data-python/*.csv'):
+for filename in glob('data-python/gapminder*.csv'):
     data = pd.read_csv(filename)
     print(filename, data.gdpPercap_1952.min())
 ```

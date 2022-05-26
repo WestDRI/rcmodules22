@@ -33,7 +33,7 @@ multidimensional, homogeneous arrays of fixed-size items (most commonly numbers)
   - no reading of extra bits (type, size, reference count)
   - no type checking
   - contiguous allocation in memory
-1. numpy lets you work with mathematical arrays.
+2. numpy lets you work with mathematical arrays.
 
 Lists and numpy arrays behave very differently:
 
@@ -55,14 +55,14 @@ na * nb            # element-wise product
 
 Numpy arrays have the following attributes:
 
-- ndim = the number of dimensions
-- shape = a tuple giving the sizes of the dimensions
-- size = the total number of elements
-- dtype = the data type
-- itemsize = the size (bytes) of individual elements
-- nbytes = the total memory (bytes) occupied by the ndarray
-- strides = tuple of bytes to step in each dimension when traversing an array
-- data = memory address of the array
+- `ndim` = the number of dimensions
+- `shape` = a tuple giving the sizes of the dimensions
+- `size` = the total number of elements
+- `dtype` = the data type
+- `itemsize` = the size (bytes) of individual elements
+- `nbytes` = the total memory (bytes) occupied by the ndarray
+- `strides` = tuple of bytes to step in each dimension when traversing an array
+- `data` = memory address of the array
 
 ```py
 a = np.arange(10)      # 10 integer elements 0..9
@@ -108,21 +108,25 @@ a[5:12:3]   # every 3rd element in [5..12), i.e. elements 5,8,11
 a[::-1]     # array reversed
 ```
 
-Similar for multi-dimensional arrays:
+Similarly, for multi-dimensional arrays:
 
 ```py
 b = np.reshape(np.arange(100),(10,10))      # form a 10x10 array from 1D array
 b[0:2,1]      # first two rows, second column
 b[:,-1]       # last column
+b[-1,:]       # last row
 b[5:7,5:7]    # 2x2 block
 ```
+
+Consider two rows:
 
 ```py
 a = np.array([1, 2, 3, 4])
 b = np.array([4, 3, 2, 1])
 np.vstack((a,b))   # stack them vertically into a 2x4 array (use a,b as rows)
 np.hstack((a,b))   # stack them horizontally into a 1x8 array
-np.column_stack((a,b))    # use a,b as columns
+np.column_stack((a,b))         # use a,b as columns
+np.vstack((a,b)).transpose()   # same result
 ```
 
 ## Vectorized functions on array elements (a.k.a. universal functions = ufunc)
@@ -144,6 +148,8 @@ Let's verify the equation {{< figure src="/img/eq001.png" >}} using summation of
 
 **Hint**: Start with the first 10 terms `k = np.arange(1,11)`. Then try the first 30 terms.
 {{< /question >}}
+
+### Array broadcasting
 
 An extremely useful feature of ufuncs is the ability to operate between arrays of different sizes and shapes, a set of
 operations known as *broadcasting*.
@@ -170,29 +176,32 @@ Numpy's broadcast rules are:
 1. if in any dimension the sizes disagree and neither is equal to 1, an error is raised
 
 ```
-Example 1:
-==========
+First example above:
+********************
+a: (3,)   ->  (1,3)  ->  (3,3)
+b: (3,3)  ->  (3,3)  ->  (3,3)
+                                ->  (3,3)
+Second example above:
+*********************
+a: (3,)  ->  (1,3)  ->  (3,3)
+b: (3,1) ->  (3,1)  ->  (3,3)
+                                ->  (3,3)
+Example 3:
+**********
 a: (2,3)  ->  (2,3)  ->  (2,3)
 b: (3,)   ->  (1,3)  ->  (2,3)
                                 ->  (2,3)
-
-Example 2:
-==========
-a: (3,1)  ->  (3,1)  ->  (3,3)
-b: (3,)   ->  (1,3)  ->  (3,3)
-                                ->  (3,3)
-
-Example 3:
-==========
+Example 4:
+**********
 a: (3,2)  ->  (3,2)  ->  (3,2)
 b: (3,)   ->  (1,3)  ->  (3,3)
                                 ->  error
 "ValueError: operands could not be broadcast together with shapes (3,2) (3,)"
 ```
 
-> Note on numpy speed: Not so long ago, I was working with a spherical dataset describing Earth's mantle convection. It
-> is on a spherical grid with 13e6 grid points. For each grid point, I was converting from the spherical (lateral -
-> radial - longitudinal) velocity components to the Cartesian velocity components. For each point this is a
+> Comment on numpy speed: Not so long ago, I was working with a spherical dataset describing Earth's mantle
+> convection. It is on a spherical grid with 13e6 grid points. For each grid point, I was converting from the spherical
+> (lateral - radial - longitudinal) velocity components to the Cartesian velocity components. For each point this is a
 > matrix-vector multiplication. Doing this by hand with Python's `for` loops would take many hours for 13e6 points. I
 > used numpy to vectorize in one dimension, and that cut the time to ~5 mins. At first glance, a more complex
 > vectorization would not work, as numpy would have to figure out which dimension goes where. Writing it carefully and
@@ -216,16 +225,7 @@ plt.colorbar(shrink=0.8)
 Use numpy broadcasting to build a 3D array from three 1D ones.
 {{< /question >}}
 
-
-
-
-
-
-
-
-
-
-## Aggregate functions
+### Aggregate functions
 
 Aggregate functions take an ndarray and reduce it along one (or more) axes. E.g., in 1D:
 
@@ -248,14 +248,23 @@ b.sum(axis=0)   # add rows
 b.sum(axis=1)   # add columns
 ```
 
-## Boolean indexing
+### Boolean indexing
 
 ```py
 a = np.linspace(1, 2, 100)
-a < 1.5
-a[a < 1.5]    # will only return those elements that meet the condition
-a[a < 1.5].shape
+a < 1.5       # array of True and/or False
+a[a < 1.5]    # will only return those elements that meet True condition
+a[a < 1.5].shape   # there are exactly 50 such elements
 a.shape
+```
+
+An interesting question comes up: what will happen if we apply a mask to a multi-dimensional array? How will it show
+incomplete rows/columns that have both True and False masks?
+
+```py
+b = np.arange(25).reshape(5,5)   # 2D array
+b > 22      # all rows are False, except for the last row [F,F,F,T,T]
+b[b > 22]   # turns out we always get a 1D array with only True elements
 ```
 
 ## More numpy functionality
@@ -264,8 +273,8 @@ Numpy provides many standard linear algebra algorithms: matrix/vector products, 
 linear equations, e.g.
 
 ```py
-a = np.array([[3,1], [1,2]])
-b = np.array([9,8])
+a = np.random.randint(0, 10, size=(8,8))
+b = np.arange(1,9)
 x = np.linalg.solve(a, b)
 x
 np.allclose(np.dot(a, x),b)    # check the solution

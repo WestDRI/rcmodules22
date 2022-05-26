@@ -46,9 +46,10 @@ attribute values separately like this:
 earth = Planet()
 earth.radius = 6371         # these are dynamic variables that we can redefine
 earth.mass = 5.972e24
-Planet().radius      # prints 'nan'
 ```
 {{< /question >}}
+
+<!-- Planet().radius      # prints 'nan' -->
 
 Let's add *inside our class* an instance method (with proper indentation):
 
@@ -216,25 +217,25 @@ a.__next__()    # 'e'
 a.__next__()    # 'a'
 ```
 
-You can build your own iterator as if you were defining a function - this is called a *generator* in Python:
+You can build your own iterator as if you were defining a function. Such function is called a *generator* in Python:
 
 ```py
+def cycle():
+    yield 1
+    yield 'hello'
+    yield [1,2,3]
+
+[i for i in cycle()]               # [1, 'hello', [1, 2, 3]]
+
 def square(x):   # `x` is an input string in this generator
     for letter in x:
-        yield int(letter)**2        # yields a sequence of numbers that you can cycle through
+        yield int(letter)**2       # yields a sequence of numbers that you can cycle through
 
-[i for i in square('12345')]     # [1, 4, 9, 16, 25]
+[i for i in square('12345')]       # [1, 4, 9, 16, 25]
 
 a = square('12345')
-[a.__next__() for i in range(3)]      # [1, 4, 9, 16, 25]
+[a.__next__() for i in range(3)]   # [1, 4, 9]
 ```
-
-
-
-
-
-
-
 
 
 

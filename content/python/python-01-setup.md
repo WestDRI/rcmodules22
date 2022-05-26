@@ -43,11 +43,10 @@ Working in the terminal, you won't have access to all the bells and whistles of 
 to plot matplotlib graphics into remote PNG files and then download them to view locally on your computer. On the other
 hand, this option most closely resembles working in the terminal on a remote HPC cluster.
 
-2. **Second option** - (note: do not use this option today!) Use JupyterHub on our training cluster: point your browser
-   to https://uu.c3.ca, log in with yesterday's username and today's password, then launch a Jupyter Hub server with
-   time = ***6 hours***, **1 CPU core**, memory = ***1500 MB***, GPU configuration = ***None***, user interface =
-   ***JupyterLab*** ![Submissions form](/img/jupyterlab.png)
-   <!-- {{< figure src="/img/solveMulti.gif" >}} -->
+2. **Second option** - Use JupyterHub on our training cluster: point your browser to https://uu.c3.ca, log in with
+   yesterday's username and today's password, then launch a Jupyter Hub server with time = ***6 hours***, **1 CPU
+   core**, memory = ***3600 MB***, GPU configuration = ***None***, user interface = ***JupyterLab***
+   ![Submissions form](/img/jupyterlab.png)
 
 3. **Third option** - Use syzygy.ca with one of the following accounts:
     - if you have a university computer ID &nbsp;&rarr;&nbsp; go to <a href="https://syzygy.ca"

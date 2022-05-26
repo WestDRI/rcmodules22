@@ -22,8 +22,10 @@ plt.ylabel('f(x)', fontsize=18)
  # plt.savefig('tmp.png')
 ```
 
-> #### Offscreen plotting
-> You can create the same plot with offscreen rendering into a file:
+<img src="https://raw.githubusercontent.com/razoumov/publish/master/styles.png" height="300" />
+
+> **Offscreen plotting** -
+> You can create the same plot with offscreen rendering directly to a file:
 > ```py
 > import matplotlib as mpl
 > import matplotlib.pyplot as plt
@@ -37,17 +39,6 @@ plt.ylabel('f(x)', fontsize=18)
 > plt.ylabel('f(x)', fontsize=18)
 > plt.savefig('tmp.png')
 > ```
-
-
-
-
-
-
-
-
-
-
-<img src="https://raw.githubusercontent.com/razoumov/publish/master/styles.png" height="300" />
 
 Let's add the second line, the labels, and the legend. Note that matplotlib automatically adjusts the axis ranges to fit
 both plots:
@@ -211,10 +202,11 @@ wget http://bit.ly/pythfiles -O pfiles.zip
 unzip pfiles.zip && rm pfiles.zip        # this should unpack into the directory data-python/
 ```
 
-You can now close the terminal panel. Let's switch back to our Python notebook and check our location:
+This will download and unpack the ZIP file into your home directory. You can now close the terminal panel. Let's switch
+back to our Python notebook and check our location:
 
 ```py
-%pwd       # simply run a bash command with a prefix
+%pwd       # run `pwd` bash command
 %ls        # make sure you see data-python/
 ```
 
@@ -242,9 +234,12 @@ ax.view_init(20, 30)      # (theta, phi) viewpoint
 surf = ax.plot_surface(x, y, z, facecolors=rgb, linewidth=0, antialiased=False, shade=False)
 ```
 
+**Note**: If you absolutely cannot locate your downloaded data file, you can also find it in the shared folder at
+`/home/user299/projects/def-sponsor00/shared/astro/data/mt_bruno_elevation.csv`.
+
 {{< question num=11e >}}
 Replace `fig, ax = plt.subplots()` with `fig = plt.figure()` followed by `ax = fig.add_subplot()`. Don't forget about
-the `3d` projection.
+the `3d` projection. This is a tricky one -- feel free to google the problem.
 {{< /question >}}
 
 Let's replace the last line with the following (running this takes ~10s on my laptop):
