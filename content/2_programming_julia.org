@@ -10,7 +10,7 @@ This course will introduce you to the basics of [[https://julialang.org/][Julia]
 
 *Prerequisites*: None.
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 9:30am–10:00am Pacific{{</cgr>}}
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 9:30am–9:50am Pacific{{</cgr>}}
 
 {{<nolinktitle>}}Opening session{{</nolinktitle>}}
 
@@ -22,7 +22,7 @@ This course will introduce you to the basics of [[https://julialang.org/][Julia]
 {{<nolinktitle>}}The Julia REPL{{</nolinktitle>}} \\
 {{<nolinktitle>}}Packages{{</nolinktitle>}}
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 11:00am–12:30pm Pacific{{</cgr>}}
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 10:30am–12:30pm Pacific{{</cgr>}}
 
 {{<nolinktitle>}}Basics of the Julia language{{</nolinktitle>}} \\
 {{<nolinktitle>}}Collections{{</nolinktitle>}}\\
@@ -34,10 +34,12 @@ This course will introduce you to the basics of [[https://julialang.org/][Julia]
 {{<nolinktitle>}}Types{{</nolinktitle>}} \\
 {{<nolinktitle>}}Multiple dispatch{{</nolinktitle>}} \\
 {{<nolinktitle>}}Macros{{</nolinktitle>}} \\
+{{<nolinktitle>}}Arrays{{</nolinktitle>}} \\
+{{<nolinktitle>}}Data frames{{</nolinktitle>}} \\
 {{<nolinktitle>}}Plotting{{</nolinktitle>}} \\
 {{<nolinktitle>}}Performance{{</nolinktitle>}}
 
-# {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 9:30am–10:00am Pacific{{</cgr>}}
+# {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 9:30am–9:50am Pacific{{</cgr>}}
 
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/01_jl_intro" text="Opening session">}}
 
@@ -49,7 +51,7 @@ This course will introduce you to the basics of [[https://julialang.org/][Julia]
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/05_jl_repl" text="The Julia REPL">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/06_jl_pkg" text="Packages">}}
 
-# {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 11:00am–12:30pm Pacific{{</cgr>}}
+# {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 10:30am–12:30pm Pacific{{</cgr>}}
 
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/07_jl_basics" text="Basics of the Julia language">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/08_jl_collections" text="Collections">}}\\
@@ -61,5 +63,7 @@ This course will introduce you to the basics of [[https://julialang.org/][Julia]
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/11_jl_types" text="Types">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/12_jl_multi_dispatch" text="Multiple dispatch">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/13_jl_macros" text="Macros">}} \\
-# {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/14_jl_plotting" text="Plotting">}} \\
-# {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/15_jl_performance" text="Performance">}}
+# {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/14_jl_arrays" text="Arrays">}} \\
+# {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/15_jl_df" text="Data frames">}} \\
+# {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/16_jl_plotting" text="Plotting">}} \\
+# {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/17_jl_performance" text="Performance">}}
