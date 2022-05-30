@@ -36,6 +36,7 @@ This course will introduce you to the basics of [[https://julialang.org/][Julia]
 {{<nolinktitle>}}Arrays{{</nolinktitle>}} \\
 {{<nolinktitle>}}Data frames{{</nolinktitle>}} \\
 {{<nolinktitle>}}Plotting{{</nolinktitle>}} \\
+{{<nolinktitle>}}Non interactive execution{{</nolinktitle>}} \\
 {{<nolinktitle>}}Performance{{</nolinktitle>}}
 
 # {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 9:30am–9:50am Pacific{{</cgr>}}
@@ -64,4 +65,5 @@ This course will introduce you to the basics of [[https://julialang.org/][Julia]
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/13_jl_arrays" text="Arrays">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/14_jl_df" text="Data frames">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/15_jl_plotting" text="Plotting">}} \\
-# {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/16_jl_performance" text="Performance">}}
+# {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/16_jl_non_interactive" text="Non interactive execution">}} \\
+# {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/17_jl_performance" text="Performance">}}
