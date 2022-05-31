@@ -10,23 +10,25 @@ This course will introduce you to the basics of [[https://julialang.org/][Julia]
 
 *Prerequisites*: None.
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 9:30am–9:50am Pacific{{</cgr>}}
+*Software*: You will need an SSH client installed on your computer to access our training cluster. On Windows we recommend {{<a "https://mobaxterm.mobatek.net/download.html" "the free Home Edition of MobaXterm.">}}. On Mac and Linux, SSH is usually pre-installed (try typing ~ssh~ in a terminal to make sure it is there).
 
 {{<nolinktitle>}}Opening session{{</nolinktitle>}}
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 9:30am–9:50am Pacific{{</cgr>}}
 
-{{<cbr>}}On your own{{</cbr>}}
 
 {{<nolinktitle>}}Why another programming language?{{</nolinktitle>}} \\
 {{<nolinktitle>}}(Optional) Local installation{{</nolinktitle>}} \\
 {{<nolinktitle>}}Documentation{{</nolinktitle>}} \\
 {{<nolinktitle>}}The Julia REPL{{</nolinktitle>}} \\
 {{<nolinktitle>}}Packages{{</nolinktitle>}}
+{{<cbr>}}On your own{{</cbr>}}
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 10:30am–12:30pm Pacific{{</cgr>}}
 
 {{<nolinktitle>}}Basics of the Julia language{{</nolinktitle>}} \\
 {{<nolinktitle>}}Functions{{</nolinktitle>}}\\
 {{<nolinktitle>}}Control flow{{</nolinktitle>}}
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 10:30am–12:30pm Pacific{{</cgr>}}
+
 
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 – 9:30am–12:30pm Pacific{{</cgr>}}
 
@@ -38,27 +40,15 @@ This course will introduce you to the basics of [[https://julialang.org/][Julia]
 {{<nolinktitle>}}Plotting{{</nolinktitle>}} \\
 {{<nolinktitle>}}Non interactive execution{{</nolinktitle>}} \\
 {{<nolinktitle>}}Performance{{</nolinktitle>}}
-
-# {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 9:30am–9:50am Pacific{{</cgr>}}
-
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/01_jl_intro" text="Opening session">}}
-
-# {{<cbr>}}On your own{{</cbr>}}
-
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/02_jl_why" text="Why another programming language?">}} \\
 # {{<linkoptional url="https://westgrid-julia.netlify.app/2022_modules/03_jl_install" text="(Optional) Local installation">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/04_jl_doc" text="Documentation">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/05_jl_repl" text="The Julia REPL">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/06_jl_pkg" text="Packages">}}
-
-# {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 10:30am–12:30pm Pacific{{</cgr>}}
-
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/07_jl_basics" text="Basics of the Julia language">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/08_jl_functions" text="Functions">}}\\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/09_jl_control_flow" text="Control flow">}}
-
-# {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 – 9:30am–12:30pm Pacific{{</cgr>}}
-
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/10_jl_types" text="Types">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/11_jl_multi_dispatch" text="Multiple dispatch">}} \\
 # {{<linktitle url="https://westgrid-julia.netlify.app/2022_modules/12_jl_macros" text="Macros">}} \\
