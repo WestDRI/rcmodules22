@@ -4,13 +4,13 @@
 {{<cor>}}Tuesday, May 31 &nbsp;&&nbsp; Thursday, June 2{{</cor>}} \\
 {{<cgr>}}9:30am–12:30pm Pacific Time{{</cgr>}}
 
-This course will introduce you to the basics of [[https://julialang.org/][Julia]]—a modern, fast, and dynamic language particularly well suited for heavy computations and scientific programming.
+This course will introduce you to the basics of {{<a "https://julialang.org/" "Julia">}}— a modern, fast, and dynamic language particularly well suited for heavy computations and scientific programming.
 
 *Instructor*: Marie-Hélène Burle (SFU)
 
 *Prerequisites*: None.
 
-*Software*: You will need an SSH client installed on your computer to access our training cluster. On Windows we recommend {{<a "https://mobaxterm.mobatek.net/download.html" "the free Home Edition of MobaXterm.">}}. On Mac and Linux, SSH is usually pre-installed (try typing ~ssh~ in a terminal to make sure it is there).
+*Software*: You will need an SSH client installed on your computer to access our training cluster. On Windows we recommend {{<a "https://mobaxterm.mobatek.net/download.html" "the free Home Edition of MobaXterm.">}} On Mac and Linux, SSH is usually pre-installed (try typing ~ssh~ in a terminal to make sure it is there).
 
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 9:30am–9:50am Pacific{{</cgr>}}
 
