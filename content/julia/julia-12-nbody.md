@@ -1,12 +1,11 @@
 +++
 title = "Parallelizing N-body"
-slug = "julia-10-nbody"
-weight = 10
+slug = "julia-12-nbody"
+weight = 12
 katex = true
 +++
 
-In this section I will describe the second project that you can work on this afternoon. The project is the **direct
-N-body solver**.
+In this section I will describe a project that you can work on this afternoon: the **direct N-body solver**.
 
 Imagine that you place $N$ identical particles randomly into a unit cube, with zero initial velocities. Then you turn on
 gravity, so that the particles start attracting each other. There are no boundary conditions: these are the only
@@ -84,7 +83,7 @@ oldforce = zeros(Float32, npart, 3);
 end
 ```
 
-Tring running this code with `julia nbodySerial.jl`; the main loop takes ~6m on Cassiopeia. Obvisoulty, the most
+Tring running this code with `julia nbodySerial.jl`; the main loop takes ~6m on Uu. Obvisoulty, the most
 CPU-intensive part is force evaluation -- this is what you want to accelerate.
 
 There are many small arrays in the code -- let's use SharedArrays and fill them in parallel, e.g. you would replace
@@ -100,7 +99,7 @@ force = SharedArray{Float32}(npart,3);
 When updating shared arrays, you have a choice: either update `array[localindices(array)]` on each worker, or use a
 parallel `for` loop with reduction. I suggest the latter. What do you want to reduce? **Hint:** what else do you compute
 besides the force in that loop? For code syntax, check `parallelFor.jl` code in
-[this earlier section](../../julia/julia-06-distributed2).
+[this earlier section](../../julia202202/julia-06-distributed2).
 
 
 <!-- <     for i = 1:npart -->
@@ -109,7 +108,7 @@ besides the force in that loop? For code syntax, check `parallelFor.jl` code in
 
 ### Results
 
-With default **20 particles and $10^5$ steps** the code runs slower in parallel on Cassiopeia:
+With default **20 particles and $10^5$ steps** the code runs slower in parallel on Uu:
 
 | Code | Time  |
 | ------------- | ----- |
@@ -138,7 +137,9 @@ Here is what I got on Cedar with **100 particles and $10^3$ steps**:
 
 ### Links
 
-- [``Julia at Scale''](https://discourse.julialang.org/c/domain/parallel) forum
+- ["Julia at Scale"](https://discourse.julialang.org/c/domain/parallel) forum
 - Baolai Ge's (SHARCNET) webinar ["Julia: Parallel computing revisited"](https://youtu.be/xTLFz-5a5Ec)
 - WestGrid's March 2021 webinar ["Parallel programming in Julia"](https://youtu.be/2SafLn0xJKY)
 - [Julia performance tips](https://docs.julialang.org/en/v1/manual/performance-tips)
+- ["Think Julia: How to Think Like a Computer Scientist"](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html)
+  by Ben Lauwens and Allen Downey is a good introduction to basic Julia for beginners
