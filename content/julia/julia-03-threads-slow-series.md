@@ -33,13 +33,13 @@ Let's run our first multi-threaded code:
 end
 ```
 
-This would split the loop between 4 threads running on two CPU cores: each core would be taking turns running two of
-your threads (and likely threads from other users).
+This would split the loop between 4 threads running on two CPU cores: each core would be taking turns running
+two of your threads (and maybe threads from other users).
 
 Let's now fill an array with values in parallel:
 
 ```julia
-a = zeros(10)   # 64-bit floating array
+a = zeros(Int32, 10)    # 32-bit integer array
 @threads for i=1:10
     a[i] = threadid()   # should be no collision: each thread writes to its own part
 end
@@ -49,9 +49,9 @@ a
 Here we are filling this array in parallel, and no thread will overwrite another thread's result. In other words, this
 code is **thread-safe**.
 
-> **Note:** @threads macro is well-suited for shared-memory data parallelism without any reduction. Curiously, @threads
->   does not have any data reduction built-in, which is a serious omission that will likely be addressed in future
->   versions.
+> **Note:** @threads macro is well-suited for shared-memory data parallelism without any reduction. Curiously,
+> @threads does not have any data reduction built-in, which is a serious omission that will likely be
+> addressed in future versions.
 
 Let's initialize a large floating array:
 
@@ -72,8 +72,8 @@ end
 
 On the training cluster I get 14.38s, 14.18s, 14.98s with one thread.
 
-> **Note:** There is also `@btime` from BenchmarkTools package that has several advantages over `@time`. We will switch
-> to it soon.
+> **Note:** There is also `@btime` from BenchmarkTools package that has several advantages over `@time`. We
+> will switch to it soon.
 
 Let's now time parallel execution with 4 threads on 2 CPU cores:
 
@@ -88,7 +88,7 @@ On the training cluster I get 6.57s, 6.19s, 6.10s -- this is ~2X speedup, as exp
 
 ## Let's add reduction
 
-We will compute the sum $~~\sum_{i=1}^{10^6}i~~$ with multiple threads. Consider this code:
+We will compute the sum $\sum_{i=1}^{10^6}i$ with multiple threads. Consider this code:
 
 ```julia
 total = 0
@@ -104,9 +104,9 @@ This code is not thread-safe:
 - a new result every time
 - unfortunately, `@threads` does not have built-in reduction support
 
-Let's make it thread-safe (one of many possible solutions) using an **atomic variable** `total`. Only one thread can
-update an atomic variable at a time; all other threads have to wait for this variable to be released before they can
-write into it.
+Let's make it thread-safe (one of many possible solutions) using an **atomic variable** `total`. Only one
+thread can update an atomic variable at a time; all other threads have to wait for this variable to be
+released before they can write into it.
 
 ```julia
 total = Atomic{Int64}(0)
@@ -116,9 +116,9 @@ end
 println("total = ", total[])   # need to use [] to access atomic variable's value
 ```
 
-Now every time we get the same result. This code is supposed to be much slower: threads are waiting for others to finish
-updating the variable, so with 4 threads and one variable there should be a lot of waiting ... Atomic variables were not
-really designed for this type of usage ... Let's do some benchmarking!
+Now every time we get the same result. This code is supposed to be much slower: threads are waiting for others
+to finish updating the variable, so with 4 threads and one variable there should be a lot of waiting
+... Atomic variables were not really designed for this type of usage ... Let's do some benchmarking!
 
 ## Benchmarking in Julia
 
@@ -169,12 +169,12 @@ end
 @btime quick(Int64(1e15))   # correct result, 1.827 ns runtime
 ```
 
-In all these cases we see ~2 ns running time -- this can't be correct! What is going on here? It turns out that Julia is
-replacing the summation with the exact formula $n(n+1)/2$!
+In all these cases we see ~2 ns running time -- this can't be correct! What is going on here? It turns out
+that Julia is replacing the summation with the exact formula $n(n+1)/2$!
 
 We want to:
-1. force computation $~\Rightarrow~$ we'll compute something more complex than simple integer summation, so that it
-   cannot be replaced with a formula
+1. force computation $~\Rightarrow~$ we'll compute something more complex than simple integer summation, so
+   that it cannot be replaced with a formula
 1. exclude compilation time $~\Rightarrow~$ we'll package the code into a function + precompile it
 1. make use of optimizations for type stability $~\Rightarrow~$ package into a function + precompile it
 1. time only the CPU-intensive loops
@@ -183,10 +183,10 @@ We want to:
 
 ## Slow series
 
-We could replace integer summation $~~\sum_{i=1}^\infty i~~$ with the harmonic series, however, the traditional harmonic
-series $~~\sum\limits_{k=1}^\infty{1\over k}~~$ diverges. It turns out that if we omit the terms whose denominators in
-decimal notation contain any *digit* or *string of digits*, it converges, albeit very slowly (Schmelzer & Baillie 2008),
-e.g.
+We could replace integer summation $\sum_{i=1}^\infty i$ with the harmonic series, however, the traditional
+harmonic series $\sum\limits_{k=1}^\infty{1\over k}$ diverges. It turns out that if we omit the terms
+whose denominators in decimal notation contain any *digit* or *string of digits*, it converges, albeit very
+slowly (Schmelzer & Baillie 2008), e.g.
 
 {{< figure src="/img/slow.png" >}}
 
