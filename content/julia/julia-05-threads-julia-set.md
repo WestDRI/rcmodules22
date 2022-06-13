@@ -2,6 +2,7 @@
 title = "Parallelizing the Julia set with Base.Threads"
 slug = "julia-05-threads-julia-set"
 weight = 5
+katex = true
 +++
 
 <!-- In this section I will describe one of the two projects you can work on this afternoon.  -->
@@ -30,7 +31,8 @@ fractals for different values of $c$):
 - $c = 1.34-0.45i$ and 1.8X zoom-out $~\Rightarrow~$ beans
 - $c = 0.34-0.05i$ and 1.2X zoom-out $~\Rightarrow~$ connected spiral boots
 
-Below is the serial code `juliaSetSerial.jl`. If you are running Julia on your own computer, make sure you have the required packages:
+Below is the serial code `juliaSetSerial.jl`. If you are running Julia on your own computer, make sure you
+have the required packages:
 
 ```julia
 ] add BenchmarkTools
@@ -142,3 +144,9 @@ potential problems:
 > How would you fix this issue? If you manage to get a speedup closer to 8X with Base.Threads on 8 cores, we
 > would love to hear your solution! Please only check the {{<a "/bad-speedup-solution" "solution">}} once you
 > work on the problem yourself.
+
+> ### <font style="color:blue">Take-home exercise "Fractal.3"</font>
+> Build a 3D cube based on the Julia set where the 3rd axis would be a slowly varying `c` constant. For
+> example, try to interpolate linearly between $c = 0.355 + 0.355i$ and $c = 1.34-0.45i$, or between any other
+> two complex values. Send us an animation traversing your volume once you are done. What cube resolution
+> did you achieve?

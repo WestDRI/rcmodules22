@@ -4,6 +4,10 @@ slug = "julia-04-threadsx-slow-series"
 weight = 4
 +++
 
+{{<note>}}
+Note: the times cited in this chapter were measured on Apple's M1 Pro processor, not on the training cluster.
+{{</note>}}
+
 As you saw in the previous section, Base.Threads does not have a built-in parallel reduction. You can implement it
 yourself by hand, but all solutions are somewhat awkward, and you can run into problems with thread safety and
 performance (slow atomic variables, false sharing, etc) if you don't pay attention.
@@ -79,8 +83,8 @@ $ julia -t 8 mapreduce.jl   # runtime with 8 threads: 900.995 ms
 ?Threads.sum
 ```
 
-The expression in the round brackets below is a generator. It generates a sequence on the fly without storing individual
-elements, thus taking very little memory.
+The expression in the round brackets below is a generator. It generates a sequence on the fly without storing
+individual elements, thus taking very little memory.
 
 ```jl
 (i for i in 1:10)

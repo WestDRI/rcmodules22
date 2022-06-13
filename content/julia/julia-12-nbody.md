@@ -5,11 +5,11 @@ weight = 12
 katex = true
 +++
 
-In this section I will describe a project that you can work on this afternoon: the **direct N-body solver**.
+In this section I will describe a project that you can work at home: the **direct N-body solver**.
 
-Imagine that you place $N$ identical particles randomly into a unit cube, with zero initial velocities. Then you turn on
-gravity, so that the particles start attracting each other. There are no boundary conditions: these are the only
-particles in the Universe, and they can fly to $\infty$.
+Imagine that you place $N$ identical particles randomly into a unit cube, with zero initial velocities. Then
+you turn on gravity, so that the particles start attracting each other. There are no boundary conditions:
+these are the only particles in the Universe, and they can fly to $\infty$.
 
 > ## Question
 > What do you expect these particles will do?
@@ -134,12 +134,3 @@ Here is what I got on Cedar with **100 particles and $10^3$ steps**:
 | 8 cores | 22s |
 | 16 cores | 18s |
 | 32 cores | 19s  |
-
-### Links
-
-- ["Julia at Scale"](https://discourse.julialang.org/c/domain/parallel) forum
-- Baolai Ge's (SHARCNET) webinar ["Julia: Parallel computing revisited"](https://youtu.be/xTLFz-5a5Ec)
-- WestGrid's March 2021 webinar ["Parallel programming in Julia"](https://youtu.be/2SafLn0xJKY)
-- [Julia performance tips](https://docs.julialang.org/en/v1/manual/performance-tips)
-- ["Think Julia: How to Think Like a Computer Scientist"](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html)
-  by Ben Lauwens and Allen Downey is a good introduction to basic Julia for beginners
