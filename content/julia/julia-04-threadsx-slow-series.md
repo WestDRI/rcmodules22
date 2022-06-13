@@ -68,9 +68,9 @@ $ julia mapreduce.jl        # runtime with 1 thread: 5.255 s
 $ julia -t 8 mapreduce.jl   # runtime with 8 threads: 900.995 ms
 ```
 
-> ### Exercise "ThreadsX.1"
-> Using the compact (one-line) if-else notation, shorten this code by four lines. Time the new, shorter code with one
-> and several threads.
+> ### <font style="color:blue">Exercise "ThreadsX.1"</font>
+> Using the compact (one-line) if-else notation, shorten this code by four lines. Time the new, shorter code
+> with one and several threads.
 
 ## Parallelizing the slow series with ThreadsX.sum
 
@@ -104,10 +104,10 @@ using BenchmarkTools, ThreadsX
    # with 8 threads: 906.420 ms, prints 14.241913010381973
 ```
 
-> ### Exercise "ThreadsX.2"
-> The expression `[i for i in 1:10 if i%2==1]` produces an array of odd integers between 1
-> and 10. Using this syntax, remove zero terms from the last generator, i.e. write a parallel code for summing the slow
-> series with a generator that contains only non-zero terms. It should run slightly faster than the code with the
+> ### <font style="color:blue">Exercise "ThreadsX.2"</font>
+> The expression `[i for i in 1:10 if i%2==1]` produces an array of odd integers between 1 and 10. Using this
+> syntax, remove zero terms from the last generator, i.e. write a parallel code for summing the slow series
+> with a generator that contains only non-zero terms. It should run slightly faster than the code with the
 > original generator.
 
 <!-- ```jl -->
@@ -123,7 +123,7 @@ end
 @btime ThreadsX.sum(numericTerm, 1:Int64(1e9))            # 890.466 ms, same result
 ```
 
-> ### Exercise "ThreadsX.3"
+> ### <font style="color:blue">Exercise "ThreadsX.3"</font>
 > Rewrite the last code replacing `sum` with `mapreduce`. **Hint**: look up help for `mapreduce()`.
 
 <!-- ```jl -->

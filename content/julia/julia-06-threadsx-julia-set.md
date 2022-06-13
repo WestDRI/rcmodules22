@@ -36,7 +36,8 @@ Running this new, vectorized version of the serial code on my laptop, I see `@bt
 1. Load ThreadsX library.
 1. Replace `map()` with `ThreadsX.map()`.
 
-With 8 threads on my laptop, the runtime went down to 180.815 -- 5.6X speedup. On 8 cores on Uu I see 6.5X speedup.
+With 8 threads on my laptop, the runtime went down to 180.815 -- 5.6X speedup. On 8 cores on the training
+cluster I see 6.5X speedup.
 
 ## Alternative parallel solution
 

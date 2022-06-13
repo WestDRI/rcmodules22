@@ -65,14 +65,14 @@ accounts.
 
 ### Julia on the training cluster for this workshop
 
-We have Julia on our training cluster *uu.c3.ca*.
+We have Julia on our training cluster *kandinsky.c3.ca*.
 
 {{<note>}}
 Our training cluster has: <br><br>
 
-- one login node with 16 *"persistent"* cores and 32GB of memory, <br>
-- 17 compute nodes with 16 *"compute"* cores and 60GB of memory (272 cores in total), and <br>
-- one GPU node with 4 *"compute"* cores, 1 vGPU (8GB) and 22GB of memory.
+- one login node with 8 *"persistent"* cores and 30GB of memory, <br>
+- 60 compute nodes with 4 *"compute"* cores and 15GB of memory on each (240 cores in total)
+<!-- - one GPU node with 4 *"compute"* cores, 1 vGPU (8GB) and 22GB of memory. -->
 {{</note>}}
 
 In our introductory Julia course we use Julia inside a Jupyter notebook. Today we will be starting multiple threads and processes, with the eventual goal of running our

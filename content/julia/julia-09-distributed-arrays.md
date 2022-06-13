@@ -1,9 +1,11 @@
 +++
 title = "DistributedArrays.jl"
 slug = "julia-09-distributed-arrays"
-weight = 7
+weight = 9
 katex = true
 +++
+
+<!-- Add Baolai's materials? -->
 
 **DistributedArrays** package provides **DArray** object that can be split across several processes (set of workers),
 either on the same or multiple nodes. This allows use of arrays that are too large to fit in memory on one node. Each
@@ -122,10 +124,11 @@ de = distribute(e)       # distribute `e` across all workers
 showDistribution(de)
 ```
 
-> ## Exercise 9
-> Using either `top` or `htop` command on Cassiopeia, study memory usage with DistributedArrays. Are these arrays really
-> distributed across processes? Use a _largish_ array for this: large enough to spot memory usage, but not too large not
-> to exceed physical memory and not to block other participants (especially if you do this on the login node).
+> ### <font style="color:blue">Exercise "DistributedArrays.1"</font>
+> Using either `top` or `htop` command on the training cluster, study memory usage with DistributedArrays. Are
+> these arrays really distributed across processes? Use a _largish_ array for this: large enough to spot
+> memory usage, but not too large not to exceed physical memory and not to block other participants
+> (especially if you do this on the login node).
 
 ### Building a distributed array from local pieces [^1]
 
@@ -185,7 +188,7 @@ d = DArray(reshape([d11 d12 d21 d22],(2,2)))   # create a distributed 8x8 matrix
 d
 ```
 
-> ## Exercise 10
+> ### <font style="color:blue">Exercise "DistributedArrays.2"</font>
 > At this point, if you redefine `showDistribution()` (need to do this only on the control process!), most likely you
 > will see no output if you run `showDistribution(d)`. Any idea why?
 

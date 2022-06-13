@@ -21,7 +21,7 @@ We can cycle through all available workers:
 [(i,w) for (i,w) in enumerate(workers())]   # array of tuples (counter, worker ID)
 ```
 
-> ### Exercise "Distributed.3"
+> ### <font style="color:blue">Exercise "Distributed.3"</font>
 > Using this syntax, construct an array `r` of Futures, and then get their results and sum them up with
 > ```julia
 > print("total = ", sum([fetch(r[i]) for i in 1:nworkers()]))
@@ -37,9 +37,9 @@ We can cycle through all available workers:
 With two workers and two CPU cores, we should get times very similar to the last run. However, now our code can scale to
 much larger numbers of cores!
 
-> ### Exercise "Distributed.4"
-> If you did the previous exercise with an interactive job, now submit a Slurm batch job running the same code on 4 CPU
-> cores. Next, try 8 cores. Did your timing change?
+> ### <font style="color:blue">Exercise "Distributed.4"</font>
+> If you did the previous exercise with an interactive job, now submit a Slurm batch job running the same code
+> on 4 CPU cores. Next, try 8 cores. Did your timing change?
 
 ### Solution 2: parallel `for` loop with summation reduction
 
@@ -76,7 +76,7 @@ precompile(slow, (Int, Int))
 slow(Int64(1e8), 9)   # total = 13.277605949855722
 ```
 
-> ### Exercise "Distributed.5"
+> ### <font style="color:blue">Exercise "Distributed.5"</font>
 > Switch from using `@time` to using `@btime` in this code. What changes did you have to make?
 
 <!-- 1. remove `@time` from inside `slow()` definition, add `@btime` when calling the function -->
@@ -85,7 +85,7 @@ slow(Int64(1e8), 9)   # total = 13.277605949855722
 
 This will produce the single time for the entire parallel loop (1.498s in my case).
 
-> ### Exercise "Distributed.6"
+> ### <font style="color:blue">Exercise "Distributed.6"</font>
 > Repeat on 8 CPU cores. Did your timing improve?
 
 I tested this code (`parallelFor.jl`) on Cedar with v1.5.2 and `n=Int64(1e9)`:

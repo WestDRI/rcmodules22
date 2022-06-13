@@ -70,7 +70,7 @@ and then fill it with values using a single thread, and time this operation:
 end
 ```
 
-On Uu I get 14.38s, 14.18s, 14.98s with one thread.
+On the training cluster I get 14.38s, 14.18s, 14.98s with one thread.
 
 > **Note:** There is also `@btime` from BenchmarkTools package that has several advantages over `@time`. We will switch
 > to it soon.
@@ -84,7 +84,7 @@ using Base.Threads
 end
 ```
 
-On Uu I get 6.57s, 6.19s, 6.10s -- this is ~2X speedup, as expected.
+On the training cluster I get 6.57s, 6.19s, 6.10s -- this is ~2X speedup, as expected.
 
 ## Let's add reduction
 
@@ -134,9 +134,10 @@ end
 println("total = ", total)
 ```
 
-On Uu I get 10.87s, 10.36s, 11.07s. Here `@time` also includes JIT compilation time (marginal here). Let's switch to
-`@btime` from BenchmarkTools: it runs the code several times, reports the shortest time, and prints the result only
-once. Therefore, with `@btime` you don't need to precompile the code.
+On the training cluster I get 10.87s, 10.36s, 11.07s. Here `@time` also includes JIT compilation time
+(marginal here). Let's switch to `@btime` from BenchmarkTools: it runs the code several times, reports the
+shortest time, and prints the result only once. Therefore, with `@btime` you don't need to precompile the
+code.
 
 ```julia
 using BenchmarkTools
@@ -260,22 +261,21 @@ end
 @btime slow(Int64(1e8), 9)
 ```
 
-> ### Exercise "Threads.1"
-> Put this version of `slow()` along with `digitsin()` into a file `atomicThreads.jl` and run it from the bash terminal
-> (or from from REPL). First, time this code with 1e8 terms using one thread (serial run `julia
-> atomicThreads.jl`). Next, time it with 2 or 4 threads (parallel run `julia -t 2 atomicThreads.jl`). Did you get any
-> speedup? Make sure you obtain the correct numerical result.
+> ### <font style="color:blue">Exercise "Threads.1"</font>
+> Put this version of `slow()` along with `digitsin()` into the file `atomicThreads.jl` and run it from the
+> bash terminal (or from from REPL). First, time this code with 1e8 terms using one thread (serial run `julia
+> atomicThreads.jl`). Next, time it with 2 or 4 threads (parallel run `julia -t 2 atomicThreads.jl`). Did you
+> get any speedup? Make sure you obtain the correct numerical result.
 
 With one thread I measured 2.838 s. The runtime stayed essentially the same (now we are using `atomic_add()`) which
 makes sense: with one thread there is no waiting for the variable to be released.
 
 With four threads, I measured 5.261 s -- let's discuss! Is this what we expected?
 
-> ### Exercise "Threads.2"
-> Let's run the previous exercise as a batch job with `sbatch`.
-
-> Hint: you will need to go to the login node and submit a multi-core job with `sbatch shared.sh`. When finished, do not
-> forget to go back to (or restart) your interactive job.
+> ### <font style="color:blue">Exercise "Threads.2"</font>
+> Let's run the previous exercise as a batch job with `sbatch`.  **Hint**: you will need to go to the login
+> node and submit a multi-core job with `sbatch shared.sh`. When finished, do not forget to go back to (or
+> restart) your interactive job.
 
 ## 2nd version: alternative thread-safe implementation
 
@@ -329,7 +329,7 @@ function digitsin(digits::Int, num)   # decimal representation of `digits` has N
     return false
 end
 
-# Our initial function:
+ # Our initial function:
 function slow(n::Int64, digits::Int)
     total = zeros(Float64, nthreads())
     @threads for i in 1:n
@@ -340,7 +340,7 @@ function slow(n::Int64, digits::Int)
     return sum(total)
 end
 
-# Function optimized to prevent false sharing:
+ # Function optimized to prevent false sharing:
 function space(n::Int64, digits::Int)
     space = 8 # assume a 64-byte cache line, hence 8 Float64 elements per cache line
     total = zeros(Float64, nthreads()*space)
@@ -356,7 +356,8 @@ end
 @btime space(Int64(1e8), 9)
 
 ```
-Here are the timings from two successive calls to `slow()` and `space()` on *uu.c3.ca*:
+
+Here are the timings from two successive calls to `slow()` and `space()` on the the training cluster:
 
 ```sh
 [~/tmp]$ julia separateSums.jl 
@@ -375,9 +376,9 @@ The speedup is substantial! Thank you Pierre!
 We see similar speedup with `space = 4`, but not quite with `space = 2`, suggesting that we are dealing with 32-byte
 cache lines on our system.
 
-> ### Exercise "Threads.3"
-> Save this code as `separateSums.jl` (along with other necessary bits) and run it on four threads from the command line
-> `julia -t 4 separateSums.jl`. What is your new code's timing?
+> ### <font style="color:blue">Exercise "Threads.3"</font>
+> Save this code as `separateSums.jl` (along with other necessary bits) and run it on four threads from the
+> command line `julia -t 4 separateSums.jl`. What is your new code's timing?
 
 With four threads I measured 992.346 ms -- let's discuss!
 
@@ -410,12 +411,12 @@ end
 
 Let's time this version together with `heavyThreads.jl`: 984.076 ms -- is this the fastest version?
 
-> ### Exercise "Threads.4"
+> ### <font style="color:blue">Exercise "Threads.4"</font>
 > Would the runtime be different if we use 2 threads instead of 4?
 
 Finally, below are the timings on Cedar with `heavyThreads.jl`. Note that the times reported here were measured with
-1.6.2. Going from 1.5 to 1.6, Julia saw quite a big improvement (~30%) in performance, plus a CPU on Cedar is different
-from a vCPU on Uu, so treat these numbers only as relative to each other.
+1.6.2. Going from 1.5 to 1.6, Julia saw quite a big improvement (~30%) in performance, plus a CPU on Cedar is
+different from a vCPU on the training cluster, so treat these numbers only as relative to each other.
 
 ```sh
 #!/bin/bash

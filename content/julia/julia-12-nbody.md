@@ -83,8 +83,8 @@ oldforce = zeros(Float32, npart, 3);
 end
 ```
 
-Tring running this code with `julia nbodySerial.jl`; the main loop takes ~6m on Uu. Obvisoulty, the most
-CPU-intensive part is force evaluation -- this is what you want to accelerate.
+Tring running this code with `julia nbodySerial.jl`; the main loop takes ~6m on the training
+cluster. Obviously, the most CPU-intensive part is force evaluation -- this is what you want to accelerate.
 
 There are many small arrays in the code -- let's use SharedArrays and fill them in parallel, e.g. you would replace
 
@@ -108,7 +108,7 @@ besides the force in that loop? For code syntax, check `parallelFor.jl` code in
 
 ### Results
 
-With default **20 particles and $10^5$ steps** the code runs slower in parallel on Uu:
+With default **20 particles and $10^5$ steps** the code runs slower in parallel on the training cluster:
 
 | Code | Time  |
 | ------------- | ----- |

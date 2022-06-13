@@ -1,8 +1,10 @@
 +++
 title = "SharedArrays.jl"
 slug = "julia-11-shared-arrays"
-weight = 9
+weight = 11
 +++
+
+<!-- Add Baolai's materials? -->
 
 Unlike distributed **DArray** from **DistributedArrays.jl**, a **SharedArray** object is stored in full on the control
 process, but it is shared across all workers on the same node, with a significant cache on each worker. **SharedArrays**

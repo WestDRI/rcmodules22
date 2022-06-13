@@ -486,7 +486,7 @@ savefig("parallel.png")
 
 <!-- ### Results -->
 
-<!-- Finally, here are my timings on Uu: -->
+<!-- Finally, here are my timings on the training cluster: -->
 
 <!-- | Code | Time  | -->
 <!-- | ------------- | ----- | -->

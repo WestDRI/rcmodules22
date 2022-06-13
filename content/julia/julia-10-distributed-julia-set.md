@@ -43,7 +43,7 @@ end
 
 ### Results for 1000^2
 
-Finally, here are my timings on Uu:
+Finally, here are my timings on the training cluster:
 
 | Code | Time on login node (p-flavour vCPUs) | Time on compute node (c-flavour vCPUs) |
 | ------------- | ----- | ----- |

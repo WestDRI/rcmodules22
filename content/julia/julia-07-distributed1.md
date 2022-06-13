@@ -73,7 +73,7 @@ Inside this job, start Julia with `julia` (single control process).
 
 ```jl
 using Distributed
-addprocs(4)   # add 4 worker processes; this might take a while on uu
+addprocs(4)   # add 4 worker processes; this might take a while on the training cluster
 println("number of cores = ", nprocs())       # 5 cores
 println("number of workers = ", nworkers())   # 4 workers
 workers()                                     # list worker IDs
@@ -175,7 +175,7 @@ fetch(@spawnat 2 a+10)   # combine both in one line; the control process will pa
 @fetchfrom 2 a+10        # shorter notation; exactly the same as the previous command
 ```
 
-> ### Exercise "Distributed.1"
+> ### <font style="color:blue">Exercise "Distributed.1"</font>
 > Try to define and run a function on one of the workers, e.g.
 > ```julia
 > function cube(x)
@@ -191,9 +191,9 @@ fetch(@spawnat 2 a+10)   # combine both in one line; the control process will pa
 > ```
 > does not seem to have any effect.
 
-> ### Exercise "Distributed.2"
-> Now run the same function on all workers, but not on the control process. **Hint**: use `workers()` to cycle through
-> all worker processes and `println()` to print from each worker.
+> ### <font style="color:blue">Exercise "Distributed.2"</font>
+> Now run the same function on all workers, but not on the control process. **Hint**: use `workers()` to cycle
+> through all worker processes and `println()` to print from each worker.
 
 <!-- ```jl -->
 <!-- using Distributed -->
@@ -253,7 +253,8 @@ end
 @btime slow(Int64(1e8), 9)     # serial run: total = 13.277605949858103
 ```
 
-For me this serial run takes 3.192 s on uu. Next, let's run it on 3 (control + 2 workers) cores simultaneously:
+For me this serial run takes 3.192 s on the training cluster. Next, let's run it on 3 (control + 2 workers)
+cores simultaneously:
 
 ```jl
 @everywhere using BenchmarkTools

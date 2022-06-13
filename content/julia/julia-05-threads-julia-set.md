@@ -107,18 +107,18 @@ nccreate(filename, "stability", "x", collect(1:height), "y", collect(1:width), t
 ncwrite(stability, filename, "stability");
 ```
 
-This code will produce the file `test.nc` that you can download to your computer and render with ParaView or other
-visualization tool.
+This code will produce the file `test.nc` that you can download to your computer and render with ParaView or
+other visualization tool.
 
-> ### Exercise "Fractal.1"
+> ### <font style="color:blue">Exercise "Fractal.1"</font>
 > Try one of these:
 > 1. With NetCDF output, compare the expected and actual file sizes.
 > 1. Try other values of the parameter $c$ (see above).
 > 1. Increase the problem size from the default $2000^2$. Will you have enough physical memory for $8000^2$?
 >    How does this affect the runtime?
 >
-> If computing takes forever, recall that `@btime` runs the code multiple times, while `@time` does it only once. Also,
-> you might like a progress bar inside the terminal:
+> If computing takes forever, recall that `@btime` runs the code multiple times, while `@time` does it only
+> once. Also, you might like a progress bar inside the terminal:
 > ```jl
 > using ProgressMeter
 > @showprogress <for loop>
@@ -129,15 +129,16 @@ visualization tool.
 1. Load Base.Threads.
 1. Add `@threads` before the outer loop, and time this parallel loop.
 
-On my laptop with 8 threads the timing is 193.942 ms (4.8X speedup) which is good but not great -- certainly worse than
-linear speedup ... The speedup on Uu cluster is not great either. There could be several potential problems:
+On my laptop with 8 threads the timing is 193.942 ms (4.8X speedup) which is good but not great -- certainly
+worse than linear speedup ... The speedup on the training cluster is not great either. There could be several
+potential problems:
 
 1. False sharing effect (cache issues with multiple threads writing into adjacent array elements).
 1. Less than perfect load balancing between different threads.
 1. Row-major vs. column-major loop order for filling in the `stability` array.
 1. Some CPU cores are slower efficiency cores, and they are slowing down the whole calculation.
 
-> ### Take-home exercise "Fractal.2"
-> How would you fix this issue? If you manage to get a speedup closer to 8X with Base.Threads on 8 cores, we would love
-> to hear your solution! Please only check the {{<a "/bad-speedup-solution" "solution">}} once you work on the problem
-> yourself.
+> ### <font style="color:blue">Take-home exercise "Fractal.2"</font>
+> How would you fix this issue? If you manage to get a speedup closer to 8X with Base.Threads on 8 cores, we
+> would love to hear your solution! Please only check the {{<a "/bad-speedup-solution" "solution">}} once you
+> work on the problem yourself.
