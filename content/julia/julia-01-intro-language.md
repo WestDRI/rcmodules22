@@ -187,6 +187,9 @@ C-s		forward search
 Remember our workflow to launch a Julia REPL:
 
 ```sh
+# Step 0: start tmux (optional), gives you left-right panes, persistent terminal session
+$ tmux
+
 # Step 1: run the script to load our Julia environment with pre-installed packages
 $ source /project/def-sponsor00/shared/julia/config/loadJulia.sh
 

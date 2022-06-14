@@ -41,8 +41,8 @@ cluster I see 6.5X speedup.
 
 ## Alternative parallel solution
 
-Jeremiah O'Neil suggested an alternative, slightly faster implementation using `ThreadsX.foreach` (not covered in this
-workshop):
+Jeremiah O'Neil suggested an alternative, slightly faster (and not requiring the `point` array) implementation
+using `ThreadsX.foreach` (not covered in this workshop):
 
 ```jl
 function juliaSet(height, width)

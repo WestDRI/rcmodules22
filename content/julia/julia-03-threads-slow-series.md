@@ -299,16 +299,17 @@ end
 
 <!-- http://www.nic.uoregon.edu/~khuck/ts/acumem-report/manual_html/ch06s07.html -->
 
-***Update**: Pierre Fortin brought to our attention the [false sharing](https://en.wikipedia.org/wiki/False_sharing)
-effect. It arises when several threads are writing into variables placed close enough to each other to end up in the
-same cache line. Cache lines (typically ~32-128 bytes in size) are chunks of memory handled by the cache. If any two
-threads are updating variables (such as two neighbouring elements in our `total` array here) that end up in the same
-cache line, the cache line will have to migrate between the two threads' caches, reducing the performance.*
+***Update**: Pierre Fortin brought to our attention the
+[false sharing](https://en.wikipedia.org/wiki/False_sharing) effect. It arises when several threads are
+writing into variables placed close enough to each other to end up in the same cache line. Cache lines
+(typically ~32-128 bytes in size) are chunks of memory handled by the cache. If any two threads are updating
+variables (such as two neighbouring elements in our `total` array here) that end up in the same cache line,
+the cache line will have to migrate between the two threads' caches, reducing the performance.*
 
-*In general, you want to align shared global data (thread partitions in the array `total` in our case) to cache line
-boundaries, or avoid storing thread-specific data in an array indexed by the thread id or rank. Pierre suggested a
-solution using the function `space()` which introduces some spacing between array elements so that data from different
-threads do not end up in the same cache line:*
+*In general, you want to align shared global data (thread partitions in the array `total` in our case) to
+cache line boundaries, or avoid storing thread-specific data in an array indexed by the thread id or
+rank. Pierre suggested a solution using the function `space()` which introduces some spacing between array
+elements so that data from different threads do not end up in the same cache line:*
 
 ```jl
 using Base.Threads
@@ -371,21 +372,21 @@ Here are the timings from two successive calls to `slow()` and `space()` on the 
   275.662 ms (54 allocations: 5.33 KiB)
 ```
 
-The speedup is substantial! Thank you Pierre!
+The speedup is substantial!
 
-We see similar speedup with `space = 4`, but not quite with `space = 2`, suggesting that we are dealing with 32-byte
-cache lines on our system.
+We see similar speedup with `space = 4`, but not quite with `space = 2`, suggesting that we are dealing with
+32-byte cache lines on our system.
 
-> ### <font style="color:blue">Exercise "Threads.3"</font>
-> Save this code as `separateSums.jl` (along with other necessary bits) and run it on four threads from the
-> command line `julia -t 4 separateSums.jl`. What is your new code's timing?
+<!-- > ### <font style="color:blue">Exercise "Threads.3a"</font> -->
+<!-- > Save this code as `separateSums.jl` (along with other necessary bits) and run it on four threads from the -->
+<!-- > command line `julia -t 4 separateSums.jl`. What is your new code's timing? -->
 
-With four threads I measured 992.346 ms -- let's discuss!
+<!-- With four threads I measured 992.346 ms -- let's discuss! -->
 
 ## 3rd multi-threaded version: using heavy loops
 
-This version is classical **task parallelism**: we divide the sum into pieces, each to be processed by an individual
-thread. For each thread we explicitly compute the `start` and `finish` indices it processes.
+This version is classical **task parallelism**: we divide the sum into pieces, each to be processed by an
+individual thread. For each thread we explicitly compute the `start` and `finish` indices it processes.
 
 ```jl
 using Base.Threads
@@ -411,12 +412,13 @@ end
 
 Let's time this version together with `heavyThreads.jl`: 984.076 ms -- is this the fastest version?
 
-> ### <font style="color:blue">Exercise "Threads.4"</font>
+> ### <font style="color:blue">Exercise "Threads.3"</font>
 > Would the runtime be different if we use 2 threads instead of 4?
 
-Finally, below are the timings on Cedar with `heavyThreads.jl`. Note that the times reported here were measured with
-1.6.2. Going from 1.5 to 1.6, Julia saw quite a big improvement (~30%) in performance, plus a CPU on Cedar is
-different from a vCPU on the training cluster, so treat these numbers only as relative to each other.
+Finally, below are the timings on Cedar with `heavyThreads.jl`. Note that the times reported here were
+measured with 1.6.2. Going from 1.5 to 1.6, Julia saw quite a big improvement (~30%) in performance, plus a
+CPU on Cedar is different from a vCPU on the training cluster, so treat these numbers only as relative to each
+other.
 
 ```sh
 #!/bin/bash
@@ -437,8 +439,8 @@ julia -t $SLURM_CPUS_PER_TASK heavyThreads.jl
 ## Task parallelism with Base.Threads: building a dynamic scheduler
 
 In addition to `@threads` (automatically parallelize a loop with multiple threads), Base.Threads includes
-`Threads.@spawn` that runs a task (an expression / function) on any available thread and then immediately returns to the
-main thread.
+`Threads.@spawn` that runs a task (an expression / function) on any available thread and then immediately
+returns to the main thread.
 
 Consider this:
 
@@ -465,10 +467,11 @@ end
 You can think of `@spawn` as a tool to dynamically offload part of your computation to another thread -- this is
 classical **task parallelism**, unlike `@threads` which is **data parallelism**.
 
-With `@spawn` it is up to you to write an algorithm to subdivide your computation into multiple threads. With a large
-loop, one possibility is to divide the loop into two pieces, offload the first piece to another thread and run the other
-one locally, and then recursively subdivide these pieces into smaller chunks. With `N` subdivisions you will have `2^N`
-tasks running on a fixed number of threads, and only one of these tasks will not be scheduled with `@spawn`.
+With `@spawn` it is up to you to write an algorithm to subdivide your computation into multiple threads. With
+a large loop, one possibility is to divide the loop into two pieces, offload the first piece to another thread
+and run the other one locally, and then recursively subdivide these pieces into smaller chunks. With `N`
+subdivisions you will have `2^N` tasks running on a fixed number of threads, and only one of these tasks will
+not be scheduled with `@spawn`.
 
 ```jl
 using Base.Threads
@@ -519,7 +522,8 @@ n = Int64(1e8)
 ```
 
 With four threads and `numsubs=4`, in one of my tests the runtime went down from 2.986 s (serial) to 726.044
-ms. However, depending on the number of subintervals, Julia might decide not to use all four threads!  Consider this:
+ms. However, depending on the number of subintervals, Julia might decide not to use all four threads!
+Consider this:
 
 ```sh
 julia> nthreads()

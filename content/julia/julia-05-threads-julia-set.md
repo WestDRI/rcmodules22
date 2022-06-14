@@ -138,7 +138,7 @@ potential problems:
 1. False sharing effect (cache issues with multiple threads writing into adjacent array elements).
 1. Less than perfect load balancing between different threads.
 1. Row-major vs. column-major loop order for filling in the `stability` array.
-1. Some CPU cores are slower efficiency cores, and they are slowing down the whole calculation.
+1. Some CPU cores are lower efficiency, and they are slowing down the whole calculation.
 
 > ### <font style="color:blue">Take-home exercise "Fractal.2"</font>
 > How would you fix this issue? If you manage to get a speedup closer to 8X with Base.Threads on 8 cores, we

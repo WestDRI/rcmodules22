@@ -37,21 +37,21 @@ computer.
 
 
 
-<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
-<!-- {{<linktitle url="../julia/julia-01-intro-language" text="Introduction to Julia language">}}\ -->
-<!-- {{<linktitle url="../julia/julia-02-intro-parallel" text="Intro to parallelism">}}\ -->
-<!-- {{<linktitle url="../julia/julia-03-threads-slow-series" text="Multi-threading with Base.Threads (slow series)">}} \ -->
-<!-- {{<linktitle url="../julia/julia-04-threadsx-slow-series" text="Multi-threading with ThreadsX (slow series)">}} \ -->
-<!-- {{<linktitle url="../julia/julia-05-threads-julia-set" text="Parallelizing the Julia set with Base.Threads">}}\ -->
-<!-- {{<linktitle url="../julia/julia-06-threadsx-julia-set" text="Parallelizing the Julia set with ThreadsX">}} -->
-
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \
-{{<nolinktitle>}}Introduction to Julia language{{</nolinktitle>}} \
-{{<nolinktitle>}}Intro to parallelism{{</nolinktitle>}} \
-{{<nolinktitle>}}Multi-threading with Base.Threads (slow series){{</nolinktitle>}} \
-{{<nolinktitle>}}Multi-threading with ThreadsX (slow series){{</nolinktitle>}} \
-{{<nolinktitle>}}Parallelizing the Julia set with Base.Threads{{</nolinktitle>}} \
-{{<nolinktitle>}}Parallelizing the Julia set with ThreadsX{{</nolinktitle>}}
+{{<linktitle url="../julia/julia-01-intro-language" text="Introduction to Julia language">}}\
+{{<linktitle url="../julia/julia-02-intro-parallel" text="Intro to parallelism">}}\
+{{<linktitle url="../julia/julia-03-threads-slow-series" text="Multi-threading with Base.Threads (slow series)">}} \
+{{<linktitle url="../julia/julia-04-threadsx-slow-series" text="Multi-threading with ThreadsX (slow series)">}} \
+{{<linktitle url="../julia/julia-05-threads-julia-set" text="Parallelizing the Julia set with Base.Threads">}}\
+{{<linktitle url="../julia/julia-06-threadsx-julia-set" text="Parallelizing the Julia set with ThreadsX">}}
+
+<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
+<!-- {{<nolinktitle>}}Introduction to Julia language{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Intro to parallelism{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Multi-threading with Base.Threads (slow series){{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Multi-threading with ThreadsX (slow series){{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Parallelizing the Julia set with Base.Threads{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Parallelizing the Julia set with ThreadsX{{</nolinktitle>}} -->
 
 
 
@@ -61,9 +61,9 @@ computer.
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
 <!-- {{<linktitle url="../julia/julia-07-distributed1" text="Distributed.jl: basics">}}\ -->
 <!-- {{<linktitle url="../julia/julia-08-distributed2" text="Distributed.jl: three scalable versions of the slow series">}} \ -->
-<!-- {{<linktitle url="../julia/julia-09-distributed-arrays" text="DistributedArrays.jl">}} - add Baolai's materials?\ -->
+<!-- {{<linktitle url="../julia/julia-09-distributed-arrays" text="DistributedArrays.jl">}}\ -->
 <!-- {{<linktitle url="../julia/julia-10-distributed-julia-set" text="Parallelizing the Julia set with DistributedArrays">}}\ -->
-<!-- {{<linktitle url="../julia/julia-11-shared-arrays" text="SharedArrays.jl">}} - add Baolai's materials?\ -->
+<!-- {{<linktitle url="../julia/julia-11-shared-arrays" text="SharedArrays.jl">}}\ -->
 <!-- {{<linkoptional url="../julia/julia-12-nbody" text="Parallelizing the N-body problem">}} (supplemental material)\ -->
 <!-- {{<linkoptional url="../julia/julia-13-asm" text="Parallelizing the additive Schwarz method">}} (supplemental material) -->
 
@@ -75,3 +75,16 @@ computer.
 {{<nolinktitle>}}SharedArrays.jl{{</nolinktitle>}} \
 {{<nolinktitle>}}Parallelizing the N-body problem{{</nolinktitle>}} (supplemental material)\
 {{<nolinktitle>}}Parallelizing the additive Schwarz method{{</nolinktitle>}} (supplemental material)
+
+
+
+
+### External links
+
+- ["Julia at Scale"](https://discourse.julialang.org/c/domain/parallel) forum
+- Baolai Ge's (SHARCNET) November 2020 webinar
+  ["Julia: Parallel computing revisited"](https://youtu.be/xTLFz-5a5Ec)
+- WestGrid's March 2021 webinar ["Parallel programming in Julia"](https://youtu.be/2SafLn0xJKY)
+- [Julia performance tips](https://docs.julialang.org/en/v1/manual/performance-tips)
+- ["Think Julia: How to Think Like a Computer Scientist"](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html)
+  by Ben Lauwens and Allen Downey is a good introduction to basic Julia for beginners

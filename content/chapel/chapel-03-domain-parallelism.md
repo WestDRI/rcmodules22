@@ -999,15 +999,6 @@ $ ls -l *dat
 
 The file *output.dat* should contain the 8x8 temperature array after convergence.
 
-# Other topics
-
-* binary I/O: check https://chapel-lang.org/publications/ParCo-Larrosa.pdf
-* calling C/C++ functions from Chapel
-* writing arrays to NetCDF and HDF5 files from Chapel: covered in our
-  [March 2020 webinar](https://westgrid.github.io/trainingMaterials/programming#working-with-data-files-and-external-c-libraries-in-chapel)
-* advanced: take a simple 2D or 3D non-linear problem, linearize it, implement a parallel multi-locale
-  linear solver entirely in Chapel
-
 # Solutions
 
 You can find the solutions [here](../../solutions-chapel).
