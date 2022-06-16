@@ -122,7 +122,7 @@ Let's write `mappingArguments.jl` with a new version of `slow()` that will compu
     println("running on worker ", myid())
 	total = 0.0
 	@time for i in taskid:ntasks:n   # partial sum with a stride `ntasks`
-        !digitsin(digits, i) && (total += 1.0 / i)   # compact if statement
+        !digitsin(digits, i) && (total += 1.0 / i)   # compact if statement (similar to bash)
     end
     return(total)
 end
@@ -131,10 +131,10 @@ end
 and launch the function on each worker:
 
 ```julia
-slow((10, 9, 1, 1))   # package arguments in a tuple
+slow((10, 9, 1, 1))   # package arguments in a tuple; serial run
 nw = nworkers()
 args = [(Int64(1e8), 9, j, nw) for j in 1:nw]   # array of tuples to be mapped to workers
-println("total = ", sum(pmap(slow, args)))   # launch the function on each worker and sum the results
+println("total = ", sum(pmap(slow, args)))      # launch the function on each worker and sum the results
 ```
 
 These two syntaxes are equivalent:

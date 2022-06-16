@@ -99,7 +99,7 @@ addprocs(4)   # add 4 new worker processes (notice the new IDs!)
 workers()
 ```
 
-> ### Discussion
+> ### <font style="color:blue">Discussion</font>
 > If from the control process we start $N=8$ workers, where will these processes run? Consider the following cases:
 > 1. a laptop with 2 CPU cores,
 > 1. a cluster login node with 16 CPU cores,

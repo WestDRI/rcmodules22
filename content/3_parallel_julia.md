@@ -58,33 +58,34 @@ computer.
 
 
 
-<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
-<!-- {{<linktitle url="../julia/julia-07-distributed1" text="Distributed.jl: basics">}}\ -->
-<!-- {{<linktitle url="../julia/julia-08-distributed2" text="Distributed.jl: three scalable versions of the slow series">}} \ -->
-<!-- {{<linktitle url="../julia/julia-09-distributed-arrays" text="DistributedArrays.jl">}}\ -->
-<!-- {{<linktitle url="../julia/julia-10-distributed-julia-set" text="Parallelizing the Julia set with DistributedArrays">}}\ -->
-<!-- {{<linktitle url="../julia/julia-11-shared-arrays" text="SharedArrays.jl">}}\ -->
-<!-- {{<linkoptional url="../julia/julia-12-nbody" text="Parallelizing the N-body problem">}} (supplemental material)\ -->
-<!-- {{<linkoptional url="../julia/julia-13-asm" text="Parallelizing the additive Schwarz method">}} (supplemental material) -->
-
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \
-{{<nolinktitle>}}Distributed.jl: basics{{</nolinktitle>}} \
-{{<nolinktitle>}}Distributed.jl: three scalable versions of the slow series{{</nolinktitle>}} \
-{{<nolinktitle>}}DistributedArrays.jl{{</nolinktitle>}} \
-{{<nolinktitle>}}Parallelizing the Julia set with DistributedArrays{{</nolinktitle>}} \
-{{<nolinktitle>}}SharedArrays.jl{{</nolinktitle>}} \
-{{<nolinktitle>}}Parallelizing the N-body problem{{</nolinktitle>}} (supplemental material)\
-{{<nolinktitle>}}Parallelizing the additive Schwarz method{{</nolinktitle>}} (supplemental material)
+{{<linktitle url="../julia/julia-07-distributed1" text="Distributed.jl: basics">}}\
+{{<linktitle url="../julia/julia-08-distributed2" text="Distributed.jl: three scalable versions of the slow series">}} \
+{{<linktitle url="../julia/julia-09-distributed-arrays" text="DistributedArrays.jl">}}\
+{{<linktitle url="../julia/julia-10-distributed-julia-set" text="Parallelizing the Julia set with DistributedArrays">}}\
+{{<linktitle url="../julia/julia-11-shared-arrays" text="SharedArrays.jl">}}\
+{{<linkoptional url="../julia/julia-12-nbody" text="Parallelizing the N-body problem">}} (supplemental material)\
+{{<linkoptional url="../julia/julia-13-asm" text="Parallelizing the additive Schwarz method">}} (supplemental material)
+
+<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
+<!-- {{<nolinktitle>}}Distributed.jl: basics{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Distributed.jl: three scalable versions of the slow series{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}DistributedArrays.jl{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Parallelizing the Julia set with DistributedArrays{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}SharedArrays.jl{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Parallelizing the N-body problem{{</nolinktitle>}} (supplemental material)\ -->
+<!-- {{<nolinktitle>}}Parallelizing the additive Schwarz method{{</nolinktitle>}} (supplemental material) -->
 
 
 
 
 ### External links
 
-- ["Julia at Scale"](https://discourse.julialang.org/c/domain/parallel) forum
-- Baolai Ge's (SHARCNET) November 2020 webinar
-  ["Julia: Parallel computing revisited"](https://youtu.be/xTLFz-5a5Ec)
-- WestGrid's March 2021 webinar ["Parallel programming in Julia"](https://youtu.be/2SafLn0xJKY)
-- [Julia performance tips](https://docs.julialang.org/en/v1/manual/performance-tips)
-- ["Think Julia: How to Think Like a Computer Scientist"](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html)
-  by Ben Lauwens and Allen Downey is a good introduction to basic Julia for beginners
+- {{<a "https://discourse.julialang.org/c/domain/parallel" "Julia at Scale">}} forum
+- {{<a "https://benlauwens.github.io/ThinkJulia.jl/latest/book.html" "Think Julia: How to Think Like a Computer Scientist">}} by Ben Lauwens and Allen Downey is a good introduction to basic Julia for beginners
+- Baolai Ge's (SHARCNET) November 2020 webinar {{<a "https://youtu.be/xTLFz-5a5Ec" "Julia: Parallel computing revisited">}}
+- WestGrid's March 2021 webinar {{<a "https://youtu.be/2SafLn0xJKY" "Parallel programming in Julia">}}
+- WestGrid's February 2022 webinar {{<a "https://bit.ly/3MSNL3J" "ThreadsX.jl: easier multithreading in Julia">}}
+- {{<a "https://docs.julialang.org/en/v1/manual/performance-tips" "Julia performance tips">}}
+- {{<a "https://viralinstruction.com/posts/optimise" "How to optimise Julia code: A practical guide">}}
+- {{<a "https://kipp.ly/blog/jits-intro" "A Deep Introduction to JIT Compilers">}}

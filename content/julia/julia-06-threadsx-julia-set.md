@@ -29,6 +29,8 @@ end
 stability = @btime map(pixel, point);   # no const keyword this time!
 ```
 
+and remove the original definition of the `stability` array: it is now defined in the line above.
+
 Running this new, vectorized version of the serial code on my laptop, I see `@btime` report 1.011 s.
 
 ## Parallelizing the vectorized code

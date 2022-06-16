@@ -7,18 +7,17 @@ katex = true
 
 <!-- Add Baolai's materials? -->
 
-**DistributedArrays** package provides **DArray** object that can be split across several processes (set of workers),
-either on the same or multiple nodes. This allows use of arrays that are too large to fit in memory on one node. Each
-process operates on the part of the array that it owns -- this provides a very natural way to achieve parallelism for
-large problems.
+**DistributedArrays** package provides **DArray** object that can be split across several processes (set of
+workers), either on the same or multiple nodes. This allows use of arrays that are too large to fit in memory
+on one node. Each process operates on the part of the array that it owns -- this provides a very natural way
+to achieve parallelism for large problems.
 
 - Each worker can *read any elements* using their global indices
-- Each worker can *write only to the part that it owns* $~\Rightarrow~$ automatic parallelism and safe execution
+- Each worker can *write only to the part that it owns* $~\Rightarrow~$ automatic parallelism and safe
+  execution
 
-
-DistributedArrays is not part of the standard
-library, so usually you need to install it yourself (it will typically write into `~/.julia/environments/versionNumber`
-directory):
+DistributedArrays is not part of the standard library, so usually you need to install it yourself (it will
+typically write into `~/.julia/environments/versionNumber` directory):
 
 ```julia
 ] add DistributedArrays
@@ -127,8 +126,8 @@ showDistribution(de)
 > ### <font style="color:blue">Exercise "DistributedArrays.1"</font>
 > Using either `top` or `htop` command on the training cluster, study memory usage with DistributedArrays. Are
 > these arrays really distributed across processes? Use a _largish_ array for this: large enough to spot
-> memory usage, but not too large not to exceed physical memory and not to block other participants
-> (especially if you do this on the login node).
+> memory usage, but not too large not to exceed physical memory and not to affect other participants
+> (especially if you do this on the login node - which you should not).
 
 ### Building a distributed array from local pieces [^1]
 

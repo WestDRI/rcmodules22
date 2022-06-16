@@ -17,7 +17,7 @@ package is part of Julia's Standard Library (comes with the language).
 There are certain downsides to **SharedArray** (compared to **DistributedArrays.jl**):
 1. The ability to write into the same array elements from multiple processes creates the potential for a race condition
   and indeterministic outcome with a poorly written code!
-1. You are limited to a set of workers on the same node (not sure where this limitation comes from).
+1. You are limited to a set of workers on the same node (does SharedArrays predate DistributedArrays?).
 1. You will have very skewed (non-uniform across processes) memory usage.
 
 Let's start with serial Julia (`julia`) and initialize a 1D shared array:
@@ -45,7 +45,7 @@ b = SharedArray{Int64}((1000), init = x -> x .+= 1)   # each worker updates the 
 
 > **Key idea:** each worker runs this function!
 
-Let's fill each element with its corresponding myd() value:
+Here is another demo with a problem -- let's fill each element with its corresponding `myid()` value:
 
 ```julia
 @everywhere println(myid())     # let's use these IDs in the next function
