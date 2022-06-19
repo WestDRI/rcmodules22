@@ -2,6 +2,7 @@
 title = "Basic language features"
 slug = "chapel-01-base"
 weight = 1
+katex = true
 +++
 
 <!-- as productive as Python -->
@@ -16,59 +17,84 @@ weight = 1
 <!-- - library of standard domain maps provided by chapel -->
 <!-- - users can write their own domain maps -->
 
-# Chapel
+## Language for parallel computing on large-scale systems
 
-- is a modern, open-source programming language developed at _Cray Inc._
-- offers simplicity and readability of scripting languages such as Python or Matlab
-- is a compiled language
-- features speed and performance of Fortran and C
-- supports high-level abstractions for data distribution/parallelism, and for task parallelism
-  - allow users to express parallel computations in a natural, almost intuitive, manner
-  - can achieve anything you can do with MPI and OpenMP
-- was designed around a _multi-resolution_ philosophy: users can incrementally add more detail to their
-  original code, to bring it as close to the machine as required
-- has its source code stored in text files with the extension `.chpl`
+- Chapel is a modern, **open-source parallel programming language** developed at _Cray Inc._ (acquired by
+  Hewlett Packard Enterprise in 2019).
+- Chapel offers simplicity and readability of scripting languages such as Python or Matlab: "Python for
+  parallel programming".
+- Chapel is a compiled language $\Rightarrow$ provides the **speed and performance** of Fortran and C.
+- Chapel supports high-level abstractions for data distribution and **data parallel processing**, and for
+  **task parallelism**.
+- Chapel provides optimization for **data-driven placement of computations**.
+  <!-- - allow users to express parallel computations in a natural, almost intuitive, manner -->
+- Chapel was designed around a **multi-resolution** philosophy: users can incrementally add more detail to
+  their original code, to bring it as close to the machine as required, at the same time they can achieve
+  anything you can normally do with MPI and OpenMP.
 
-# Running Chapel codes on Cedar / Graham / Béluga
+<!-- - has its source code stored in text files with the extension `.chpl` -->
 
-On Compute Canada clusters Cedar / Graham / Béluga we have two versions of Chapel, one is a single-locale (single-node) Chapel,
-and the other is a multi-locale (multi-node) Chapel. For now, we will start with single-locale Chapel. If you are logged
-into Cedar or Graham or Béluga, you'll can either load the official (but slightly outdated) single-locale Chapel module:
+The Chapel community is fairly small: too few people know/use Chapel $~\Leftarrow\Rightarrow~$ relatively few
+libraries. However, you can use functions/libraries written in other languages:
+
+1. direct calls will always be serial.
+2. high-level Chapel parallel libraries can use C/F90/etc libraries underneath.
+
+{{< figure src="/img/threeParts.png" width=800px >}}
+
+You can find the slides [here](../../files/chapel.pdf).
+
+{{<note>}} In "Task parallelism" we will try to go as far as we can today, and we will resume on Day 2 where
+we left off. {{</note>}}
+
+{{<note>}} Try to do all exercises in the lessons. The solutions are posted at the end of each page: please
+try not to look at them while working on the problems. {{</note>}}
+
+
+## Running Chapel codes on Cedar / Graham / Béluga
+
+On Compute Canada clusters Cedar / Graham / Béluga / Narval we have two versions of Chapel: a single-locale
+(single-node) Chapel and a multi-locale (multi-node) Chapel. You can find the documentation on running Chapel in {{<a
+"https://docs.computecanada.ca/wiki/Chapel" "our wiki">}}.
+
+If you want to start single-locale Chapel, you will need to load `chapel-multicore` module, e.g.
 
 ```sh
-$ module spider chapel     # list all Chapel modules
-$ module load gcc chapel-single/1.15.0
+$ module spider chapel  # list all Chapel modules
+$ module load gcc/9.3.0 chapel-multicore/1.25.0
 ```
 
-or use the latest single-locale Chapel:
+Multi-locale is provided by `chapel-ofi` module on OmniPath clusters such as Cedar, and by `chapel-ucx` module on
+InfiniBand clusters such as Graham, Béluga, Narval. Since multi-locale Chapel includes a parallel launcher for the right
+interconnect type, there is no single Chapel module for all cluster architectures.
 
-```sh
-$ source /home/razoumov/startSingleLocale.sh
-```
-
-# Running Chapel codes inside a Docker container
+## Running Chapel codes inside a Docker container
 
 If you are familiar with Docker and have it installed, you can run multi-locale Chapel inside a Docker container (e.g.,
 on your laptop, or inside an Ubuntu VM on Arbutus):
 
 ```sh
-docker pull chapel/chapel-gasnet   # will emulate a cluster with 4 cores/node
-mkdir -p ~/tmp
-docker run -v /home/ubuntu/tmp:/mnt -it -h chapel chapel/chapel-gasnet  # map host's ~/tmp to container's /mnt
-cd /mnt
-apt-get update
-apt-get install nano    # install nano inside the Docker container
-nano test.chpl   # file is /mnt/test.chpl inside the container and ~ubuntu/tmp/test.chpl on the host VM
-chpl test.chpl -o test
-./test -nl 8
+$ docker pull chapel/chapel-gasnet  # will emulate a cluster with 4 cores/node
+$ mkdir -p ~/tmp
+$ docker run -v /home/ubuntu/tmp:/mnt -it -h chapel chapel/chapel-gasnet  # map host's ~/tmp to container's /mnt
+$ cd /mnt
+$ apt-get update
+$ apt-get install nano  # install nano inside the Docker container
+$ nano test.chpl        # file is /mnt/test.chpl inside the container and ~ubuntu/tmp/test.chpl on the host VM
+$ chpl test.chpl -o test
+$ ./test -nl 8
 ```
 
-# Running Chapel codes on *cassiopeia.c3.ca* cluster
+## Running Chapel codes on the training cluster
 
-If you are working on *cassiopeia.c3.ca* training cluster, please load Chapel from the shared project directory:
+{{<note>}} Now we will distribute the usernames and passwords. Once you have these, log in to the training
+cluster and (1) try loading single-locale Chapel and compiling a simple code, (2) write a makefile for
+compiling Chapel codes, and (3) submit a serial job script to run Chapel on a compute node. {{</note>}}
+
+On our training cluster *kandinsky.c3.ca*, you can start single-locale Chapel the usual way:
 
 ```sh
-$ source ~/projects/def-sponsor00/shared/startSingleLocale.sh
+$ module load gcc/9.3.0 chapel-multicore/1.25
 ```
 
 Let's write a simple Chapel code, compile and run it:
@@ -76,7 +102,7 @@ Let's write a simple Chapel code, compile and run it:
 ```sh
 $ cd ~/tmp
 $ nano test.chpl
-    writeln('If you can see this, everything works!');
+$     writeln('If you can see this, everything works!');
 $ chpl test.chpl -o test
 $ ./test
 ```
@@ -99,17 +125,11 @@ login node is shared by many people at the same time, and where it might not be 
 cores on a login node with CPU-intensive tasks. Therefore, we'll be running test Chapel codes inside
 submitted jobs on compute nodes.
 
-<!-- We'll start by submitting a single-core interactive job: -->
-<!-- ```sh -->
-<!-- $ salloc --time=0:30:0 --mem-per-cpu=1000 --account=def-razoumov-ws_cpu --reservation=arazoumov-may17 -->
-<!-- ``` -->
-<!-- and then inside that job compile and run the test code -->
-
 Let's write the job script `serial.sh`:
 
 ```sh
 #!/bin/bash
-#SBATCH --time=00:05:00   # walltime in d-hh:mm or hh:mm:ss format
+#SBATCH --time=00:05:00      # walltime in d-hh:mm or hh:mm:ss format
 #SBATCH --mem-per-cpu=1000   # in MB
 ./test
 ```
@@ -119,11 +139,55 @@ and then submit it:
 ```sh
 $ chpl test.chpl -o test
 $ sbatch serial.sh
-$ squeue -u $USER
+$ sq                         # same as `squeue -u $USER`
 $ cat slurm-jobID.out
 ```
 
-# Case study: solving the **_Heat transfer_** problem
+Alternatively, today we could work inside a serial interactive job:
+
+```sh
+$ salloc --time=3:00:0 --mem-per-cpu=1000
+```
+
+Note that on the training cluster we have:
+
+- the login node with 16 "p"-type cores and 32GB memory,
+- 8 compute nodes with 16 "c"-type cores and 60GB memory each, for the total of 128 cores.
+
+**Important**: Even though each node effectively has 3.75GB of memory, we highly recommend to use `--mem-per-cpu=1000`
+  (and not more) throughout this workshop. Some memory is being used for the operating system, drivers, system
+  utilities, MPI buffers and the like. Unfortunately, unlike the production clusters, the training cluster does not have
+  safeguards when its nodes run out of memory, shutting down some system utilities and leading to inability to run
+  parallel jobs. The cluster will rebuild itself within few hours, but unfortunately asking for too much memory might
+  leave it unable to run parallel jobs during the workshop.
+
+## Makefiles
+
+In the rest of this workshop, we'll be compiling codes `test.chpl`, `baseSolver.chpl`, `begin.chpl`, `cobegin.chpl` and
+many others. To simplify compilation, we suggest writing a file called `Makefile` in your working directory:
+
+```makefile
+%: %.chpl
+	chpl $^ -o $@
+clean:
+	@find . -maxdepth 1 -type f -executable -exec rm {} +
+```
+
+Note that the second line starts with TAB and not with multiple spaces -- this is **very important**!
+
+With this makefile, to compile any Chapel code, e.g. `baseSolver.chpl`, you would type:
+
+```sh
+$ make baseSolver
+```
+
+Add `--fast` flag to the makefile to optimize your code. And you can type `make clean` to delete all executables in the
+current directory.
+
+
+
+
+## Case study: solving the **_Heat transfer_** problem
 
 - have a square metallic plate with some initial temperature distribution (**_initial conditions_**)
 - its border is in contact with a different temperature distribution (**_boundary conditions_**)
@@ -143,16 +207,15 @@ Tnew[i,j] = 0.25 * (T[i-1,j] + T[i+1,j] + T[i,j-1] + T[i,j+1])
 
 So, our objective is to:
 
-1. Write a code to implement the difference equation above.The code should have the following
-   requirements: (a) it should work for any given number of rows and columns in the grid, (b) it should
-   run for a given number of iterations, or until the difference between `Tnew` and `T` is smaller than a
-   given tolerance value, and (c) it should output the temperature at a desired position on the grid
-   every given number of iterations.
+1. Write a code to implement the difference equation above. The code should:
+   - work for any given number of rows and columns in the grid,
+   - run for a given number of iterations, or until the difference between `Tnew` and `T` is smaller than a given tolerance value, and
+   - output the temperature at a desired position on the grid every given number of iterations.
 1. Use task parallelism to improve the performance of the code and run it on a single cluster node.
 1. Use data parallelism to improve the performance of the code and run it on multiple cluster nodes using
    hybrid parallelism.
 
-# Variables
+## Variables
 
 A variable has three elements: a **_name_**, a **_type_**, and a **_value_**. When we store a value in a
 variable for the first time, we say that we **_initialized_** it. Further changes to the value of a
@@ -174,9 +237,9 @@ If a variable is declared without a type, Chapel will infer it from the given in
 (let's store this in file `baseSolver.chpl`)
 
 ```chpl
-const rows = 100, cols = 100;      // number of rows and columns in a matrix
-const niter = 500;     // number of iterations
-const iout = 50, jout = 50;     // some row and column numbers
+const rows, cols = 100;      // number of rows and columns in a matrix
+const niter = 500;           // number of iterations
+const iout, jout = 50;       // row and column to print
 ```
 
 All these constant variables will be created as integers, and no other values can be assigned to these
@@ -194,18 +257,53 @@ var tmp: real;      // for temporary results when computing the temperatures
 Of course, we can use both, the initial value and the type, when declaring a varible as follows:
 
 ```chpl
-const tolerance = 0.0001: real;   // temperature difference tolerance
-var count = 0: int;                // the iteration counter
-const nout = 20: int;             // the temperature at (iout,jout) will be printed every nout interations
+const tolerance: real = 0.0001;   // temperature difference tolerance
+var count: int = 0;               // the iteration counter
+const nout: int = 20;             // the temperature at (iout,jout) will be printed every nout interations
 ```
 
-Lets print out our configuration after we set all parameters:
+> Note that these two notations are different, but produce the same result in the end:
+>
+> ```chpl
+> var a: real = 10;   // we specify both the type and the value
+> var a = 10: real;   // we specify only the value (10 converted to real)
+> ```
+
+Let's print out our configuration after we set all parameters:
 
 ```chpl
 writeln('Working with a matrix ', rows, 'x', cols, ' to ', niter, ' iterations or dT below ', tolerance);
 ```
 
-# Ranges and Arrays
+<!-- {{<note>}} -->
+<!-- {{</note>}} -->
+
+### Checking variable's type
+
+To check a variable's type, use `.type` query:
+
+```chpl
+var x = 1e8:int;
+type t = x.type;
+writeln(t:string);
+```
+
+or in a single line:
+
+```chpl
+writeln((1e8:int).type:string);
+writeln((0.355 + 0.355i).type: string);
+```
+
+
+
+
+
+
+
+
+
+## Ranges and Arrays
 
 A series of integers (1,2,3,4,5, for example), is called a **_range_** in Chapel. Ranges are generated
 with the `..` operator, and are useful, among other things, to declare **_arrays_** of variables. For
@@ -237,7 +335,24 @@ We must now be ready to start coding our simulations ... here is what we are goi
   is less than _tolerance_
 - at each iteration print out the temperature at the position (iout,jout)
 
-# Conditional statements
+### Using expressions to create arrays
+
+In Chapel arrays can also be initialized with expressions (similarly to list comprehensions in Python):
+
+```chpl
+writeln([i in 1..10] i**2);   // prints 1 4 9 16 25 36 49 64 81 100
+var x = [i in 1..10] if (i%2 == 0) then i else 0;
+writeln(x);                   // prints 0 2 0 4 0 6 0 8 0 10
+writeln(x.type:string);       // 1D array of type int(64)
+```
+
+
+
+
+
+
+
+## Conditional statements
 
 Chapel, as most *high level programming languages*, has different staments to control the flow of the
 program or code.  The conditional statements are: the **_if statement_**, and the **_while statement_**.
@@ -259,10 +374,10 @@ The main loop in our simulation can be programmed using a while statement like t
 delta = tolerance;   // safe initial bet; could also be a large number
 while (count < niter && delta >= tolerance) do {
   // specify boundary conditions for T
-  count += 1;      // increase the iteration counter by one
-  Tnew = T;    // will be replaced: calculate Tnew from T
+  count += 1;        // increase the iteration counter by one
+  Tnew = T;          // will be replaced: calculate Tnew from T
   // update delta, the greatest difference between Tnew and T
-  T = Tnew;    // update T once all elements of Tnew are calculated
+  T = Tnew;          // update T once all elements of Tnew are calculated
   // print the temperature at [iout,jout] if the iteration is multiple of nout
 }
 ```
@@ -304,8 +419,8 @@ Let's compile and execute our code to see what we get until now, using the job s
 
 ```sh
 #!/bin/bash
-#SBATCH --time=00:05:00   # walltime in d-hh:mm or hh:mm:ss format
-#SBATCH --mem-per-cpu=1200   # in MB
+#SBATCH --time=00:05:00      # walltime in d-hh:mm or hh:mm:ss format
+#SBATCH --mem-per-cpu=1000   # in MB
 #SBATCH --output=solution.out
 ./baseSolver
 ```
@@ -328,7 +443,7 @@ Temperature at iteration 500: 25.0
 
 Of course the temperature is always 25.0, as we haven't done any computation yet.
 
-# Structured iterations with for-loops
+## Structured iterations with for-loops
 
 To compute the new temperature `Tnew` at any point, we need to add temperatures `T` at all the surronding
 points, and divide the result by 4. And, esentially, we need to repeat this process for all the elements
@@ -353,7 +468,7 @@ We need to iterate both over all rows and all columns in order to access every s
 `Tnew`. This can be done with nested _for_ loops like this
 
 ```chpl
-for i in 1..rows do {   // process row i
+for i in 1..rows do {     // process row i
   for j in 1..cols do {   // process column j, row i
     Tnew[i,j] = (T[i-1,j] + T[i+1,j] + T[i,j-1] + T[i,j+1])/4;
   }
@@ -382,26 +497,26 @@ Temperature at iteration 500: 24.8595
 As we can see, the temperature in the middle of the plate (position 50,50) is slowly decreasing as the
 plate is cooling down.
 
-> ## Exercise 1
-> What would be the temperature at the top right corner (row 1, column `cols`) of the plate? The border
-> of the plate is in contact with the boundary conditions, which are set to zero (default boundary values
-> for T), so we expect the temperature at these points to decrease faster. Modify the code to see the
-> temperature at the top right corner.
+> ### <font style="color:blue">Exercise "Basic.1"</font>
+> What would be the temperature at the top right corner (row 1, column `cols`) of the plate? The border of the
+> plate is in contact with the boundary conditions, which are set to zero (default boundary values for T), so
+> we expect the temperature at these points to decrease faster. Modify the code to see the temperature at the
+> top right corner.
 
-> ## Exercise 2
-> Now let's have some more interesting boundary conditions. Suppose that the plate is heated by a source
-> of 80 degrees located at the bottom right corner (row `rows`, column `cols`), and that the temperature
-> on the rest of the border on adjacent sides (to this bottom right corner) decreases linearly to zero as
-> one gets farther from that corner. Utilize `for` loops to setup the described boundary
-> conditions. Compile and run your code to see how the temperature is changing now.
+> ### <font style="color:blue">Exercise "Basic.2"</font>
+> Now let's have some more interesting boundary conditions. Suppose that the plate is heated by a source of 80
+> degrees located at the bottom right corner (row `rows`, column `cols`), and that the temperature on the rest
+> of the border on adjacent sides (to this bottom right corner) decreases linearly to zero as one gets farther
+> from that corner. Utilize `for` loops to setup the described boundary conditions. Compile and run your code
+> to see how the temperature is changing now.
 
-> ## Exercise 3
-> So far, `delta` has been always equal to `tolerance`, which means that our main while loop will always
-> run the 500 iterations. So let's update `delta` after each iteration. Use what we have studied so far
-> to write the required piece of code.
+> ### <font style="color:blue">Exercise "Basic.3"</font>
+> So far, `delta` has been always equal to `tolerance`, which means that our main while loop will always run
+> the 500 iterations. So let's update `delta` after each iteration. Use what we have studied so far to write
+> the required piece of code.
 
-Now, after Exercise 3 we should have a working program to simulate our heat transfer equation. Let's
-just print some additional useful information:
+Now, after Exercise "Basic.3" we should have a working program to simulate our heat transfer equation. Let's
+print some additional useful information:
 
 ```chpl
 writeln('Final temperature at the desired position [', iout, ',', jout, '] after ', count, ' iterations is: ', T[iout,jout]);
@@ -424,7 +539,7 @@ Final temperature at the desired position [1,100] after 500 iterations is: 0.823
 The largest temperature difference between the last two iterations was: 0.0258874
 ```
 
-# Using command line arguments 
+## Using command-line arguments 
 
 From the last run of our code, we can see that 500 iterations is not enough to get to a _steady state_ (a
 state where the difference in temperature does not vary too much, i.e. `delta`<`tolerance`). Now, if we
@@ -439,11 +554,11 @@ mechanism for this is the use of **_config_** variables. When a variable is decl
 keyword, in addition to `var` or `const`, like this:
 
 ```chpl
-config const niter = 500;    //number of iterations
+config const niter = 500;             //number of iterations
 ```
 ```sh
-$ chpl baseSolver.chpl -o baseSolver       # using the default value 500
-$ ./baseSolver --niter=3000                # passing another value from the command line
+$ chpl baseSolver.chpl -o baseSolver    # using the default value 500
+$ ./baseSolver --niter=3000             # passing another value from the command line
 ```
 ```chpl
 Temperature at iteration 0: 25.0
@@ -455,40 +570,36 @@ Final temperature at the desired position after 3000 iterations is: 0.793947
 The greatest difference in temperatures between the last two iterations was: 0.00142546
 ```
 
-> ## Exercise 4
-> Make `rows`, `cols`, `nout`, `iout`, `jout`, `tolerance` configurable variables, and
-> test the code simulating different configurations. What can you conclude about the performance of the
-> code.
+> ### <font style="color:blue">Exercise "Basic.4"</font>
+> Make `rows`, `cols`, `nout`, `iout`, `jout`, `tolerance` configurable variables, and test the code
+> simulating different configurations. What can you conclude about the performance of the code.
 
-# Timing the execution of code in Chapel
+## Timing the execution of code in Chapel
 
-The code generated after Exercise 4 is the basic implementation of our simulation. We will be using it
-as a benchmark, to see how much we can improve the performance when introducing the parallel programming
-features of the language in the following lessons.
+The code generated after Exercise "Basic.4" is the full implementation of our simulation. We will be using it
+as a benchmark, to see how much we can improve the performance with Chapel's parallel programming features in
+the following lessons.
 
-But first, we need a quantitative way to measure the performance of our code. Maybe the easiest way to do
-it, is to see how much it takes to finish a simulation. The UNIX command `time` could be used to this
-effect
+But first, we need a quantitative way to measure the performance of our code. Maybe the easiest way to do it,
+is to see how much it takes to finish a simulation. The UNIX command `time` could be used to this effect
 
 ```sh
-$ time ./baseSolver --rows=650 --cols=650 --iout=200 --jout=300 --niter=10000 --tolerance=0.002 --nout=1000
+$ time ./baseSolver --rows=650 --iout=200 --niter=10_000 --tolerance=0.002 --nout=1000
 ```
 ```chpl
-Working with a matrix 650x650 to 10000 iterations or dT below 0.002
 Temperature at iteration 0: 25.0
 Temperature at iteration 1000: 25.0
 Temperature at iteration 2000: 25.0
 Temperature at iteration 3000: 25.0
-Temperature at iteration 4000: 24.9998
-Temperature at iteration 5000: 24.9984
-Temperature at iteration 6000: 24.9935
-Temperature at iteration 7000: 24.9819
-Final temperature at the desired position after 7750 iterations is: 24.9671
-The greatest difference in temperatures between the last two iterations was: 0.00199985
-
-real   0m9.206s
-user   0m9.122s
-sys    0m0.040s
+Temperature at iteration 4000: 24.9996
+Temperature at iteration 5000: 24.9968
+Temperature at iteration 6000: 24.987
+Temperature at iteration 7000: 24.9639
+Final temperature at the desired position [200,200] after 7750 iterations is: 24.9343
+The largest temperature difference was 0.00199985
+real	0m3.931s
+user	0m7.354s
+sys	0m9.952s
 ```
 
 The real time is what interest us. Our code is taking around 9.2 seconds from the moment it is called at
@@ -514,27 +625,26 @@ writeln('The simulation took ', watch.elapsed(), ' seconds');
 ```
 ```sh
 $ chpl --fast baseSolver.chpl -o baseSolver
-$ ./baseSolver --rows=650 --cols=650 --iout=200 --jout=300 --niter=10000 --tolerance=0.002 --nout=1000
+$ ./baseSolver --rows=650 --iout=200 --niter=10_000 --tolerance=0.002 --nout=1000
 ```
 ```chpl
-Working with a matrix 650x650 to 10000 iterations or dT below 0.002
 Temperature at iteration 0: 25.0
 Temperature at iteration 1000: 25.0
 Temperature at iteration 2000: 25.0
 Temperature at iteration 3000: 25.0
-Temperature at iteration 4000: 24.9998
-Temperature at iteration 5000: 24.9984
-Temperature at iteration 6000: 24.9935
-Temperature at iteration 7000: 24.9819
-The simulation took 8.03206 seconds
-Final temperature at the desired position after 7750 iterations is: 24.9671
-The greatest difference in temperatures between the last two iterations was: 0.00199985
+Temperature at iteration 4000: 24.9996
+Temperature at iteration 5000: 24.9968
+Temperature at iteration 6000: 24.987
+Temperature at iteration 7000: 24.9639
+Final temperature at the desired position [200,200] after 7750 iterations is: 24.9343
+The largest temperature difference was 0.00199985
+The simulation took 3.9187 seconds
 ```
 
-> ## Exercise 5
-> Try recompiling without `--fast` and see how it affects the execution time. If it becomes too slow,
-> try reducing the problem size. What is the speedup factor with `--fast`?
+> ### <font style="color:blue">Exercise "Basic.5"</font>
+> Try recompiling without `--fast` and see how it affects the execution time. If it becomes too slow, try
+> reducing the problem size. What is the speedup factor with `--fast`?
 
-# Solutions
+## Solutions
 
 You can find the solutions [here](../../solutions-chapel).

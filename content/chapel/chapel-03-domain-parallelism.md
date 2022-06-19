@@ -4,7 +4,7 @@ slug = "chapel-03-domain-parallelism"
 weight = 3
 +++
 
-# Single-locale data parallelism
+## Single-locale data parallelism
 
 As we mentioned in the previous section, **Data Parallelism** is a style of parallel programming in which
 parallelism is driven by *computations over collections of data elements or their indices*. The main tool
@@ -12,7 +12,7 @@ for this in Chapel is a `forall` loop -- it'll create an *appropriate* number of
 loop, dividing the loop's iterations between them.
 
 ```chpl
-forall index in iterand   # iterating over all elements of an array or over a range of indices
+forall index in iterand   \\ iterating over all elements of an array or over a range of indices
 {instructions}
 ```
 
@@ -34,14 +34,15 @@ forall a in A do
   a += 1;
 ```
 
-In this code we update all elements of the array `A`. The code will run on a single node, lauching as
-many threads as the number of available cores.
+In this code we update all elements of the array `A`. The code will run on a single node, lauching as many threads as
+the number of available cores. It is thread-safe, meaning that no two threads are writing into the same variable at the
+same time.
 
 * if we replace `forall` with `for`, we'll get a serial loop on a sigle core
-* if we replace `forall` with `coforall`, we'll create 1e6 threads (definitely an overkill!)
+* if we replace `forall` with `coforall`, we'll create 1e6 threads (likely an overkill!)
 
-Consider a simple code `forall.chpl` that we'll run inside a 3-core interactive job. We have a range of
-indices 1..1000, and they get broken into groups that are processed by different threads:
+Consider a simple code `forall.chpl` that we'll run inside a 3-core interactive job. We have a range of indices 1..1000,
+and they get broken into groups that are processed by different threads:
 
 ```chpl
 var count = 0;
@@ -51,20 +52,11 @@ forall i in 1..1000 with (+ reduce count) {   // parallel loop
 writeln('count = ', count);
 ```
 
-If we have not done so, let's write a script `shared.sh` for submitting single-locale, two-core Chapel
-jobs:
-
-<!-- ```sh -->
-<!-- $ module load gcc chapel-single/1.15.0 -->
-<!-- $ salloc --time=2:00:0 --ntasks=1 --cpus-per-task=2 --mem-per-cpu=1000 \ -->
-<!--          --account=def-razoumov-ws_cpu --reservation=arazoumov-may17 -->
-<!-- $ chpl forall.chpl -o forall -->
-<!-- $ ./forall -->
-<!-- ``` -->
+If we have not done so, let's write a script `shared.sh` for submitting single-locale, two-core Chapel jobs:
 
 ```sh
 #!/bin/bash
-#SBATCH --time=00:05:00   # walltime in d-hh:mm or hh:mm:ss format
+#SBATCH --time=00:05:00      # walltime in d-hh:mm or hh:mm:ss format
 #SBATCH --mem-per-cpu=1000   # in MB
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
@@ -73,7 +65,7 @@ jobs:
 ```
 
 ```sh
-$ source ~/projects/def-sponsor00/shared/startSingleLocale.sh   # on cassiopeia.c3.ca
+$ source ~/projects/def-sponsor00/shared/chapel/startMultiLocale.sh   # on the training cluster
 $ chpl forall.chpl -o forall
 $ sbatch shared.sh
 $ cat solution.out
@@ -82,12 +74,12 @@ $ cat solution.out
 count = 500500
 ```
 
-We computed the sum of integers from 1 to 1000 in parallel. How many cores did the code run on? Looking
-at the code or its output, **we don't know**. Most likely, on two cores available to us inside the
-job. But we can actually check that!
+We computed the sum of integers from 1 to 1000 in parallel. How many cores did the code run on? Looking at the code or
+its output, **we don't know**. Most likely, on two cores available to us inside the job. But we can actually check that!
+Do this:
 
-(1) replace `count += i;` with `count = 1;`
-(2) change the last line to `writeln('actual number of threads = ', count);`
+1. replace `count += i;` with `count = 1;`
+1. change the last line to `writeln('actual number of threads = ', count);`
 
 ```sh
 $ chpl forall.chpl -o forall
@@ -100,7 +92,7 @@ actual number of threads = 2
 
 If you see one thread, try running this code as a batch multi-core job.
 
-> ## Exercise 11
+> ### <font style="color:blue">Exercise "Data.1"</font>
 > Using the first version of `forall.chpl` (where we computed the sum of integers 1..1000) as a template,
 > write a Chapel code to compute `pi` by calculating the integral (see slides) numerically through
 > summation using `forall` parallelism. Implement the number of intervals as `config` variable.
@@ -109,7 +101,7 @@ If you see one thread, try running this code as a batch multi-core job.
 > ```chpl
 > config const n = 1000;
 > var h, total: real;
-> h = 1.0 / n;    // interval width
+> h = 1.0 / n;                          // interval width
 > for i in 1..n {
 >   var x = h * ( i - 0.5 );
 >   total += 4.0 / ( 1.0 + x**2);
@@ -133,7 +125,135 @@ forall (r,c) in {1..rows,1..cols} by (rowStride,colStride) do {   // nested c-lo
 }
 ```
 
-# Multi-locale Chapel setup
+
+
+
+
+
+
+
+
+## Parallelizing the Julia set problem
+
+This project is a mathematical problem to compute a [Julia set](https://en.wikipedia.org/wiki/Julia_set), defined as a
+set of points on the complex plane that remain bound under infinite recursive transformation $f(z)$. We will use the
+traditional form $f(z)=z^2+c$, where $c$ is a complex constant. Here is our algorithm:
+
+1. pick a point $z_0\in\mathbb{C}$
+1. compute iterations $z_{i+1}=z_i^2+c$ until $|z_i|>4$ (arbitrary fixed radius; here $c$ is a complex constant)
+1. store the iteration number $\xi(z_0)$ at which $z_i$ reaches the circle $|z|=4$
+1. limit max iterations at 255  
+    4.1 if $\xi(z_0)=255$, then $z_0$ is a stable point  
+    4.2 the quicker a point diverges, the lower its $\xi(z_0)$ is
+1. plot $\xi(z_0)$ for all $z_0$ in a rectangular region $-1<=\mathfrak{Re}(z_0)<=1$, $-1<=\mathfrak{Im}(z_0)<=1$
+
+We should get something conceptually similar to this figure (here $c = 0.355 + 0.355i$; we'll get drastically different
+fractals for different values of $c$):
+
+{{< figure src="/img/2000a.png" >}}
+
+**Note**: you might want to try these values too:
+- $c = 1.2e^{1.1πi}$ $~\Rightarrow~$ original textbook example
+- $c = -0.4-0.59i$ and 1.5X zoom-out $~\Rightarrow~$ denser spirals
+- $c = 1.34-0.45i$ and 1.8X zoom-out $~\Rightarrow~$ beans
+- $c = 0.34-0.05i$ and 1.2X zoom-out $~\Rightarrow~$ connected spiral boots
+
+Below is the serial code `juliaSetSerial.chpl`:
+
+```chpl
+use Time;
+use NetCDF.C_NetCDF;
+
+proc pixel(z0) {
+  const c = 0.355 + 0.355i;
+  var z = z0*1.2;   // zoom out
+  for i in 1..255 do {
+    z = z*z + c;
+    if abs(z) >= 4 then
+      return i:c_int;
+  }
+  return 255:c_int;
+}
+
+const height, width = 2_000;   // 2000^2 image
+var point: complex, y: real, watch: Timer;
+
+writeln("Computing Julia set ...");
+var stability: [1..height,1..width] c_int;
+watch.start();
+for i in 1..height do {
+  y = 2*(i-0.5)/height - 1;
+  for j in 1..width do {
+    point = 2*(j-0.5)/width - 1 + y*1i;   // rescale to -1:1 in the complex plane
+    stability[i,j] = pixel(point);
+  }
+}
+watch.stop();
+writeln('It took ', watch.elapsed(), ' seconds');
+```
+
+The reason we are using C types (`c_int`) here -- and not Chapel's own int(32) or int(64) -- is that we can save the
+resulting array `stability` into a compressed netCDF file. To the best of my knowledge, this can only be done using
+`NetCDF.C_NetCDF` library that relies on C types. You can add this to your code:
+
+```chpl
+writeln("Writing NetCDF ...");
+use NetCDF.C_NetCDF;
+proc cdfError(e) {
+  if e != NC_NOERR {
+    writeln("Error: ", nc_strerror(e): string);
+    exit(2);
+  }
+}
+var ncid, xDimID, yDimID, varID: c_int;
+var dimIDs: [0..1] c_int;   // two elements
+cdfError(nc_create("test.nc", NC_NETCDF4, ncid));       // const NC_NETCDF4 => file in netCDF-4 standard
+cdfError(nc_def_dim(ncid, "x", width: size_t, xDimID)); // define the dimensions
+cdfError(nc_def_dim(ncid, "y", height: size_t, yDimID));
+dimIDs = [xDimID, yDimID];                              // set up dimension IDs array
+cdfError(nc_def_var(ncid, "stability", NC_INT, 2, dimIDs[0], varID));   // define the 2D data variable
+cdfError(nc_def_var_deflate(ncid, varID, NC_SHUFFLE, deflate=1, deflate_level=9)); // compress 0=no 9=max
+cdfError(nc_enddef(ncid));                              // done defining metadata
+cdfError(nc_put_var_int(ncid, varID, stability[1,1]));  // write data to file
+cdfError(nc_close(ncid));
+```
+
+Testing on my laptop, it took the code 0.471 seconds to compute a $2000^2$ fractal.
+
+Try running it yourself! It will produce a file `test.nc` that you can download to your computer and render with
+ParaView or other visualization tool. Does the size of `test.nc` make sense?
+
+Now let's parallelize this code with `forall`. Copy `juliaSetSerial.chpl` into `juliaSetParallel.chpl` and start
+modifying it:
+
+1. For the outer loop, replace `for` with `forall`. This will produce an error about the scope of variables `y` and
+   `point`:
+
+```sh
+error: cannot assign to const variable
+note: The shadow variable '...' is constant due to forall intents in this loop
+```
+
+> ### Discussion
+> Why do you think this message was produced? How do we solve this problem?
+
+2. What do we do next?
+
+Once you have the working shared-memory parallel code, study its performance.
+
+> ### Discussion
+> Why do you think the code's speed does not scale linearly with the number of cores?
+
+
+
+
+
+
+
+
+
+
+## Multi-locale Chapel setup
 
 So far we have been working with single-locale Chapel codes that may run on one or many cores on a single
 compute node, making use of the shared memory space and accelerating computations by launching parallel
@@ -153,8 +273,7 @@ this is referred to as *multi-locale* execution.
 >>
 >> Inside the Docker container on multiple locales your code will not run any faster than on a single
 >> locale, since you are emulating a virtual cluster, and all tasks run on the same physical node. To
->> achieve actual speedup, you need to run your parallel multi-locale Chapel code on a real physical
->> cluster which we hope you have access to for this session.
+>> achieve actual speedup, you need to run your parallel multi-locale Chapel code on a real HPC cluster.
 
 On an HPC cluster you would need to submit either an interactive or a batch job asking for several nodes
 and then run a multi-locale Chapel code inside that job. In practice, the exact commands to run
@@ -216,7 +335,7 @@ Let's write a job submission script `distributed.sh`:
 
 ```sh
 #!/bin/bash
-#SBATCH --time=00:05:00   # walltime in d-hh:mm or hh:mm:ss format
+#SBATCH --time=00:05:00      # walltime in d-hh:mm or hh:mm:ss format
 #SBATCH --mem-per-cpu=1000   # in MB
 #SBATCH --nodes=4
 #SBATCH --cpus-per-task=2
@@ -224,21 +343,10 @@ Let's write a job submission script `distributed.sh`:
 ./test -nl 4   # in this case the 'srun' launcher is already configured for our interconnect
 ```
 
-<!-- **Note**: On Graham currently there is no good Chapel installed centrally, so you'll have to load it from -->
-<!-- AR's home directory: -->
-
-<!-- ```sh -->
-<!-- $ . /home/razoumov/startMultiLocale.sh -->
-<!-- $ salloc --time=2:00:0 --nodes=4 --cpus-per-task=3 --mem-per-cpu=1000 \ -->
-<!--          --account=def-razoumov-ws_cpu --reservation=arazoumov-may17 -->
-<!-- $ echo $SLURM_NODELIST          # print the list of nodes (should be four) -->
-<!-- $ echo $SLURM_CPUS_PER_TASK     # print the number of cores per node (3) -->
-<!-- ``` -->
-
 <!-- Check: without `CHPL_RT_NUM_THREADS_PER_LOCALE`, will 32 threads run on separate 32 cores -->
 <!-- or will they run on the 3 cores inside our Slurm job? -->
 
-# Simple multi-locale codes
+## Simple multi-locale codes
 
 Let us test our multi-locale Chapel environment by launching the following code:
 
@@ -246,7 +354,7 @@ Let us test our multi-locale Chapel environment by launching the following code:
 writeln(Locales);
 ```
 ```sh
-$ source ~/projects/def-sponsor00/shared/startMultiLocale.sh     # on cassiopeia.c3.ca
+$ source ~/projects/def-sponsor00/shared/chapel/startMultiLocale.sh   # on the training cluster
 $ chpl test.chpl -o test
 $ sbatch distributed.sh
 $ cat solution.out
@@ -321,22 +429,22 @@ $ cat solution.out
 ```
 ```
 locale #0...
-  ...is named: node1.cassiopeia.westgrid.ca
+  ...is named: node1.uu.westgrid.ca
   ...has 2 processor cores
   ...has 2.77974 GB of memory
   ...has 2 maximum parallelism
 locale #1...
-  ...is named: node2.cassiopeia.westgrid.ca
+  ...is named: node2.uu.westgrid.ca
   ...has 2 processor cores
   ...has 2.77974 GB of memory
   ...has 2 maximum parallelism
 locale #2...
-  ...is named: node4.cassiopeia.westgrid.ca
+  ...is named: node4.uu.westgrid.ca
   ...has 2 processor cores
   ...has 2.77974 GB of memory
   ...has 2 maximum parallelism
 locale #3...
-  ...is named: node3.cassiopeia.westgrid.ca
+  ...is named: node3.uu.westgrid.ca
   ...has 2 processor cores
   ...has 2.77974 GB of memory
   ...has 2 maximum parallelism
@@ -347,9 +455,9 @@ cores available inside our job on each node (maximum parallelism), it lists the 
 each node available to all running jobs which is not the same as the total memory per node allocated to
 our job.
 
-# Multi-locale data parallelism
+## Multi-locale data parallelism
 
-## Local domains
+### Local domains
 
 We start this section by recalling the definition of a **range** in Chapel. A range is a 1D set of
 integer indices that can be bounded or infinite:
@@ -357,9 +465,9 @@ integer indices that can be bounded or infinite:
 ```chpl
 var oneToTen: range = 1..10; // 1, 2, 3, ..., 10
 var a = 1234, b = 5678;
-var aToB: range = a..b; // using variables
+var aToB: range = a..b;      // using variables
 var twoToTenByTwo: range(stridable=true) = 2..10 by 2; // 2, 4, 6, 8, 10
-var oneToInf = 1.. ; // unbounded range
+var oneToInf = 1.. ;         // unbounded range
 ```
 
 On the other hand, **domains** are multi-dimensional (including 1D) sets of integer indices that are
@@ -367,15 +475,15 @@ always bounded. To stress the difference between domain ranges and domains, doma
 enclose their indices in curly brackets. Ranges can be used to define a specific dimension of a domain:
 
 ```chpl
-var domain1to10: domain(1) = {1..10};        // 1D domain from 1 to 10 defined using the range 1..10
-var twoDimensions: domain(2) = {-2..2, 0..2}; // 2D domain over a product of two ranges
-var thirdDim: range = 1..16; // a range
+var domain1to10: domain(1) = {1..10};                // 1D domain from 1 to 10 defined using the range 1..10
+var twoDimensions: domain(2) = {-2..2, 0..2};        // 2D domain over a product of two ranges
+var thirdDim: range = 1..16;                         // a range
 var threeDims: domain(3) = {1..10, 5..10, thirdDim}; // 3D domain over a product of three ranges
-for idx in twoDimensions do   // cycle through all points in a 2D domain
+for idx in twoDimensions do                          // cycle through all points in a 2D domain
   write(idx, ', ');
 writeln();
-for (x,y) in twoDimensions {   // can also cycle using explicit tuples (x,y)
-  write('(', x, ', ', y, ')', ', ');
+for (x,y) in twoDimensions {                         // can also cycle using explicit tuples (x,y)
+  write(x,",",y,"  ");
 }
 writeln();
 ```
@@ -393,8 +501,8 @@ here.numPUs(), here.physicalMemory(), here.maxTaskPar.
 
 ```chpl
 config const n = 8;
-const mesh: domain(2) = {1..n, 1..n};  // a 2D domain defined in shared memory on a single locale
-forall m in mesh do   // go in parallel through all n^2 mesh points
+const mesh: domain(2) = {1..n, 1..n}; // a 2D domain defined in shared memory on a single locale
+forall m in mesh do                   // go in parallel through all n^2 mesh points
   writeln(m, ' ', m.locale.id, ' ', here.id, ' ', here.maxTaskPar);
 ```
 ```
@@ -414,9 +522,9 @@ real numbers on top of `mesh`:
 
 ```chpl
 config const n = 8;
-const mesh: domain(2) = {1..n, 1..n};   // a 2D domain defined in shared memory on a single locale
-var T: [mesh] real;   // a 2D array of reals defined in shared memory on a single locale (mapped onto this domain)
-forall t in T do   // go in parallel through all n^2 elements of T
+const mesh: domain(2) = {1..n, 1..n}; // a 2D domain defined in shared memory on a single locale
+var T: [mesh] real;                   // a 2D array of reals defined in shared memory on a single locale (mapped onto this domain)
+forall t in T do                      // go in parallel through all n^2 elements of T
   writeln(t, ' ', t.locale.id);
 ```
 ```sh
@@ -458,18 +566,18 @@ Since we use a paralell `forall` loop, the print statements appear in a random r
 We can also define multiple arrays on the same domain:
 
 ```chpl
-const grid = {1..100}; // 1D domain
-const alpha = 5; // some number
-var A, B, C: [grid] real; // local real-type arrays on this 1D domain
+const grid = {1..100};          // 1D domain
+const alpha = 5;                // some number
+var A, B, C: [grid] real;       // local real-type arrays on this 1D domain
 B = 2; C = 3;
 forall (a,b,c) in zip(A,B,C) do // parallel loop
-  a = b + alpha*c;   // simple example of data parallelism on a single locale
+  a = b + alpha*c;              // simple example of data parallelism on a single locale
 writeln(A);
 ```
 
 The **second important property** of Chapel domains is that they can **span multiple locales** (nodes).
 
-## Distributed domains
+### Distributed domains
 
 Domains are fundamental Chapel concept for distributed-memory data parallelism.
 
@@ -533,11 +641,9 @@ runs on locale 0 gathering remote elements from other locales and printing them 
 Now we can print the range of indices for each sub-domain by adding the following to our code:
 
 ```chpl
-for loc in Locales {
-  on loc {
-	writeln(A.localSubdomain());
-  }
-}
+for loc in Locales do
+  on loc do
+    writeln(A.localSubdomain());
 ```
 
 On 4 locales we should get:
@@ -571,7 +677,7 @@ $ cat solution.out
 actual number of threads = 12
 ```
 
-> ## Exercise 12
+> ### <font style="color:blue">Exercise "Data.2"</font>
 > Try reducing the array size `n` to see if that changes the output (fewer threads per locale), e.g.,
 > setting n=3. Also try increasing the array size to n=20 and study the output. Does the output make sense?
 
@@ -694,7 +800,7 @@ var message: [largerMesh] string;
 forall m in message do
   m = here.id:string;   // store ID of the locale on which the code is running
 writeln(message);
-assert(1>2);    // will halt if the condition is false
+halt();
 ```
 ```sh
 $ chpl -o parallel parallel.chpl
@@ -716,7 +822,7 @@ The outer perimeter in the partition below are the *ghost points*, with the inne
 2 2 2 2 2 3 3 3 3 3
 ```
 
-> ## Exercise 13
+> ### <font style="color:blue">Exercise "Data.3"</font>
 > In addition to here.id, also print the ID of the locale holding that value. Is it the same or different
 > from `here.id`?
 
@@ -727,51 +833,51 @@ The outer perimeter in the partition below are the *ghost points*, with the inne
 (6) Replace the loop for computing *inner* `Tnew`:
 
 ```chpl
-  for i in 1..rows do {  // do smth for row i
-	for j in 1..cols do {   // do smth for row i and column j
-	  Tnew[i,j] = 0.25 * (T[i-1,j] + T[i+1,j] + T[i,j-1] + T[i,j+1]);
-	}
+for i in 1..rows do {  // do smth for row i
+  for j in 1..cols do {   // do smth for row i and column j
+	Tnew[i,j] = 0.25 * (T[i-1,j] + T[i+1,j] + T[i,j-1] + T[i,j+1]);
   }
+}
 ```
 
 with a parallel `forall` loop (**contains a mistake on purpose!**):
 
 ```chpl
-  forall (i,j) in mesh do
-	Tnew[i,j] = 0.25 * (T[i-1,j] + T[i+1,j] + T[i,j-1] + T[i,j+1]);
+forall (i,j) in mesh do
+  Tnew[i,j] = 0.25 * (T[i-1,j] + T[i+1,j] + T[i,j-1] + T[i,j+1]);
 ```
 
-> ## Exercise 14
+> ### <font style="color:blue">Exercise "Data.4"</font>
 > Can anyone spot a mistake in this loop?
 
 (7) Replace
 
 ```chpl
-  delta = 0;
-  for i in 1..rows do {
-	for j in 1..cols do {
-	  tmp = abs(Tnew[i,j]-T[i,j]);
-	  if tmp > delta then delta = tmp;
-	}
+delta = 0;
+for i in 1..rows do {
+  for j in 1..cols do {
+	tmp = abs(Tnew[i,j]-T[i,j]);
+	if tmp > delta then delta = tmp;
   }
+}
 ```
 
 with
 
 ```chpl
-  delta = max reduce abs(Tnew[1..rows,1..cols]-T[1..rows,1..cols]);
+delta = max reduce abs(Tnew[1..rows,1..cols]-T[1..rows,1..cols]);
 ```
 
 (8) Replace
 
 ```chpl
-  T = Tnew;
+T = Tnew;
 ```
 
 with the **inner-only** update
 
 ```chpl
-  T[1..rows,1..cols] = Tnew[1..rows,1..cols];   // uses parallel `forall` underneath
+T[1..rows,1..cols] = Tnew[1..rows,1..cols];   // uses parallel `forall` underneath
 ```
 
 ## Benchmarking
@@ -791,7 +897,7 @@ First, let's try this on a smaller problem. Let's write two job submission scrip
 ```sh
 #!/bin/bash
 # this is baseSolver.sh
-#SBATCH --time=00:05:00   # walltime in d-hh:mm or hh:mm:ss format
+#SBATCH --time=00:05:00      # walltime in d-hh:mm or hh:mm:ss format
 #SBATCH --mem-per-cpu=1000   # in MB
 #SBATCH --output=baseSolver.out
 ./baseSolver -nl 1 --rows=30 --cols=30 --niter=2000
@@ -800,7 +906,7 @@ First, let's try this on a smaller problem. Let's write two job submission scrip
 ```sh
 #!/bin/bash
 # this is parallel.sh
-#SBATCH --time=00:05:00   # walltime in d-hh:mm or hh:mm:ss format
+#SBATCH --time=00:05:00      # walltime in d-hh:mm or hh:mm:ss format
 #SBATCH --mem-per-cpu=1000   # in MB
 #SBATCH --nodes=4
 #SBATCH --cpus-per-task=2
@@ -811,8 +917,8 @@ First, let's try this on a smaller problem. Let's write two job submission scrip
 Let's run them both:
 
 ```sh
-sbatch baseSolver.sh
-sbatch parallel.sh
+$ sbatch baseSolver.sh
+$ sbatch parallel.sh
 ```
 
 Wait for the jobs to finish and then check the results:
@@ -859,24 +965,29 @@ Final temperature at the desired position [1,16000] after 9806 iterations is: 0.
 The largest temperature difference was 0.00199975
 ```
 
-
 #### On the training VM:
 
-| | 30^2 | 650^2 | 2,000^2 |
-| ----- | ----- | ----- | ----- |
-| baseSolver | 0.00852s | 59s | 745s |
-| parallel --nodes=4 --cpus-per-task=2 | 193s | 2,208s | 5,876s |
-| slowdown | ~22,700 | ~38 | ~8 |
+I switched both codes to single precision, to be able to accommodate larger arrays. The table below shows the
+**slowdown** factor when going from serial to parallel. For each row correspondingly, I was running the following:
+
+```sh
+$ ./baseSolver --rows=2000 --niter=200 --tolerance=0.002
+$ ./parallel -nl 4 --rows=2000 --niter=200 --tolerance=0.002
+$ ./parallel -nl 6 --rows=2000 --niter=200 --tolerance=0.002
+```
+
+| | 30^2 | 650^2 | 2,000^2 | 16,000^2 |
+| ----- | ----- | ----- | ----- | ----- |
+| --nodes=4 --cpus-per-task=2 | 32,324 | 176 | 27.78 | 4.13 |
+| --nodes=6 --cpus-per-task=16 | | | 15.3 | 1/5.7 |
 
 #### On Graham (faster interconnect):
 
 | | 30^2 | 650^2 | 2,000^2 | 8,000^2 |
 | ----- | ----- | ----- | ----- | ----- |
-| baseSolver | 0.0203s | 56s | 565s | 11,140s |
-| parallel --nodes=4 --cpus-per-task=2 | 105s | 802s | 1,627s | 13,975s |
-| slowdown | ~5,170 | ~14 | ~2.9 | ~1.25 |
-| parallel --nodes=4 --cpus-per-task=4 | | | | 7,157s |
-| parallel --nodes=8 --cpus-per-task=4 | | | | 4,096s |
+| --nodes=4 --cpus-per-task=2 | 5,170 | 14 | 2.9 | 1.25 |
+| --nodes=4 --cpus-per-task=4 | | | | 1/1.56 |
+| --nodes=8 --cpus-per-task=4 | | | | 1/2.72 |
 
 <!-- 16,000^2 on Graham: baseSolver 41,482s; parallel --nodes=4 --cpus-per-task=2 61,052s -->
 
@@ -927,12 +1038,12 @@ writeln('The simulation took ', watch.elapsed(), ' seconds');
 
 This is the entire multi-locale, data-parallel, hybrid shared-/distributed-memory solver!
 
-> ## Exercise 15
+> ### <font style="color:blue">Exercise "Data.5"</font>
 > Add printout to the code to show the total energy on the inner mesh [1..row,1..cols] at each
 > iteration. Consider the temperature sum over all mesh points to be the total energy of the system. Is
 > the total energy on the mesh conserved?
 
-> ## Exercise 16
+> ### <font style="color:blue">Exercise "Data.6"</font>
 > Write a code to print how the finite-difference stencil [i,j], [i-1,j], [i+1,j], [i,j-1], [i,j+1] is
 > distributed among nodes, and compare that to the ID of the node where T[i,i] is computed. Use problem
 > size 8x8.
@@ -999,6 +1110,15 @@ $ ls -l *dat
 
 The file *output.dat* should contain the 8x8 temperature array after convergence.
 
-# Solutions
+## Other topics
+
+* binary I/O: check https://chapel-lang.org/publications/ParCo-Larrosa.pdf
+* calling C/C++ functions from Chapel
+* writing arrays to NetCDF and HDF5 files from Chapel: covered in our
+  [March 2020 webinar](https://westgrid.github.io/trainingMaterials/programming#working-with-data-files-and-external-c-libraries-in-chapel)
+* advanced: take a simple 2D or 3D non-linear problem, linearize it, implement a parallel multi-locale
+  linear solver entirely in Chapel
+
+## Solutions
 
 You can find the solutions [here](../../solutions-chapel).

@@ -4,7 +4,7 @@ slug = "chapel-02-task-parallelism"
 weight = 2
 +++
 
-# Quick review of the previous session
+## Quick review of the previous session
 
 * we wrote the serial version of the 2D heat transfer solver in Chapel `baseSolver.chpl`: initial T=25,
   zero boundary conditions on the left/upper sides, and linearly increasing temperature on the boundary
@@ -13,19 +13,19 @@ weight = 2
   _jout_, _tolerance_, _nout_
 * we ran the benchmark solution to convergence after 7750 iterations
 ```sh
-$ ./baseSolver --rows=650 --cols=650 --iout=200 --jout=300 --niter=10000 --tolerance=0.002 --nout=1000
+$ ./baseSolver --rows=650 --iout=200 --niter=10_000 --tolerance=0.002 --nout=1000
 ```
 * we learned how to time individual sections of the code
 * we saw that `--fast` flag sped up calculation by ~100X
 
-# Task Parallelism with Chapel
+## Task Parallelism with Chapel
 
 The basic concept of parallel computing is simple to understand: we **divide our job into tasks that can
 be executed at the same time**, so that we finish the job in a fraction of the time that it would have
 taken if the tasks are executed one by one.
 
->> ## Key idea
->> **Task** is a unit of computation that can run in parallel with other tasks.
+> ## Key idea
+> **Task** is a unit of computation that can run in parallel with other tasks.
 
 Implementing parallel computations, however, is not always easy. How easy it is to parallelize a code
 really depends on the underlying problem you are trying to solve. This can result in:
@@ -36,7 +36,7 @@ really depends on the underlying problem you are trying to solve. This can resul
 - an **_embarrassing parallel_** problem is one where all tasks can be executed completely independent
   from each other (no communications required)
 
-# Parallel programming in Chapel
+## Parallel programming in Chapel
 
 Chapel provides high-level abstractions for parallel programming no matter the grain size of your tasks,
 whether they run in a shared memory or a distributed memory environment, or whether they are executed
@@ -68,44 +68,25 @@ And again, Chapel could take care of all the stuff required to run our algorithm
 scenarios, but we can always add more specific detail to gain performance when targeting a particular
 scenario.
 
->> ## Key idea
->> **Task parallelism** is a style of parallel programming in which parallelism is driven by
->> *programmer-specified tasks*. This is in contrast with **Data Parallelism** which is a style of
->> parallel programming in which parallelism is driven by *computations over collections of data elements
->> or their indices*.
+> ## Key idea
+> **Task parallelism** is a style of parallel programming in which parallelism is driven by
+> *programmer-specified tasks*. This is in contrast with **Data Parallelism** which is a style of
+> parallel programming in which parallelism is driven by *computations over collections of data elements
+> or their indices*.
 
-# Running single-local parallel Chapel
+## Running single-local parallel Chapel
 
-<!-- ```sh -->
-<!-- $ module load gcc chapel-single/1.15.0 -->
-<!-- $ salloc --time=2:00:0 --ntasks=1 --cpus-per-task=3 --mem-per-cpu=1000 \ -->
-<!--          --account=def-razoumov-ws_cpu --reservation=arazoumov-may17 -->
-<!-- $ echo $SLURM_NODELIST          # print the list of nodes (should be one) -->
-<!-- $ echo $SLURM_CPUS_PER_TASK     # print the number of cores per node (3) -->
-<!-- ``` -->
-
-If working on Cedar / Graham / Béluga, please either load the official single-locale Chapel module:
+Make sure you have loaded the official single-locale Chapel module:
 
 ```sh
-$ module load gcc chapel-single/1.15.0
-```
-or use the latest single-locale Chapel:
-
-```sh
-$ source /home/razoumov/startSingleLocale.sh
-```
-
-If you are working instead on *cassiopeia.c3.ca* cluster, please load single-locale Chapel from `/project`:
-
-```sh
-$ source ~/projects/def-sponsor00/shared/startSingleLocale.sh
+$ module load gcc/9.3.0 chapel-multicore/1.25.0
 ```
 
 In this lesson, we'll be running on several cores on one node with a script `shared.sh`:
 
 ```sh
 #!/bin/bash
-#SBATCH --time=00:05:00   # walltime in d-hh:mm or hh:mm:ss format
+#SBATCH --time=00:05:00      # walltime in d-hh:mm or hh:mm:ss format
 #SBATCH --mem-per-cpu=1000   # in MB
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
@@ -113,7 +94,7 @@ In this lesson, we'll be running on several cores on one node with a script `sha
 ./begin
 ```
 
-# Fire-and-forget tasks
+## Fire-and-forget tasks
 
 A Chapel program always starts as a single main thread. You can then start concurrent threads with the `begin`
 statement. A thread spawned by the `begin` statement will run in a different thread while the main thread continues its
@@ -167,38 +148,39 @@ unpredictable. This is a well known effect of concurrent threads accessing the s
 same time (in this case the screen); the system decides in which order the threads could write to the
 screen.
 
-> ## Discussion
-> What would happen if in the last code we declare `count` in the main thread?
+> ### <font style="color:blue">Discussion</font>
 >
->> _Answer_: we'll get an error at compilation, since then `count` will belong to the main thread (will
->> be defined within the scope of the main thread), and we can modify its value only in the main thread.
+> 1. What would happen if in the last code we move the definition of `count` into the main thread, but try to
+>    assign it from threads 1 and 2?
 >
-> What would happen if we try to insert a second definition `var x = 10;` inside the first `begin`
-> statement?
+>> _Answer_: we'll get an error at compilation ("cannot assign to const variable"), since then `count` would
+>belong to the > main thread (would be defined within the scope of the main thread), and we could modify its
+>value only in the main > thread.
 >
->> _Answer_: that will actually work, as we'll simply create another, local instance of `x` with its own
->> value.
+> 2. What would happen if we try to insert a second definition `var x = 10;` inside the first `begin`
+>statement?
+>
+>> _Answer_: that will actually work, as we'll simply create another, local instance of `x` with its own value.
 
->> ## Key idea
->> All variables have a **_scope_** in which they can be used. The variables declared inside a concurrent
->> thread are accessible only by the thread. The variables declared in the main thread can be read everywhere,
->> but Chapel won't allow other concurrent threads to modify them.
+> ## Key idea
+> All variables have a **_scope_** in which they can be used. Variables declared inside a concurrent
+> thread are accessible only by that thread. Variables declared in the main thread can be read everywhere,
+> but Chapel won't allow other concurrent threads to modify them.
 
-> ## Discussion
+> ### <font style="color:blue">Discussion</font>
 > Are the concurrent threads, spawned by the last code, running truly in parallel?
 >
 > _Answer_: it depends on the number of cores available to your job. If you have a single core, they'll
 > run concurrently, with the CPU switching between the threads. If you have two cores, thread1 and thread2
 > will likely run in parallel using the two cores.
 
->> ## Key idea
->> To maximize performance, start as many threads as the number of available cores.
+> ## Key idea
+> To maximize performance, start as many threads as the number of available cores.
 
-A slightly more structured way to start concurrent threads in Chapel is by using the `cobegin`
-statement. Here you can start a block of concurrent threads, **one for each statement** inside the curly
-brackets. Another difference between the `begin`and `cobegin` statements is that with the `cobegin`, all
-the spawned threads are synchronized at the end of the statement, i.e. the main thread won't continue its
-execution until all threads are done. Let's start `cobegin.chpl`:
+A slightly more structured way to start concurrent threads in Chapel is by using the `cobegin` statement. Here you can
+start a block of concurrent threads, **one for each statement** inside the curly brackets. Another difference between
+the `begin` and `cobegin` statements is that with the `cobegin`, all the spawned threads are synchronized at the end of
+the statement, i.e. the main thread won't continue its execution until all threads are done. Let's start `cobegin.chpl`:
 
 ```chpl
 var x = 0;
@@ -225,11 +207,12 @@ This is thread 1, my value of x is 5
 This message will not appear until all threads are done...
 ```
 
-As you may have concluded from the Discussion exercise above, the variables declared inside a thread are accessible only
-by the thread, while those variables declared in the main thread are accessible to all threads.
+As you may have concluded from the Discussion exercise above, the variables declared inside a thread are
+accessible only by the thread, while those variables declared in the main thread are accessible to all
+threads.
 
-Another, and one of the most useful ways to start concurrent/parallel threads in Chapel, is the `coforall` loop. This is
-a combination of the for-loop and the `cobegin`statements. The general syntax is:
+Another, and one of the most useful ways to start concurrent/parallel threads in Chapel, is the `coforall`
+loop. This is a combination of the for-loop and the `cobegin`statements. The general syntax is:
 
 ```chpl
 coforall index in iterand
@@ -271,36 +254,50 @@ Notice the random order of the print statements. And notice how, once again, the
 outside the `coforall` can be read by all threads, while the variables declared inside, are available
 only to the particular thread.
 
-> ## Exercise 6
-> Would it be possible to print all the messages in the right order? Modify the code in the last example
-> as required and save it as `exercise6.chpl`.
->
-> Hint: you can use an array of strings declared in the main thread, into which all the concurrent threads
-> could write their messages in the right order. Then, at the end, have the main thread print all elements
-> of the array.
+> ### <font style="color:blue">Exercise "Task.1"</font>
+> Would it be possible to print all the messages in the right order? Modify the code in the last example as
+> required and save it as `consecutive.chpl`. Hint: you can use an array of strings declared in the main
+> thread, into which all the concurrent threads could write their messages in the right order. Then, at the
+> end, have the main thread print all elements of the array.
 
-> ## Exercise 7
-> Consider the following code `exercise7.chpl`:
+> ### <font style="color:blue">Exercise "Task.2"</font>
+> Consider the following code `gmax.chpl` to find the maximum array element. Complete this code, and also time
+> the `coforall` loop.
 > ```chpl
-> use Random;
-> config const m = 8: int;
-> const nelem = 10**m: int;
+> use Random, Time;
+> config const nelem = 1e8: int;
 > var x: [1..nelem] real;
-> fillRandom(x);	// fill array with random numbers
+> fillRandom(x);	                   // fill array with random numbers
 > var gmax = 0.0;
 >
-> // here put your code to find gmax
+> config const numthreads = 2;       // let's pretend we have 2 cores
+> const n = nelem / numthreads;      // number of elements per thread
+> const r = nelem - n*numthreads;    // these elements did not fit into the last thread
+> var lmax: [1..numthreads] real;    // local maxima for each thread
+> coforall threadid in 1..numthreads do {
+>   var start, finish: int;
+>   start = ...
+>   finish = ...
+>   ... compute lmax for this thread ...
+> }
 >
-> writeln('the maximum value in x is: ', gmax);
+> // put largest lmax into gmax
+> for threadid in 1..numthreads do                        // a serial loop
+>   if lmax[threadid] > gmax then gmax = lmax[threadid];
+>
+> writef('The maximum value in x is %14.12dr\n', gmax);   // formatted output
+> writeln('It took ', watch.elapsed(), ' seconds');
 > ```
-> Write a parallel code to find the maximum value in the array `x`. Be careful: the number of threads
-> should not be excessive. Best to use `numthreads` to organize parallel loops.
+> Write a parallel code to find the maximum value in the array `x`. Be careful: the number of threads should not be
+> excessive. Best to use `numthreads` to organize parallel loops. For each thread compute the `start` and `finish`
+> indices of its array elements and cycle through them to find the local maximum. Then in the main thread cycle through
+> all local maxima to find the global maximum.
 
-> ## Discussion
+> ### <font style="color:blue">Discussion</font>
 > Run the code of last Exercise using different number of threads, and different sizes of the array `x` to
 > see how the execution time changes. For example:
 > ```sh
-> $ time ./exercise7 --m=8 --numthreads=1
+> $ ./gmax --nelem=100_000_000 --numthreads=1
 > ```
 >
 > Discuss your observations. Is there a limit on how fast the code could run?
@@ -317,15 +314,15 @@ only to the particular thread.
 > Time the execution of the original code and this new one. How do they compare?
 >
 >> Answer: the built-in reduction operation runs in parallel utilizing all cores.
->
->> ## Key idea
->> It is always a good idea to check whether there is _built-in_ functions or methods in the used
->> language, that can do what we want as efficiently (or better) than our house-made code. In this case,
->> the _reduce_ statement reduces the given array to a single number using the operation `max`, and it is
->> parallelized. Here is the full list of reduce operations: + &nbsp; * &nbsp; && &nbsp; || &nbsp; &
->> &nbsp; | &nbsp; ^ &nbsp; min &nbsp; max.
 
-# Synchronization of threads
+> ## Key idea
+> It is always a good idea to check whether there is _built-in_ functions or methods in the used
+> language, that can do what we want as efficiently (or better) than our house-made code. In this case,
+> the _reduce_ statement reduces the given array to a single number using the operation `max`, and it is
+> parallelized. Here is the full list of reduce operations: + &nbsp; * &nbsp; && &nbsp; || &nbsp; &
+> &nbsp; | &nbsp; ^ &nbsp; min &nbsp; max.
+
+## Synchronization of threads
 ### `sync` block
 
 The keyword `sync` provides all sorts of mechanisms to synchronize threads in Chapel. We can simply use
@@ -357,7 +354,7 @@ writeln('This is the main thread, I am done ...');
 ```
 ```sh
 $ chpl sync1.chpl -o sync1
-$ sed -i -e 's|exercise7|sync1|' shared.sh
+$ sed -i -e 's|gmax|sync1|' shared.sh
 $ sbatch shared.sh
 $ cat solution.out
 ```
@@ -388,7 +385,7 @@ thread 2: 9
 thread 2: 10
 ```
 
-> ## Discussion
+> ### <font style="color:blue">Discussion</font>
 > What would happen if we swap `sync` and `begin` in the first thread:
 > ```chpl
 > begin {
@@ -404,13 +401,13 @@ thread 2: 10
 > ```
 > Discuss your observations.
 >
-> Answer: `sync` would have no effect on the rest of the program. We only pause the execution of the
-> first thread, until all statements inside sync {} are completed -- but this does not affect the main and
-> the second threads: they keep on running.
+> Answer: `sync` would have no effect on the rest of the program. We only pause the execution of the first thread, until
+> all statements inside sync {} are completed -- but this does not affect the main and the second threads: they keep on
+> running.
 
-> ## Exercise 8
-> Use `begin` and `sync` statements to reproduce the functionality of `cobegin` in cobegin.chpl, i.e.,
-> the main thread should not continue until both threads 1 and 2 are completed.
+> ### <font style="color:blue">Exercise "Task.3"</font>
+> Use `begin` and `sync` statements to reproduce the functionality of `cobegin` in cobegin.chpl, i.e., the
+> main thread should not continue until both threads 1 and 2 are completed.
 
 ### `sync` variables
 
@@ -431,7 +428,7 @@ begin {
   writeln('New thread finished');
 }
 writeln('this is the main thread after launching new thread ... I will wait until x is full');
-x.readFE();   // read the value, state changes from Full to Empty
+x.readFE();         // read the value, state changes from Full to Empty
 writeln('and now it is done');
 ```
 ```sh
@@ -498,12 +495,12 @@ establish explicit synchronization between threads, as shown in the next code `a
 var lock: atomic int;
 const numthreads = 5;
 
-lock.write(0);   // the main thread set lock to zero
+lock.write(0);               // the main thread set lock to zero
 
 coforall id in 1..numthreads {
   writeln('greetings form thread ', id, '... I am waiting for all threads to say hello');
-  lock.add(1);              // thread id says hello and atomically adds 1 to lock
-  lock.waitFor(numthreads);   // then it waits for lock to be equal numthreads (which will happen when all threads say hello)
+  lock.add(1);               // thread id says hello and atomically adds 1 to lock
+  lock.waitFor(numthreads);  // then it waits for lock to be equal numthreads (which will happen when all threads say hello)
   writeln('thread ', id, ' is done ...');
 }
 ```
@@ -533,7 +530,7 @@ thread 4 is done...
 Finally, with all the material studied so far, we should be ready to parallelize our code for the
 simulation of the heat transfer equation.
 
-# Parallelizing the heat transfer equation
+## Parallelizing the heat transfer equation
 
 **Important:** In a one-day Chapel course, we suggest skipping to [data parallelism](../chapel-03-domain-parallelism)
 (next session) and coming back here only if/when you have time.
@@ -549,20 +546,21 @@ For the reduction of the grid we can simply use the `max reduce` statement, whic
 divide the grid into `rowthreads` * `colthreads` subgrids, and assign each subgrid to a thread using the `coforall` loop
 (we will have `rowthreads * colthreads` threads in total).
 
-Recall out code `exercise7.chpl` in which we broke the 1D array with 1e9 elements into `numthreads=12` blocks, and each
-thread was processing elements `start..finish`. Now we'll do exactly the same in 2D. First, let's write a quick serial
-code `test.chpl` to test the indices:
+Recall out code `gmax.chpl` in which we broke the 1D array with 1e8 elements into `numthreads=2` blocks, and each thread
+was processing elements `start..finish`. Now we'll do exactly the same in 2D. First, let's write a quick serial code
+`test.chpl` to test the indices:
 
 ```chpl
-config const rows = 100, cols = 100;   // number of rows and columns in our matrix
+config const rows, cols = 100;               // number of rows and columns in our matrix
 
-config const rowthreads = 3, colthreads = 4;   // number of blocks in x- and y-dimensions
-										   // each block processed by a separate thread
-										   // let's pretend we have 12 cores
+config const rowthreads = 3, colthreads = 4; // number of blocks in x- and y-dimensions
+// each block processed by a separate thread
+// let's pretend we have 12 cores
+
 const nr = rows / rowthreads;   // number of rows per thread
-const rr = rows % rowthreads; // remainder rows (did not fit into the last row of threads)
+const rr = rows % rowthreads;   // remainder rows (did not fit into the last row of threads)
 const nc = cols / colthreads;   // number of columns per thread
-const rc = cols % colthreads; // remainder columns (did not fit into the last column of threads)
+const rc = cols % colthreads;   // remainder columns (did not fit into the last column of threads)
 
 coforall threadid in 0..colthreads*rowthreads-1 do {
   var row1, row2, col1, col2: int;
@@ -604,18 +602,18 @@ study data parallelism in the following lessons, but for now let's compare the b
 Now we'll parallelize our heat transfer solver. Let's copy `baseSolver.chpl` into `parallel1.chpl` and
 then start editing the latter. We'll make the following changes in `parallel1.chpl`:
 
-```sh
-$ diff baseSolver.chpl parallel1.chpl
+```
+diff baseSolver.chpl parallel1.chpl
 18a19,24
 > config const rowthreads = 3, colthreads = 4;   // let's pretend we have 12 cores
-> const nr = rows / rowthreads;   // number of rows per thread
+> const nr = rows / rowthreads;    // number of rows per thread
 > const rr = rows - nr*rowthreads; // remainder rows (did not fit into the last thread)
-> const nc = cols / colthreads;   // number of columns per thread
+> const nc = cols / colthreads;    // number of columns per thread
 > const rc = cols - nc*colthreads; // remainder columns (did not fit into the last thread)
 >
 31,32c37,46
-<   for i in 1..rows do {  // do smth for row i
-<     for j in 1..cols do {   // do smth for row i and column j
+<   for i in 1..rows do {    // do smth for row i
+<     for j in 1..cols do {  // do smth for row i and column j
 <       Tnew[i,j] = 0.25 * (T[i-1,j] + T[i+1,j] + T[i,j-1] + T[i,j+1]);
 <     }
 <   }
@@ -651,7 +649,7 @@ Let's compile and run both codes on the same large problem:
 
 ```sh
 $ chpl --fast baseSolver.chpl -o baseSolver
-$ sed -i -e 's|test|baseSolver --rows=650 --cols=650 --iout=200 --jout=300 --niter=10000 --tolerance=0.002 --nout=1000|' shared.sh
+$ sed -i -e 's|test|baseSolver --rows=650 --iout=200 --niter=10_000 --tolerance=0.002 --nout=1000|' shared.sh
 $ sbatch shared.sh
 $ cat solution.out
 Working with a matrix 650x650 to 10000 iterations or dT below 0.002
@@ -688,16 +686,16 @@ The simulation took 25.106 seconds
 Both ran to 7750 iterations, with the same numerical results, but the parallel code is nearly 3X slower
 -- that's terrible!
 
-> ## Discussion
+> ### <font style="color:blue">Discussion</font>
 > What happened!?...
 
 To understand the reason, let's analyze the code. When the program starts, the main thread does all the
 declarations and initializations, and then, it enters the main loop of the simulation (the **_while_**
-loop). Inside this loop, the parallel threads are launched for the first time. When these threads finish
-their computations, the main thread resumes its execution, it updates `delta` and T, and everything is
-repeated again. So, in essence, parallel threads are launched and resumed 7750 times, which introduces a
-significant amount of overhead (the time the system needs to effectively start and destroy threads in the
-specific hardware, at each iteration of the while loop).
+loop). Inside this loop, the parallel threads are launched for the first time. When these threads finish their
+computations, the main thread resumes its execution, it updates `delta` and T, and everything is repeated
+again. So, in essence, parallel threads are launched and terminated 7750 times, which introduces a significant
+amount of overhead (the time the system needs to effectively start and destroy threads in the specific
+hardware, at each iteration of the while loop).
 
 Clearly, a better approach would be to launch the parallel threads just once, and have them execute all the
 time steps, before resuming the main thread to print the final results.
@@ -738,16 +736,16 @@ synchronization points inside the `coforall` loop.
 <!-- 1. We need to be sure that all threads have finished with the computations of their part of the grid `temp`, before updating `delta` and `past_temp` safely. -->
 <!-- 2. We need to be sure that all threads use the updated value of `delta` to evaluate the condition of the while loop for the next iteration. -->
 
-> ## Exercise 9
+> ### <font style="color:blue">Exercise "Task.4"</font>
 > Recall our earlier code `atomic.chpl`:
 > ```chpl
 > var lock: atomic int;
 > const numthreads = 5;
-> lock.write(0);   // the main thread set lock to zero
+> lock.write(0);                // the main thread set lock to zero
 > coforall id in 1..numthreads {
 >   writeln('greetings form thread ', id, '... I am waiting for all threads to say hello');
->   lock.add(1);              // thread id says hello and atomically adds 1 to lock
->   lock.waitFor(numthreads);   // then it waits for lock to be equal numthreads (which will happen when all threads say hello)
+>   lock.add(1);               // thread id says hello and atomically adds 1 to lock
+>   lock.waitFor(numthreads);  // then it waits for lock to be equal numthreads (which will happen when all threads say hello)
 >   writeln('thread ', id, ' is done ...');
 > }
 > ```
@@ -755,11 +753,11 @@ synchronization points inside the `coforall` loop.
 > wrong with adding the following at the end of the `coforall` loop?
 > ```chpl
 >   lock.sub(1);      // thread id says hello and atomically subtracts 1 from lock
->   lock.waitFor(0);   // then it waits for lock to be equal 0 (which will happen when all threads say hello)
+>   lock.waitFor(0);  // then it waits for lock to be equal 0 (which will happen when all threads say hello)
 >   writeln('thread ', id, ' is really done ...');
 > ```
 
-> ## Exercise 10
+> ### <font style="color:blue">Exercise "Task.5"</font>
 > Ok, then what is the solution if we want two synchronization points?
 
 (3) Define two atomic variables that we'll use for synchronization
@@ -771,15 +769,15 @@ var lock1, lock2: atomic int;
 and add after the (i,j)-loops to compute Tnew the following:
 
 ```chpl
-	lock1.add(1);   // each thread atomically adds 1 to lock
-	lock1.waitFor(colthreads*rowthreads*count);   // then it waits for lock to be equal colthreads*rowthreads
+lock1.add(1);   // each thread atomically adds 1 to lock
+lock1.waitFor(colthreads*rowthreads*count);   // then it waits for lock to be equal colthreads*rowthreads
 ```
 
 and after `T[row1..row2,col1..col2] = Tnew[row1..row2,col1..col2];` the following:
 
 ```chpl
-	lock2.add(1);   // each thread atomically subtracts 1 from lock
-	lock2.waitFor(colthreads*rowthreads*count);   // then it waits for lock to be equal 0
+lock2.add(1);   // each thread atomically subtracts 1 from lock
+lock2.waitFor(colthreads*rowthreads*count);   // then it waits for lock to be equal 0
 ```
 
 Notice that we have a product `colthreads*rowthreads*count`, since lock1/lock2 will be incremented by all
@@ -793,9 +791,9 @@ remove `count` instance (in `writeln()`) after `coforall` ends.
 ```chpl
 var delta: atomic real;    // the greatest temperature difference between Tnew and T
 ...
-delta.write(tolerance*10);    // some safe initial large value
+delta.write(tolerance*10); // some safe initial large value
 ...
-  while (count < niter && delta.read() >= tolerance) do {
+while (count < niter && delta.read() >= tolerance) do {
 ```
 
 (6) Define an array of local delta's for each thread and use it to compute delta:
@@ -803,21 +801,23 @@ delta.write(tolerance*10);    // some safe initial large value
 ```chpl
 var arrayDelta: [0..colthreads*rowthreads-1] real;
 ...
-  var tmp: real;   // inside coforall
+var tmp: real;  // inside coforall
 ...
-	tmp = 0;       // inside while
+tmp = 0;        // inside while
 ...
-		tmp = max(abs(Tnew[i,j]-T[i,j]),tmp);    // next line after Tnew[i,j] = ...
+tmp = max(abs(Tnew[i,j]-T[i,j]),tmp);    // next line after Tnew[i,j] = ...
 ...
-	arrayDelta[threadid] = tmp;      // right after (i,j)-loop to compute Tnew[i,j]
+arrayDelta[threadid] = tmp;   // right after (i,j)-loop to compute Tnew[i,j]
 ...
-	if threadid == 0 then {        // compute delta right after lock1.waitFor()
-	  delta.write(max reduce arrayDelta);
-	  if count%nout == 0 then writeln('Temperature at iteration ', count, ': ', Tnew[iout,jout]);
-	}
+if threadid == 0 then {       // compute delta right after lock1.waitFor()
+	delta.write(max reduce arrayDelta);
+	if count%nout == 0 then writeln('Temperature at iteration ', count, ': ', Tnew[iout,jout]);
+}
 ```
 
 (7) Remove the original T[iout,jout] output line.
+
+(8) Finally, move the boundary conditions (right+bottom edges) before the `while` loop. Why can we do it now?
 
 Now let's compare the performance of `parallel2.chpl` to the benchmark serial solution `baseSolver.chpl`:
 
@@ -874,6 +874,6 @@ $ ./parallel2 ... --rowthreads=4 --colthreads=8
 The simulation took 2.4874 seconds
 ```
 
-# Solutions
+## Solutions
 
 You can find the solutions [here](../../solutions-chapel).
