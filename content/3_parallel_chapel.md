@@ -91,9 +91,9 @@ Chapel on your computer.
 
 
 
-### Solutions
+<!-- ### Solutions -->
 
-You can find the solutions [here](../../solutions-chapel).
+<!-- You can find the solutions [here](../../solutions-chapel). -->
 
 
 
