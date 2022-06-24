@@ -17,10 +17,10 @@ weight = 1
 
 ## Cluster hardware overview (17 min)
 
-**Update 1**: Compute Canada has been replaced by the Digital Research Alliance of Canada (the Alliance). All Compute
-  Canada hardware and services are now provided to researchers by the Alliance and its regional partners. However, you
-  will still see many references to Compute Canada in [our documentation](https://docs.computecanada.ca) and support
-  system.
+**Update 1**: Compute Canada has been replaced by the Digital Research Alliance of Canada (the Alliance). All
+  Compute Canada hardware and services are now provided to researchers by the Alliance and its regional
+  partners. However, you will still see many references to Compute Canada in
+  [our documentation](https://docs.alliancecan.ca) and support system.
 
 **Update 2**: New systems were added (Narval in Calcul Québec), and some older systems were upgraded.
 

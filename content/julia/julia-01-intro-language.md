@@ -55,13 +55,14 @@ $ export JULIA_LOAD_PATH=@:@v#.#:@stdlib:/scratch/path/to/julia/packages
 **Don't do this on the training cluster!** We already have everything installed in a central location for all guest
 accounts.
 
-**Note**: Some Julia packages rely on precompiled bits that developers think would work on all architectures, but they
-  don't. For example, `Plots` package comes with several precompiled libraries, it installs without problem on Compute
-  Canada clusters, but then at runtime you will see an error about "GLIBC_2.18 not found". The proper solution would be
-  to recompile the package on the cluster, but it is not done correctly in Julia packaging, and the error persists even
-  after "recompilation". There is a solution for this, and you can always contact us at support@computecanada.ca and ask
-  for help. Another example if Julia's `NetCDF` package: it installs fine on Apple Silicon Macs, but it actually comes
-  with a precompiled C package that was compiled only for Intel Macs and does not work on M1.
+**Note**: Some Julia packages rely on precompiled bits that developers think would work on all architectures,
+  but they don't. For example, `Plots` package comes with several precompiled libraries, it installs without
+  problem on Compute Canada clusters, but then at runtime you will see an error about "GLIBC_2.18 not
+  found". The proper solution would be to recompile the package on the cluster, but it is not done correctly
+  in Julia packaging, and the error persists even after "recompilation". There is a solution for this, and you
+  can always contact us at support@tech.alliancecan.ca and ask for help. Another example if Julia's `NetCDF`
+  package: it installs fine on Apple Silicon Macs, but it actually comes with a precompiled C package that was
+  compiled only for Intel Macs and does not work on M1.
 
 ### Julia on the training cluster for this workshop
 
