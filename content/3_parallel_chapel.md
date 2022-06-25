@@ -38,21 +38,21 @@ Chapel on your computer.
 
 
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \
-{{<s>}}{{<s>}}{{<s>}}{{<s>}}{{<s>}} {{<cgr>}}Part 1: basic language features{{</cgr>}} \
+{{<chap>}}Part 1: basic language features{{</chap>}} \
 {{<nolinktitle>}}Introduction to Chapel{{</nolinktitle>}} \
 {{<nolinktitle>}}Basic syntax and variables{{</nolinktitle>}} \
 {{<nolinktitle>}}Ranges and arrays{{</nolinktitle>}} \
 {{<nolinktitle>}}Conditional statements{{</nolinktitle>}} \
 {{<nolinktitle>}}Getting started with loops{{</nolinktitle>}} \
 {{<nolinktitle>}}Measuring code performance{{</nolinktitle>}} \
-{{<s>}}{{<s>}}{{<s>}}{{<s>}}{{<s>}} {{<cgr>}}Part 2: task parallelism{{</cgr>}} \
+{{<chap>}}Part 2: task parallelism{{</chap>}} \
 {{<nolinktitle>}}Intro to parallel computing{{</nolinktitle>}} \
 {{<nolinktitle>}}Fire-and-forget tasks{{</nolinktitle>}} \
 {{<nolinktitle>}}Synchronization of threads{{</nolinktitle>}} \
 {{<nolinktitle>}}Task-parallelizing the heat transfer solver{{</nolinktitle>}}
 
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
-<!-- {{<s>}}{{<s>}}{{<s>}}{{<s>}}{{<s>}} {{<cgr>}}Part 1: basic language features{{</cgr>}} \ -->
+<!-- {{<chap>}}Part 1: basic language features{{</chap>}} \ -->
 <!-- {{<linktitle url="../chapel/chapel-01-intro" text="Introduction to Chapel">}} \ -->
 <!-- {{<linktitle url="../chapel/chapel-02-variables" text="Basic syntax and variables">}} \ -->
 <!-- {{<linktitle url="../chapel/chapel-03-ranges-and-arrays" text="Ranges and arrays">}} \ -->
@@ -60,7 +60,7 @@ Chapel on your computer.
 <!-- {{<linktitle url="../chapel/chapel-05-loops" text="Getting started with loops">}} \ -->
 <!-- {{<linktitle url="../chapel/chapel-06-command-line-arguments" text="Using command-line arguments">}} \ -->
 <!-- {{<linktitle url="../chapel/chapel-07-timing" text="Measuring code performance">}} \ -->
-<!-- {{<s>}}{{<s>}}{{<s>}}{{<s>}}{{<s>}} {{<cgr>}}Part 2: task parallelism{{</cgr>}} \ -->
+<!-- {{<chap>}}Part 2: task parallelism{{</chap>}} \ -->
 <!-- {{<linktitle url="../chapel/chapel-08-intro-parallel" text="Intro to parallel computing">}} \ -->
 <!-- {{<linktitle url="../chapel/chapel-09-fire-and-forget-tasks" text="Fire-and-forget tasks">}} \ -->
 <!-- {{<linktitle url="../chapel/chapel-10-synchronising-threads" text="Synchronization of threads">}} \ -->
@@ -73,14 +73,14 @@ Chapel on your computer.
 
 
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \
-{{<s>}}{{<s>}}{{<s>}}{{<s>}}{{<s>}} {{<cgr>}}Part 3: data parallelism{{</cgr>}} \
+{{<chap>}}Part 3: data parallelism{{</chap>}} \
 {{<nolinktitle>}}Single-locale data parallelism{{</nolinktitle>}} \
 {{<nolinktitle>}}Parallelizing the Julia set problem{{</nolinktitle>}} \
 {{<nolinktitle>}}Multi-locale Chapel{{</nolinktitle>}} \
 {{<nolinktitle>}}Domains and data parallelism{{</nolinktitle>}}
 
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
-<!-- {{<s>}}{{<s>}}{{<s>}}{{<s>}}{{<s>}} {{<cgr>}}Part 3: data parallelism{{</cgr>}} \ -->
+<!-- {{<chap>}}Part 3: data parallelism{{</chap>}} \ -->
 <!-- {{<linktitle url="../chapel/chapel-12-single-locale-data-parallel" text="Single-locale data parallelism">}} \ -->
 <!-- {{<linktitle url="../chapel/chapel-13-julia-set" text="Parallelizing the Julia set problem">}} \ -->
 <!-- {{<linktitle url="../chapel/chapel-14-multi-locale-chapel" text="Multi-locale Chapel">}} \ -->
@@ -91,9 +91,9 @@ Chapel on your computer.
 
 
 
-<!-- ### Solutions -->
+### Solutions
 
-<!-- You can find the solutions [here](../../solutions-chapel). -->
+You can find the solutions [here](../../solutions-chapel).
 
 
 
