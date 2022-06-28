@@ -34,11 +34,12 @@ katex = true
 
 <!-- - has its source code stored in text files with the extension `.chpl` -->
 
-The Chapel community is fairly small: too few people know/use Chapel $~\Leftarrow\Rightarrow~$ relatively few
+The Chapel community is fairly small: too few people know/use Chapel &nbsp;⇄&nbsp; relatively few
 libraries. However, you can use functions/libraries written in other languages:
 
-1. direct calls will always be serial.
-2. high-level Chapel parallel libraries can use C/F90/etc libraries underneath.
+1. Direct calls will always be serial.
+1. High-level Chapel parallel libraries can use C/F90/etc libraries underneath.
+1. A slowly growing base of parallel Chapel libraries.
 
 {{< figure src="/img/threeParts.png" width=800px >}}
 
