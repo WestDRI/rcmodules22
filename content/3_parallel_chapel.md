@@ -37,34 +37,34 @@ Chapel on your computer.
 
 
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \
-{{<chap>}}Part 1: basic language features{{</chap>}} \
-{{<nolinktitle>}}Introduction to Chapel{{</nolinktitle>}} \
-{{<nolinktitle>}}Basic syntax and variables{{</nolinktitle>}} \
-{{<nolinktitle>}}Ranges and arrays{{</nolinktitle>}} \
-{{<nolinktitle>}}Conditional statements{{</nolinktitle>}} \
-{{<nolinktitle>}}Getting started with loops{{</nolinktitle>}} \
-{{<nolinktitle>}}Measuring code performance{{</nolinktitle>}} \
-{{<chap>}}Part 2: task parallelism{{</chap>}} \
-{{<nolinktitle>}}Intro to parallel computing{{</nolinktitle>}} \
-{{<nolinktitle>}}Fire-and-forget tasks{{</nolinktitle>}} \
-{{<nolinktitle>}}Synchronization of threads{{</nolinktitle>}} \
-{{<nolinktitle>}}Task-parallelizing the heat transfer solver{{</nolinktitle>}}
-
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
 <!-- {{<chap>}}Part 1: basic language features{{</chap>}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-01-intro" text="Introduction to Chapel">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-02-variables" text="Basic syntax and variables">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-03-ranges-and-arrays" text="Ranges and arrays">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-04-conditions" text="Conditional statements">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-05-loops" text="Getting started with loops">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-06-command-line-arguments" text="Using command-line arguments">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-07-timing" text="Measuring code performance">}} \ -->
+<!-- {{<nolinktitle>}}Introduction to Chapel{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Basic syntax and variables{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Ranges and arrays{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Conditional statements{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Getting started with loops{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Measuring code performance{{</nolinktitle>}} \ -->
 <!-- {{<chap>}}Part 2: task parallelism{{</chap>}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-08-intro-parallel" text="Intro to parallel computing">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-09-fire-and-forget-tasks" text="Fire-and-forget tasks">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-10-synchronising-threads" text="Synchronization of threads">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-11-task-parallel-heat-transfer" text="Task-parallelizing the heat transfer solver">}} -->
+<!-- {{<nolinktitle>}}Intro to parallel computing{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Fire-and-forget tasks{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Synchronization of threads{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Task-parallelizing the heat transfer solver{{</nolinktitle>}} -->
+
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \
+{{<chap>}}Part 1: basic language features{{</chap>}} \
+{{<linktitle url="../chapel/chapel-01-intro" text="Introduction to Chapel">}} \
+{{<linktitle url="../chapel/chapel-02-variables" text="Basic syntax and variables">}} \
+{{<linktitle url="../chapel/chapel-03-ranges-and-arrays" text="Ranges and arrays">}} \
+{{<linktitle url="../chapel/chapel-04-conditions" text="Conditional statements">}} \
+{{<linktitle url="../chapel/chapel-05-loops" text="Getting started with loops">}} \
+{{<linktitle url="../chapel/chapel-06-command-line-arguments" text="Using command-line arguments">}} \
+{{<linktitle url="../chapel/chapel-07-timing" text="Measuring code performance">}} \
+{{<chap>}}Part 2: task parallelism{{</chap>}} \
+{{<linktitle url="../chapel/chapel-08-intro-parallel" text="Intro to parallel computing">}} \
+{{<linktitle url="../chapel/chapel-09-fire-and-forget-tasks" text="Fire-and-forget tasks">}} \
+{{<linktitle url="../chapel/chapel-10-synchronising-threads" text="Synchronization of threads">}} \
+{{<linktitle url="../chapel/chapel-11-task-parallel-heat-transfer" text="Task-parallelizing the heat transfer solver">}}
 
 
 
