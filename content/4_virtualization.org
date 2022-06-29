@@ -3,7 +3,7 @@
 
 {{<cor>}}Tuesday, July 5{{</cor>}} \\
 9:30am–12:30pm PST\\
-{{<c link="/virtualization_cloud" topic="Introduction to Compute Canada cloud" >}}
+{{<c link="/virtualization_cloud" topic="Introduction to cloud and virtual machines" >}}
 
 {{<cor>}}Thursday, July 7{{</cor>}} \\
 9:30am–12:30pm PST\\

@@ -1,5 +1,5 @@
 +++
-title = "Introduction to Compute Canada cloud"
+title = "Introduction to Cloud and Virtual Machines"
 slug = "virtualization_cloud"
 +++
 
@@ -28,21 +28,19 @@ participate in the course exercises. On Windows we recommend
 [the free Home Edition of MobaXterm](https://mobaxterm.mobatek.net/download.html). On Mac and Linux computers SSH is
 usually pre-installed (try typing `ssh` in a terminal to make sure it is there).
 
-<!-- You can download the workshop slides [here](../../slides/cloud.pdf). -->
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}9:30am-12:30pm Pacific{{</cgr>}} \
+{{<nolinktitle>}}Live session in 30-40 min presentation blocks{{</nolinktitle>}}
 
-<!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}9:00am-12:00pm Pacific{{</cgr>}} \ -->
-<!-- {{<nolinktitle>}}Live session in 30-40 min presentation blocks{{</nolinktitle>}} -->
+You can download the workshop slides [here](../../files/Intro_to_Cloud_SummerSchool2022.pdf).
 
-<!-- <\!-- last year https://wgschool.netlify.app/cloud -\-> -->
+#### Creating and Connecting to an instance on Arbutus (MacOS)
 
-<!-- #### Creating and Connecting to an instance on Arbutus (MacOS) -->
+{{< yt -bDE_f--SN8 63 >}}
 
-<!-- {{< yt -bDE_f--SN8 63 >}} -->
+#### Creating and Connecting to an instance on Arbutus (Windows and MobaXterm)
 
-<!-- #### Creating and Connecting to an instance on Arbutus (Windows and MobaXterm) -->
+{{< yt 3Yia9_464yY 63 >}}
 
-<!-- {{< yt 3Yia9_464yY 63 >}} -->
+#### Installing RStudio
 
-<!-- #### Installing RStudio -->
-
-<!-- {{< yt hMkCT0mcb6s 63 >}} -->
+{{< yt hMkCT0mcb6s 63 >}}
