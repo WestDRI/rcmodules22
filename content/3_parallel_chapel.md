@@ -72,19 +72,19 @@ Chapel on your computer.
 
 
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \
-{{<chap>}}Part 3: data parallelism{{</chap>}} \
-{{<nolinktitle>}}Single-locale data parallelism{{</nolinktitle>}} \
-{{<nolinktitle>}}Parallelizing the Julia set problem{{</nolinktitle>}} \
-{{<nolinktitle>}}Multi-locale Chapel{{</nolinktitle>}} \
-{{<nolinktitle>}}Domains and data parallelism{{</nolinktitle>}}
-
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
 <!-- {{<chap>}}Part 3: data parallelism{{</chap>}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-12-single-locale-data-parallel" text="Single-locale data parallelism">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-13-julia-set" text="Parallelizing the Julia set problem">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-14-multi-locale-chapel" text="Multi-locale Chapel">}} \ -->
-<!-- {{<linktitle url="../chapel/chapel-15-domains-and-data-parallel" text="Domains and data parallelism">}} -->
+<!-- {{<nolinktitle>}}Single-locale data parallelism{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Parallelizing the Julia set problem{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Multi-locale Chapel{{</nolinktitle>}} \ -->
+<!-- {{<nolinktitle>}}Domains and data parallelism{{</nolinktitle>}} -->
+
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \
+{{<chap>}}Part 3: data parallelism{{</chap>}} \
+{{<linktitle url="../chapel/chapel-12-single-locale-data-parallel" text="Single-locale data parallelism">}} \
+{{<linktitle url="../chapel/chapel-13-julia-set" text="Parallelizing the Julia set problem">}} \
+{{<linktitle url="../chapel/chapel-14-multi-locale-chapel" text="Multi-locale Chapel">}} \
+{{<linktitle url="../chapel/chapel-15-domains-and-data-parallel" text="Domains and data parallelism">}}
 
 
 
