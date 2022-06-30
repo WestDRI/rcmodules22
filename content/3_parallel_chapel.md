@@ -48,8 +48,7 @@ Chapel on your computer.
 <!-- {{<chap>}}Part 2: task parallelism{{</chap>}} \ -->
 <!-- {{<nolinktitle>}}Intro to parallel computing{{</nolinktitle>}} \ -->
 <!-- {{<nolinktitle>}}Fire-and-forget tasks{{</nolinktitle>}} \ -->
-<!-- {{<nolinktitle>}}Synchronization of threads{{</nolinktitle>}} \ -->
-<!-- {{<nolinktitle>}}Task-parallelizing the heat transfer solver{{</nolinktitle>}} -->
+<!-- {{<nolinktitle>}}Synchronization of threads{{</nolinktitle>}} -->
 
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 - 9:30am-12:30pm Pacific{{</cgr>}} \
 {{<chap>}}Part 1: basic language features{{</chap>}} \
@@ -63,8 +62,7 @@ Chapel on your computer.
 {{<chap>}}Part 2: task parallelism{{</chap>}} \
 {{<linktitle url="../chapel/chapel-08-intro-parallel" text="Intro to parallel computing">}} \
 {{<linktitle url="../chapel/chapel-09-fire-and-forget-tasks" text="Fire-and-forget tasks">}} \
-{{<linktitle url="../chapel/chapel-10-synchronising-threads" text="Synchronization of threads">}} \
-{{<linktitle url="../chapel/chapel-11-task-parallel-heat-transfer" text="Task-parallelizing the heat transfer solver">}}
+{{<linktitle url="../chapel/chapel-10-synchronising-threads" text="Synchronization of threads">}}
 
 
 
@@ -73,6 +71,7 @@ Chapel on your computer.
 
 
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \ -->
+<!-- {{<nolinktitle>}}Task-parallelizing the heat transfer solver{{</nolinktitle>}} \ -->
 <!-- {{<chap>}}Part 3: data parallelism{{</chap>}} \ -->
 <!-- {{<nolinktitle>}}Single-locale data parallelism{{</nolinktitle>}} \ -->
 <!-- {{<nolinktitle>}}Parallelizing the Julia set problem{{</nolinktitle>}} \ -->
@@ -80,6 +79,7 @@ Chapel on your computer.
 <!-- {{<nolinktitle>}}Domains and data parallelism{{</nolinktitle>}} -->
 
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \
+{{<linktitle url="../chapel/chapel-11-task-parallel-heat-transfer" text="Task-parallelizing the heat transfer solver">}} \
 {{<chap>}}Part 3: data parallelism{{</chap>}} \
 {{<linktitle url="../chapel/chapel-12-single-locale-data-parallel" text="Single-locale data parallelism">}} \
 {{<linktitle url="../chapel/chapel-13-julia-set" text="Parallelizing the Julia set problem">}} \

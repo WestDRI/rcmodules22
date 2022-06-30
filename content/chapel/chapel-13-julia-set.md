@@ -1,6 +1,6 @@
 +++
 title = "Parallelizing the Julia set problem"
-slug = "chapel-13-single-locale-data-parallel"
+slug = "chapel-13-julia-set"
 weight = 13
 katex = true
 +++
