@@ -1,5 +1,5 @@
 +++
-title = "Introduction to containers"
+title = "Introduction to Singularity/Apptainer"
 slug = "virtualization_container"
 +++
 

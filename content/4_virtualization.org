@@ -7,7 +7,7 @@
 
 {{<cor>}}Thursday, July 7{{</cor>}} \\
 9:30am–12:30pm PST\\
-{{<c link="/virtualization_container" topic="Introduction to containers" >}}
+{{<c link="/virtualization_container" topic="Introduction to Singularity/Apptainer containers" >}}
 
 #+BEGIN_export html
 <br>
