@@ -384,12 +384,7 @@ srun singularity exec -C -B /home,/scratch --pwd ~/tmp mpi5.sif ./distributedPi
 
 
 
-
-
-
-
-
-> ### <font style="color:blue">Exercise</font>
+> ### <font style="color:blue">Exercise 3</font>
 > Compare the following two commands. What do they do differently?
 > ```sh
 > $ srun singularity exec -C -B /home,/scratch --pwd /scratch/razoumov mpi.sif ./distributedPi
@@ -415,7 +410,7 @@ srun singularity exec -C -B /home,/scratch --pwd ~/tmp mpi5.sif ./distributedPi
 
 
 
-> ### <font style="color:blue">Exercise</font>
+> ### <font style="color:blue">Exercise 4</font>
 > We installed many packages into our Debian container. How do we know which packages to install (apart from
 > googling them), i.e. is there a way to search for packages from the command line? And how would you do this
 > when we created the image from a definition file?
@@ -534,16 +529,23 @@ overlay file for that. Everything inside the overlay will appear as a single fil
 
 {{<note>}}
 The direct `singularity overlay` command requires Singularity 3.8 or later and relatively recent filesystem
-tools (won't work in a CentOS7 VM).
+tools (won't work in a CentOS7 VM). We can try a demo on Narval cluster (currently running Rocky Linux 8.5).
 {{</note>}}
 
+Narval's compute nodes don't have Internet access, but we can copy a usable SIF image from elsewhere.
+
 ```sh
-singularity overlay create --size 2048 myoverlay.img   # create a 2GB overlay image file
-singularity shell -C --overlay ./myoverlay.img -B /home,/scratch image.sif
-Singularity> mkdir -p /newhome        # by default this will go into the overlay image
+[VM]$ scp ubuntu.sif <username>@narval.computecanada.ca:scratch/containers/
+[narval] cd scratch/containers
+module load singularity/3.8
+salloc --cpus-per-task=1 --time=0:30:0 --mem-per-cpu=3600 --account=...
+singularity overlay create --size 512 myoverlay.img   # create a 0.5GB overlay image file
+singularity shell -C --overlay ./myoverlay.img -B /home,/scratch ubuntu.sif
+Singularity> df -kh                # the overlay should be mounted inside the container
+Singularity> mkdir -p /newhome     # by default this will go into the overlay image
 Singularity> export HOME=/newhome
 Singularity> cd
-Singularity> df -kh                   # check for available space
+Singularity> df -kh .              # using overlay; check for available space
 Singularity> ... install something with a crazy number of files here ... (conda?)
 ```
 
@@ -551,5 +553,5 @@ Outside the container, when the overlay is *not* in use, you can even resize it:
 
 ```sh
 e2fsck -f myoverlay.img         # good idea to check your overlay's filesystem first
-resize2fs -p myoverlay.img 4G   # resize your overlay
+resize2fs -p myoverlay.img 2G   # resize your overlay
 ```

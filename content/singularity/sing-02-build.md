@@ -26,14 +26,15 @@ The `singularity build <imagePath> <buildSpec>` command is a versatile tool that
 singularity build --help
 ```
 
-In many (most?) cases, you would download an existing Docker/Singularity container image and build/run a
+In <u>many (99%?) cases</u>, you would download an existing Docker/Singularity container image and build/run a
 container from it, without having to modify the image. Or maybe, the image is already provided by your lab, a
 research collaborator, or the Alliance. For example, right now we are testing a set of Singularity images with
 GPU development tools for different GPU architectures, such as NVIDIA's CUDA and AMD's ROCm, as it is often
-difficult to compile these from source -- and we'll make these images available to all users.
+difficult to compile these from source -- and we are planning to make these images available to all users
+likely in the fall.
 
-In other cases you might want to modify the image or build your own container image from scratch. To create a
-container image, you need a machine that:
+In <u>other cases</u> you might want to modify the image or build your own container image from scratch. To
+create a container image, you need a machine that:
 
 1. runs Linux,
 1. has Singularity installed,
@@ -182,7 +183,7 @@ sudo yum install nano -y          # or emacs, to edit files
 sudo yum install singularity -y   # install Singularity 3.8
 ```
 
-> ### <font style="color:blue">Note to self:</font>
+> ### <font style="color:blue">Note to self</font>
 > The presenter can also log in as `centos` user to the training cluster and there run singularity with the
 > full path (as `singularity` from CVMFS will not be accessible to `sudo`), e.g.
 > ```sh
@@ -207,7 +208,7 @@ sudo du -skh ubuntu.dir   # 118M
 > occurs when you try to mount a file/directory into the container without that file/directory already
 > inside the container. You can simply ignore this message.
 
-To convert the sandbox to a regular non-writable container, use
+To convert the sandbox to a regular non-writable SIF container image, use
 
 ```sh
 sudo singularity build ubuntu.sif ubuntu.dir
@@ -261,7 +262,7 @@ singularity run test.sif   # Hello World! Hello from our custom Singularity imag
 
 > ### <font style="color:blue">Discussion</font>
 >
-> How do we install additional kages into this new container? (There are two options.)
+> How do we install additional packages into this new container? (There are two options.)
 
 <!-- Answer: we would need to either (1) replace `test.sif` with `--sandbox test.dir` to make it a sandbox: -->
 <!-- ```sh -->
@@ -360,7 +361,7 @@ singularity pull ubuntu.sif docker://ubuntu:latest
 
 
 
-> ### <font style="color:blue">Exercise</font>
+> ### <font style="color:blue">Exercise 1</font>
 > Pull the latest Python image from Docker Hub into a Singularity image. It should take few minutes to build it.
 > 1. How large is the resulting image?
 > 1. Run container's Python with the `exec` command. Which version of Python did it install?
@@ -374,7 +375,7 @@ singularity pull ubuntu.sif docker://ubuntu:latest
 > ```
 > <!-- docker://python -->
 
-> ### <font style="color:blue">Exercise</font>
+> ### <font style="color:blue">Exercise 2</font>
 > Pull a recent <b>CPU-based</b> PyTorch image from Docker Hub into a Singularity image.
 > ```sh
 > module load singularity

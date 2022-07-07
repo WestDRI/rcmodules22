@@ -8,35 +8,37 @@ Apptainer (until recently called Singularity):
 
 - is an open-source project developed within the research community since 2015, first by the Lawrence Berkeley
   National Lab
-- goal: run Linux applications on HPC clusters portably and reproducibly
+- goal: create a portable system to run Linux applications on HPC clusters independently of the specific host
+  Linux version and distro, i.e. distribute software and **its compute environment**
 - creates a custom, secure virtual Linux environment (a **container**) that is different from the host Linux
   system
   - e.g., on a CentOS/Rocky Linux machine you can create a virtual Ubuntu system where you can install any
     packaged software from the Ubuntu repositories
   - in a sense, gives you control of your software environment without being `root` on the host system (with a
     catch: creating containers from scratch usually requires `root`)
-- quickly became a way to package and deploy scientific software to different HPC systems
-- is different from Docker, as it does not require `root` access on the host system to run it
+- quickly became a way to package and deploy scientific software and its dependencies to different HPC systems
+- is different from Docker, as it does not require `root` access on the host system to *run* it
   - specifically designed for running containers on multi-user HPC cluster s
 - on a Linux host is very lightweight compared to a full virtual machine (**VM**)
 - on Mac or Windows can be deployed inside a VM (still requires a Linux host layer &nbsp;➜&nbsp; a VM)
 - from the technical standpoint, uses:
-  - Linux control groups (<u>cgroups</u>) to limit / control / isolate resource usage such as CPU and memory
-    access, disk I/O
-  - <u>kernel namespaces</u> to virtualize and isolate OS resources, so that processes inside the container
-    see only a specific, virtualized set of resources
-  - <u>overlay filesystems</u> to enable the appearance of writing to otherwise read-only filesystems,
-    e.g. system directories
+  - <u>kernel namespaces</u> to virtualize and isolate OS resources (CPU, memory access, disk I/O, network
+    access, user/group namespaces), so that processes inside the container see only a specific, virtualized
+    set of resources
+  - Linux control groups (<u>cgroups</u>) to control and limit the use of these resources
+  - <u>overlay filesystems</u> to enable the appearance of writing to otherwise read-only filesystems
 
 ## Why use a container
 
-Idea: package and distribute the software environment along with the application (**portable software environment**).
+Idea: package and distribute the software environment along with the application, i.e. create a **portable
+software environment**.
 
 Why:
-1. avoid compiling complex software chains from scratch
+1. avoid compiling complex software chains from scratch for the host's Linux OS
 1. run software in the environment where it might not be available as a package, or run older software
 1. use a familiar software environment everywhere where you can run Singularity, e.g. across different HPC centres
-   - consistent testing environment
+   - create a consistent testing environment independently of the underlying system
+   - transfer pipelines from a test environment to a production environment
 1. popular, but somewhat dubious reason: data reproducibility (use the same software environment as the
    authors &nbsp;➜&nbsp; same result)
 
@@ -45,7 +47,7 @@ Why:
 1. on a Linux system (we will install Singularity as a package inside our VM from Tuesday)
 1. in a VM running Linux (on any host OS)
 1. within Vagrant for Windows (WSL) or MacOS
-1. inside Docker (download a Singularity Docker image)
+1. inside Docker (download a Docker image with Singularity installed)
 
 ## Glossary
 
