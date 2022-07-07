@@ -85,7 +85,8 @@ on HPC systems (no `root` or `sudo` possible for users on clusters + cgroups res
 with HPC resource managers).
 
 **Singularity**: run containers entirely in user space, as a user, can use existing Docker containers
-(Singularity will convert them to proper Singularity containers for you).
+(Singularity will convert them to proper Singularity containers for you), works seamlessly with the
+schedulers.
 
 There are few other container engines focusing on specific features.
 
