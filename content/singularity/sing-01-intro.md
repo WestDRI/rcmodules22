@@ -16,6 +16,7 @@ Apptainer (until recently called Singularity):
     packaged software from the Ubuntu repositories
   - in a sense, gives you control of your software environment without being `root` on the host system (with a
     catch: creating containers from scratch usually requires `root`)
+  - you can install any system packages and all dependencies for your software as packages inside the container
 - quickly became a way to package and deploy scientific software and its dependencies to different HPC systems
 - is different from Docker, as it does not require `root` access on the host system to *run* it
   - specifically designed for running containers on multi-user HPC cluster s
