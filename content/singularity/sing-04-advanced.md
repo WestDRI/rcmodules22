@@ -209,7 +209,9 @@ Stage: basis-debian-latest-current-stable
 
     apt install -y build-essential libboost-all-dev libtbb-dev libtbb2
     apt install -y openmpi-bin libpmix-bin libucx-dev libucx0 ucx-utils \
-        libfabric-bin libfabric-dev libfabric1 hwloc-nox libpmi2-0 libpmi2-0-dev
+        libfabric-bin libfabric-dev libfabric1 hwloc-nox libpmi2-0 libpmi2-0-dev \
+        rdma-core rdmacm-utils ibacm ibverbs-providers ibverbs-utils libibverbs-dev libibverbs1 \
+        librdmacm-dev librdmacm1 srptools libmunge-dev libmunge2 munge
     apt install -y slurm-client
     apt install -y 
     apt autoremove -y
@@ -221,7 +223,8 @@ Stage: basis-debian-latest-current-stable
 
 
 
-Next create an image (this step took me 6 mins on a VM):
+
+Next create an image (this step took me 16 mins on a VM):
 
 ```sh
 sudo yum install debootstrap -y   # install Debian bootstrapper
@@ -367,18 +370,22 @@ cd ~/tmp
 cat distributedPi.c
 module load singularity
 module load openmpi   # version 4 or version 3, no need to match the MPI version inside the container
-singularity shell -C -B /home,/scratch --pwd ~/tmp mpi5.sif
+singularity shell -C -B /home,/scratch --pwd ~/tmp mpi.sif
 Singularity> mpicc -O2 distributedPi.c -o distributedPi
 Singularity> ./distributedPi                # single process
 Singularity> mpirun -np 4 ./distributedPi   # running on the login node (bad idea!)
 Singularity> mpirun -np 4 hostname          # they all ran on the same node
 Singularity> exit
 salloc --nodes=4 --time=0:10:0 --mem-per-cpu=3600
-srun singularity exec -C -B /home,/scratch --pwd ~/tmp mpi5.sif ./distributedPi
+srun singularity exec -C -B /home,/scratch --pwd ~/tmp mpi.sif ./distributedPi
 ```
 
 
 
+<!-- beluga -->
+<!-- module load singularity openmpi -->
+<!-- salloc --nodes=1 --ntasks=4 --time=0:20:0 --mem-per-cpu=3600 --account=def-razoumov-ac -->
+<!-- srun singularity exec -C -B /home,/scratch --pwd /scratch/razoumov/ mpi.sif ./distributedPi -->
 
 
 

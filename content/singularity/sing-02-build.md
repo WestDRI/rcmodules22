@@ -354,8 +354,8 @@ visualize it.
 ```sh
 singularity pull centos.sif docker://centos:latest
 singularity pull debian.sif docker://debian:latest
-singularity pull debian10.sif docker://debian:10   # specific older version
 singularity pull ubuntu.sif docker://ubuntu:latest
+singularity pull ubuntu.sif docker://ubuntu:19.04   # specific older version
 ```
 
 

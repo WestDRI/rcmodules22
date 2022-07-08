@@ -27,6 +27,7 @@ to be root, you also need to be root outside the container.
 ```sh
 singularity exec ubuntu.sif ls /
 singularity exec ubuntu.sif ls /; whoami
+singularity exec ubuntu.sif bash -c "ls /; whoami"   # probably a safer way
 singularity exec ubuntu.sif cat /etc/os-release
 ```
 
