@@ -22,7 +22,7 @@ This course, suitable for people with no knowledge of machine learning, will wal
 
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 11:00am–12:30pm Pacific{{</cgr>}}
 
-{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/02_concept.md" text="Overarching concept of deep learning">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/02_concept" text="Overarching concept of deep learning">}} \\
 {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/03_frameworks" text="Which framework to choose?">}} \\
 {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/04_pytorch" text="PyTorch API & libraries">}} \\
 {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/05_install" text="(Optional) Local installation">}} \\
