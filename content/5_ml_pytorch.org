@@ -12,43 +12,34 @@ This course, suitable for people with no knowledge of machine learning, will wal
 
 {{<br>}}
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 9:30am–10:30am Pacific{{</cgr>}}
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 9:30am–9:40am Pacific{{</cgr>}}
 
-{{<nolinktitle>}}Opening session & Jupyter access{{</nolinktitle>}} \\
-{{<nolinktitle>}}AI, machine learning, deep learning{{</nolinktitle>}}
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/01_intro" text="Opening session & Jupyter access">}} \\
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/02_ml" text="AI, machine learning, deep learning">}}
+{{<nolinktitle>}}Opening session{{</nolinktitle>}}
 
 {{<cbr>}}On your own{{</cbr>}}
 
-{{<nolinktitle>}}What are neural networks & how do they learn?{{</nolinktitle>}}
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/03_nn" text="What are neural networks & how do they learn?">}}
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/01_nn" text="What are neural networks & how do they learn?">}}
 
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 1 – 11:00am–12:30pm Pacific{{</cgr>}}
 
-{{<nolinktitle>}}Network architectures & practical considerations{{</nolinktitle>}}
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/04_architectures" text="Network architectures & practical considerations">}}
-
-{{<cbr>}}On your own{{</cbr>}}
-
-{{<nolinktitle>}}Transfer learning{{</nolinktitle>}} \\
-{{<nolinktitle>}}The Transformer{{</nolinktitle>}} \\
-{{<nolinktitle>}}Which frameworks to choose?{{</nolinktitle>}} \\
-{{<nolinktitle>}}PyTorch tensors{{</nolinktitle>}}
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/05_tl" text="Transfer learning">}} \\
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/06_transformer" text="The Transformer">}} \\
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/07_frameworks" text="Which framework to choose?">}} \\
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/08_tensors" text="PyTorch tensors">}}
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/02_concept.md" text="Overarching concept of deep learning">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/03_frameworks" text="Which framework to choose?">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/04_pytorch" text="PyTorch API & libraries">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/05_install" text="(Optional) Local installation">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/06_higherlevels" text="Higher-level frameworks built on top of PyTorch">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/07_resources" text="Resources">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/08_jupyter" text="Jupyter">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/09_tensors" text="PyTorch tensors">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/10_autograd" text="Automatic differentiation">}}
 
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 – 9:30am–12:30pm Pacific{{</cgr>}}
 
-{{<nolinktitle>}}fastai{{</nolinktitle>}} \\
-{{<nolinktitle>}}Jupyter tips{{</nolinktitle>}} \\
-{{<nolinktitle>}}Implementation: upscaling images{{</nolinktitle>}} \\
-{{<nolinktitle>}}Ethical considerations{{</nolinktitle>}} \\
-{{<nolinktitle>}}Wrap-up & resources{{</nolinktitle>}}
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/09_fastai" text="fastai">}} \\
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/10_jupyter" text="Jupyter tips">}} \\
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/11_upscaling" text="Implementation: upscaling images">}} \\
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/12_ethics" text="Ethical considerations">}} \\
-# {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/13_resources" text="Wrap-up & resources">}}
+{{<nolinktitle>}}Creating a DataLoader from a classic audio dataset{{</nolinktitle>}} \\
+{{<nolinktitle>}}Creating a DataLoader from a classic vision dataset{{</nolinktitle>}} \\
+{{<nolinktitle>}}Building a neural network{{</nolinktitle>}} \\
+{{<nolinktitle>}}Training a neural network{{</nolinktitle>}} \\
+{{<nolinktitle>}}Using TensorBoard{{</nolinktitle>}} \\
+{{<nolinktitle>}}Saving/loading models and checkpointing{{</nolinktitle>}} \\
+{{<nolinktitle>}}Warm-starting and transfer learning{{</nolinktitle>}} \\
+{{<nolinktitle>}}Performance{{</nolinktitle>}} \\
+{{<nolinktitle>}}Ethical considerations{{</nolinktitle>}}
