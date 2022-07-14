@@ -41,5 +41,5 @@ This course, suitable for people with no knowledge of machine learning, will wal
 {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/15_training_nn" text="Training a model">}} \\
 {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/16_checkpoints" text="Saving/loading models and checkpointing">}} \\
 {{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/17_clusters" text="Machine learning on production clusters">}} \\
-{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/18_distributed" text="A few notes on PyTorch distributed computing">}}
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/18_distributed" text="A few notes on PyTorch distributed">}}
 
