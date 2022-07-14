@@ -34,12 +34,12 @@ This course, suitable for people with no knowledge of machine learning, will wal
 
 {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 – 9:30am–12:30pm Pacific{{</cgr>}}
 
-{{<nolinktitle>}}Creating a DataLoader from a classic audio dataset{{</nolinktitle>}} \\
-{{<nolinktitle>}}Creating a DataLoader from a classic vision dataset{{</nolinktitle>}} \\
-{{<nolinktitle>}}Building a neural network{{</nolinktitle>}} \\
-{{<nolinktitle>}}Training a neural network{{</nolinktitle>}} \\
-{{<nolinktitle>}}Using TensorBoard{{</nolinktitle>}} \\
-{{<nolinktitle>}}Saving/loading models and checkpointing{{</nolinktitle>}} \\
-{{<nolinktitle>}}Warm-starting and transfer learning{{</nolinktitle>}} \\
-{{<nolinktitle>}}Performance{{</nolinktitle>}} \\
-{{<nolinktitle>}}Ethical considerations{{</nolinktitle>}}
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/11_dataset_audio" text="Creating a DataLoader from a classic audio dataset">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/12_dataset_vision" text="Creating a DataLoader from a classic vision dataset">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/13_data_preprocessing" text="Data pre-processing">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/14_building_nn" text="Building a neural network">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/15_training_nn" text="Training a model">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/16_checkpoints" text="Saving/loading models and checkpointing">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/17_clusters" text="Machine learning on production clusters">}} \\
+{{<linktitle url="https://westgrid-ml.netlify.app/2022_modules/18_distributed" text="A few notes on PyTorch distributed computing">}}
+
