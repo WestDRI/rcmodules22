@@ -25,12 +25,10 @@ and scripted (including offscreen) visualization, and is an easy and fun tool to
 
 **Prerequisites**: This is an introductory course, no prior visualization experience is required.
 
-**Software**: Please [install ParaView](https://www.paraview.org/download) on your computer, and make sure you can start
-it before the course. As of this writing, the latest ParaView version is 5.9.1 -- it should work nicely for our
-workshop. If you want to reproduce the remote visualization client-server demos on Cedar cluster (for which you will
-need a Compute Canada account), you might want to use ParaView 5.8.1 -- this is really optional. We will provide all
-sample data and codes for the exercises. Let us know before or during the course if you want to load your own dataset
-into ParaView.
+**Software**: Please [install ParaView](https://www.paraview.org/download) on your computer, and make sure you
+can start it before the course. As of this writing, the latest ParaView version is 5.10.1 -- it should work
+nicely for our workshop. We will provide all sample data and codes for the exercises. Let us know before or
+during the course if you want to load your own dataset into ParaView.
 
 <!-- {{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}9:00am-9:30am Pacific{{</cgr>}} \ -->
 <!-- {{<linktitle url="../vis1" text="Morning opening session">}} -->
