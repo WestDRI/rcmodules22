@@ -38,12 +38,12 @@ during the course if you want to load your own dataset into ParaView.
 {{<linktitle url="../vis/vis-03-import" text="Importing data into ParaView (29 min)">}} \
 {{<linktitle url="../vis/vis-04-filters" text="Working with ParaView filters (35 min)">}}
 
-{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}}
-<!-- {{<linktitle url="../vis2" text="Day 2 session">}} -->
+{{<cor>}}Zoom{{</cor>}} {{<s>}} {{<cgr>}}Day 2 - 9:30am-12:30pm Pacific{{</cgr>}} \
+{{<linktitle url="../vis2" text="Day 2 session">}}
 
-<!-- {{<chap>}}Optional videos to watch on your own{{</chap>}}: \ -->
-<!-- {{<linktitle url="../vis/vis-05-export" text="Exporting scenes (5 min)">}} \ -->
-<!-- {{<linktitle url="../vis/vis-06-animation" text="Animation in ParaView (14 min)">}} \ -->
-<!-- {{<linktitle url="../vis/vis-07-scripting" text="Python scripting in ParaView (30 min)">}} \ -->
-<!-- {{<linktitle url="../vis/vis-08-remote" text="Remote and distributed visualization (37 min)">}} \ -->
-<!-- {{<linktitle url="../vis/vis-09-summary" text="Summary (4 min)">}} -->
+{{<chap>}}Optional videos to watch on your own{{</chap>}}: \
+{{<linktitle url="../vis/vis-05-export" text="Exporting scenes (5 min)">}} \
+{{<linktitle url="../vis/vis-06-animation" text="Animation in ParaView (14 min)">}} \
+{{<linktitle url="../vis/vis-07-scripting" text="Python scripting in ParaView (30 min)">}} \
+{{<linktitle url="../vis/vis-08-remote" text="Remote and distributed visualization (37 min)">}} \
+{{<linktitle url="../vis/vis-09-summary" text="Summary (4 min)">}}

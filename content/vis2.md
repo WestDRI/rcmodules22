@@ -18,7 +18,8 @@ or any problems to report?
 <!-- (especially the remote and distributed visualization part) the commands point to the older cluster modules. I added the -->
 <!-- updated commands next to the videos. -->
 
-Today's topics are covered in `slides2.pdf`.
+Today's topics are covered in `slides2.pdf` that you can find inside the
+[ZIP file](https://bit.ly/paraviewzipp) for this course.
 
 <!-- Do not try to run remote visualization demos on Cassiopeia training cluster: it is not powerful enough to do -->
 <!-- any CPU rendering (multi-way virtual CPUs), and it does not have GPUs (and I shut it down before the next -->

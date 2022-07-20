@@ -7,7 +7,7 @@ slug = "vis1"
 
 1. Instructor / helper(s) / course introduction
 1. The slides for this course (`slides1.pdf` for today and `slides2.pdf` for Thursday) are included into the
-   [main ZIP file](https://bit.ly/paraviewzipp) (~24 MB) along with sample datasets and various scripts; in
+   [main ZIP file](https://bit.ly/paraviewzipp) (~24 MB) along with sample datasets and various scripts. In
    case of problems, check this [temporary mirror](https://transfer.sh/kOxhdT/paraview.zip).
 1. Let's try to start ParaView on our computers
 
