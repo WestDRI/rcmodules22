@@ -24,7 +24,7 @@ canonifyurls = true
     style = "manni"
 
 [params]
- repourl = "https://github.com/WestGrid/rcmodules22"
+ repourl = "https://github.com/WestDRI/rcmodules22"
  info = "Training Modules 2022"
  sfuavatar = "/img/sfu.png"
  dracavatar = "/img/drac.png"
